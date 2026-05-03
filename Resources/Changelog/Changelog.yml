@@ -4485,3 +4485,95 @@ Entries:
   id: 5826
   time: '2026-05-03T17:15:00.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/410
+- author: qevie
+  changes:
+    - type: Fix
+      message: fixed NCRMP spelling errors
+    - type: Tweak
+      message: renamed NCRMP dogtags
+  id: 5827
+  time: '2026-05-03T22:46:04.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/405
+- author: 3Ra3G
+  changes:
+    - type: Add
+      message: All sort of striped scarfs available for everyone
+    - type: Add
+      message: Coats,items, pre-war uniforms for the Vault
+    - type: Remove
+      message: Deleted Nitrile gloves because they already existed
+    - type: Tweak
+      message: Vault Pamphlet available for all Vault roles
+    - type: Tweak
+      message: Changed detective's coat to a slim coat
+    - type: Fix
+      message: Categorized some items that were uncategorized before
+    - type: Fix
+      message: Fox mask and bee mask
+  id: 5828
+  time: '2026-05-03T22:47:10.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/409
+- author: AthenaAI
+  changes:
+    - type: Add
+      message: Fixed some github shenanigans.
+  id: 5829
+  time: '2026-05-03T22:47:53.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/412
+- author: HungryCuban
+  changes:
+    - type: Add
+      message: Added C27 natural welding eye protection
+    - type: Tweak
+      message: >-
+        Change C27 scream to a more silicon one (todo: add custom emotes for
+        them)
+    - type: Tweak
+      message: >-
+        C27 Blueprints cost increased, Mainly steel consumption the Heavy armor
+        increased to 220 steel and Medium stay cheap at 15 steel
+    - type: Fix
+      message: Fixed C27 not being targeted by mobs
+    - type: Fix
+      message: Fixed C27 Wastelander infinite sloths
+  id: 5830
+  time: '2026-05-03T22:50:40.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/414
+- author: AthenaAI
+  changes:
+    - type: Tweak
+      message: >-
+        Readded the offset to the workbenches so they are in 2 tiles but now
+        their construciton ghosts match wherever they are placed.
+  id: 5831
+  time: '2026-05-03T22:52:05.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/416
+- author: Sirius
+  changes:
+    - type: Add
+      message: >-
+        Vault-tec has provided Vault 14 with a pneumatic delivery system which
+        can transport chems from the Chemistry Lab to the Medical Treatment
+        facilities.
+    - type: Add
+      message: >-
+        Vault-tec's engineers have been hard at work on updating the safety
+        measures to protect their valued chemists. Now the chemistry lab has a
+        shower and sink to help rinse any nasty chemicals off of you!
+    - type: Add
+      message: >-
+        Storage has been severely limited for Chemists. Vault-tec's engineers
+        have fixed this by stripping some of the redundant, useless machinery
+        from behind the chemistry lab and replacing it with a storage shelf and
+        some additional PPE
+    - type: Add
+      message: >-
+        The Vault has been equipped with a non-functioning, decorative
+        cryogenics research lab. 
+    - type: Remove
+      message: >-
+        The chemist's breakroom reagent grinder has been replaced, and some of
+        the furniture shifted to provide a more comfortable space to relax.
+  id: 5832
+  time: '2026-05-03T23:06:32.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/418
