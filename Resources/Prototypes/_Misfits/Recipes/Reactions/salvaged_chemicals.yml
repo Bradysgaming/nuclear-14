@@ -4,8 +4,10 @@
   requiredMixerCategories:
   - Electrolysis
   reactants:
-    Ammonia: 8
-    Oxygen: 3
+    Ammonia:
+      amount: 8
+    Oxygen:
+      amount: 3
   products:
     Nitrogen: 2
     Water: 6
@@ -16,7 +18,8 @@
   requiredMixerCategories:
   - Electrolysis
   reactants:
-    ExtractBananaYucca: 10
+    ExtractBananaYucca:
+      amount: 10
   products:
     Potassium: 5
 
@@ -26,7 +29,8 @@
   requiredMixerCategories:
   - Centrifuge
   reactants:
-    ExtractBananaYucca: 10
+    ExtractBananaYucca:
+      amount: 10
   products:
     Potassium: 5
     Water: 5
