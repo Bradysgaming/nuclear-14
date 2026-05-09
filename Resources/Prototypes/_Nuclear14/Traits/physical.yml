@@ -268,7 +268,7 @@
           allowedStates:
           - Alive # Forge-Change
           - Critical # takes a bit to get out of crit, but if no one kills you and you don't lose all your blood, you live!
-          damageCap: 200
+          damageCap: 300 # makes it works with life giver
           damage:
             types:
               # #Misfits Fix - PassiveDamage group healing is split across member types; direct types make burn regeneration visible. 1 Hp for every 4 seconds
