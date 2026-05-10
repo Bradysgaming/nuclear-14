@@ -29,7 +29,7 @@
         factions:
           - PlayerSuperMutant
           - Wastelander
-      
+
 
 - type: playTimeTracker
   id: SuperMutant
@@ -39,7 +39,6 @@
   id: SuperMutantVaultSuitGear
   equipment:
     jumpsuit: ClothingSuperMutantVaultSuit
-    id: N14ClothingNeckDogtags # #Misfits Change - wastelander supermutants get dogtag IDs
 
 # #Misfits Add - Nightkin variant with its own whitelist entry.
 - type: job
@@ -193,6 +192,7 @@
 - type: startingGear
   id: SuperMutantTrooperGear
   equipment:
+    head: ClothingSuperMutantTrooperHelmet
     outerClothing: ClothingSuperMutantTrooperArmor
     back: N14ClothingBackpackMilitary
 
@@ -259,8 +259,6 @@
   playTimeTracker: SuperMutantNCRTrooper
   icon: JobIconBorg
   supervisors: job-supervisors-ncr
-  access:
-    - NCR
   canBeAntag: false
   setPreference: true
   overrideConsoleVisibility: true
@@ -284,6 +282,7 @@
 - type: startingGear
   id: SuperMutantNCRTrooperGear
   equipment:
+    head: ClothingSuperMutantTrooperHelmet
     shoes: ClothingSuperMutantGladiatorBoots # Placeholder untill we get NCR boots
     jumpsuit: ClothingSuperMutantJumpsuit
     outerClothing: ClothingSuperMutantTrooperArmor
@@ -407,7 +406,7 @@
     shoes: ClothingSuperMutantGladiatorBoots
     gloves: SupermutantFollowerGloves
     neck: ClothingNeckStethoscope
-    id: N14IDFollowerDoctor
+    id: N14IDDoctorFollower
     ears: N14ClothingHeadsetFollowers
     pocket1: N14HandheldHealthAnalyzer
     pocket2: SurgicalSterilanSpray
