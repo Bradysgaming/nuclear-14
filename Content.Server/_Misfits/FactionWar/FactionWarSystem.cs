@@ -45,11 +45,11 @@ public sealed class FactionWarSystem : EntitySystem
 
     /// <summary>Minimum elapsed round time before war can be declared.</summary>
     /// <summary>Minimum elapsed round time before war can be declared.</summary>
-    private static readonly TimeSpan WarCooldownAfterRoundStart = TimeSpan.FromMinutes(30);
+    private static readonly TimeSpan WarCooldownAfterRoundStart = TimeSpan.FromMinutes(0);
 
     /// <summary>How long a war stays in Pending before becoming Active.</summary>
     /// <summary>How long a war stays in Pending before becoming Active.</summary>
-    private static readonly TimeSpan WarPrepDuration = TimeSpan.FromMinutes(5);
+    private static readonly TimeSpan WarPrepDuration = TimeSpan.FromMinutes(1);
 
     /// <summary>How long target player has to accept war before prompt times out.</summary>
     private static readonly TimeSpan WarAcceptanceTimeout = TimeSpan.FromMinutes(5);
@@ -413,14 +413,19 @@ public sealed class FactionWarSystem : EntitySystem
         }
 
         // Create war entry
+        var declaredAgainstCharacterName = targetSession.AttachedEntity is { } tgt ? Name(tgt) : "Unknown";
+
         var warEntry = new PlayerWarEntry
         {
             DeclaredByPlayer = player.UserId,
             DeclaredByCharacterName = Name(playerEntity),
             DeclaredByJobName = "Unknown",
             DeclaredAgainstPlayer = msg.TargetPlayer,
-            DeclaredAgainstCharacterName = targetSession.AttachedEntity is { } tgt ? Name(tgt) : "Unknown",
+            DeclaredAgainstCharacterName = declaredAgainstCharacterName,
             SideName1 = msg.SideName1.Trim(),
+            SideName2 = string.IsNullOrWhiteSpace(declaredAgainstCharacterName)
+                ? "Player 2's Side"
+                : $"{declaredAgainstCharacterName}'s Side",
             Reason = reason,
             Phase = WarPhase.Pending,
         };
@@ -472,7 +477,7 @@ public sealed class FactionWarSystem : EntitySystem
             $"WAR DECLARED\n" +
             $"{warEntry.DeclaredByCharacterName} has declared war on {warEntry.DeclaredAgainstCharacterName}!\n" +
             $"Reason: \"{reason}\"\n\n" +
-            $"War begins in 5 minutes. {warEntry.DeclaredAgainstCharacterName} must accept via GUI.",
+            $"War begins in 5 minutes. {warEntry.DeclaredAgainstCharacterName} /warjoin to pick a side (MANDATORY TO BE APART OF WAR). ",
             Color.OrangeRed);
 
         SendResult(player, true, $"War declared. Awaiting {warEntry.DeclaredAgainstCharacterName}'s response (5 min timeout).");
