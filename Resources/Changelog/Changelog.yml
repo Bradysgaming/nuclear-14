@@ -5138,3 +5138,10 @@ Entries:
   id: 5893
   time: '2026-05-16T01:39:36.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/524
+- author: NajaTheNaja
+  changes:
+    - type: Add
+      message: Added SM PA 2nd bag slot
+  id: 5894
+  time: '2026-05-16T01:40:08.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/522
