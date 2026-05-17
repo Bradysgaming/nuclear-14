@@ -263,3 +263,13 @@
     N14Gold: 50
     Plastic: 300
     Circuitry: 100
+
+- type: latheRecipe
+  id: N14RemoteSignaller
+  result: RemoteSignaller
+  category: N14Tools
+  completetime: 2
+  materials:
+    N14Copper: 50
+    Plastic: 300
+    Circuitry: 100

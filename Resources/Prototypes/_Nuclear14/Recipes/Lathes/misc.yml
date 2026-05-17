@@ -202,3 +202,22 @@
   materials:
     Circuitry: 50
     N14Copper: 25
+
+- type: latheRecipe
+  id: N14JunkComponentSwitch
+  result: N14JunkComponentSwitch
+  category: Parts
+  completetime: 2
+  materials:
+    Circuitry: 100
+    Plastic: 50
+    N14Copper: 25
+
+- type: latheRecipe
+  id: N14JunkTimer
+  result: N14JunkTimer
+  category: Parts
+  completetime: 2
+  materials:
+    Circuitry: 50
+    N14Copper: 25

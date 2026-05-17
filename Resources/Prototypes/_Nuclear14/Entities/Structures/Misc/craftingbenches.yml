@@ -420,6 +420,7 @@
     - N14HandheldRadio
     - N14GeigerCounter
     - N14HandheldHealthAnalyzer
+    - N14RemoteSignaller
     #Misc
     - N14FlashlightLantern
     - N14GlowstickRed
@@ -429,6 +430,8 @@
     - N14JunkComponentCapacitor1
     - N14JunkComponentDiode1
     - N14JunkComponentFuse1
+    - N14JunkComponentSwitch
+    - N14JunkTimer
     - CassetteTape
     - TapeRecorder
     # Explosives - Misfits Add
