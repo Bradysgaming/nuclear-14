@@ -6,6 +6,7 @@ using Content.Server.Chat.Managers; // #Misfits Add - faction death alert chat d
 using Content.Server._Misfits.Group; // #Misfits Add - group blip injection
 using Content.Server._Misfits.Overwatch;
 using Content.Server._Misfits.TribalHunt;
+using Content.Server._Misfits.TreeOfLife;
 using Content.Server.Radio.Components;
 using Content.Shared.Access.Components;
 using Content.Shared.Humanoid; // #Misfits Add - Followers casualty filter for humanoid player bodies only
@@ -16,6 +17,8 @@ using Content.Shared.Mobs.Components; // #Misfits Add - MobStateComponent
 using Content.Shared.Mobs.Systems; // #Misfits Add - MobStateSystem
 using Content.Shared.Tag;
 using Content.Shared._Misfits.WastelandMap;
+using Content.Shared._Misfits.MaterialExtractor;
+using Content.Shared._Misfits.TreeOfLife;
 using Content.Shared._Misfits.Deathclaw;
 using Content.Shared._Misfits.TribalHunt;
 using Content.Shared.NPC.Components; // NpcFactionMemberComponent
@@ -755,6 +758,7 @@ public sealed class WastelandMapSystem : EntitySystem
         {
             _blipScratch.Clear();
             AppendFactionBlips(_blipScratch, feed, mapId, bounds);
+            AppendMaterialExtractorBlips(_blipScratch, mapId, bounds);
             if (AllowsSharedOverlays(feed)) // #Misfits Change - Tribe maps are tagged-ID-only.
                 AppendTribalHuntTargetBlips(_blipScratch, mapId, bounds);
             nonActorBlips = _blipScratch.ToArray();
@@ -808,6 +812,7 @@ public sealed class WastelandMapSystem : EntitySystem
                 break;
             case WastelandMapTacticalFeedKind.Tribe:
                 AppendIdCardBlips(buffer, mapId, bounds, "IdCardTribe"); // #Misfits Add - Willower pendant feed
+                AppendTribeCriticalBlips(buffer, mapId, bounds);
                 break;
             // #Misfits Add - Followers feed shows dead player humanoids
             case WastelandMapTacticalFeedKind.Followers:
@@ -853,6 +858,60 @@ public sealed class WastelandMapSystem : EntitySystem
                 rallyPoint.Value.Position.Y,
                 "RALLY",
                 WastelandMapTrackedBlipKind.GroupRallyPoint));
+        }
+    }
+
+    private void AppendTribeCriticalBlips(List<WastelandMapTrackedBlip> buffer, MapId mapId, Box2 bounds)
+    {
+        var ritesQuery = EntityQueryEnumerator<TreeOfLifeRitesComponent>();
+        var returningIsActive = false;
+        while (ritesQuery.MoveNext(out _, out var rites))
+        {
+            if (rites.ActiveRite != TreeOfLifeRite.Returning)
+                continue;
+
+            returningIsActive = true;
+            break;
+        }
+
+        if (!returningIsActive)
+            return;
+
+        var query = EntityQueryEnumerator<TreeOfLifeReturningMarkerComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out _, out var xform))
+        {
+            if (!TryComp<MobStateComponent>(uid, out var mobState) || mobState.CurrentState != MobState.Critical)
+                continue;
+
+            var coordinates = _transform.GetMapCoordinates(uid, xform);
+            if (coordinates.MapId != mapId || !bounds.Contains(coordinates.Position))
+                continue;
+
+            buffer.Add(new WastelandMapTrackedBlip(
+                coordinates.Position.X,
+                coordinates.Position.Y,
+                Name(uid),
+                WastelandMapTrackedBlipKind.TribeCritical));
+        }
+    }
+
+    private void AppendMaterialExtractorBlips(List<WastelandMapTrackedBlip> buffer, MapId mapId, Box2 bounds)
+    {
+        var query = EntityQueryEnumerator<MaterialExtractorLandmarkComponent, TransformComponent>();
+
+        while (query.MoveNext(out var uid, out _, out var xform))
+        {
+            var coordinates = _transform.GetMapCoordinates(uid, xform);
+            if (coordinates.MapId != mapId || !bounds.Contains(coordinates.Position))
+                continue;
+
+            var position = coordinates.Position;
+            var label = $"Seismic Extractor GPS: {MathF.Round(position.X)}, {MathF.Round(position.Y)}";
+            buffer.Add(new WastelandMapTrackedBlip(
+                position.X,
+                position.Y,
+                label,
+                WastelandMapTrackedBlipKind.MaterialExtractor));
         }
     }
 

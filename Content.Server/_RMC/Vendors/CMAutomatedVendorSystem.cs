@@ -74,7 +74,19 @@ public sealed partial class CMAutomatedVendorSystem : SharedCMAutomatedVendorSys
             return;
 
         var categories = vendor.Comp.BlueprintCategories.Select(x => x.ToString()).ToHashSet();
-        var sections = new Dictionary<int, CMVendorSection>();
+        // Preserve hand-authored allocation entries (for former job loadout kits) while adding blueprint stock.
+        // A matching authority section is reused so both sources remain under the same rank allocation.
+        var sections = new Dictionary<string, CMVendorSection>();
+        foreach (var configured in vendor.Comp.Sections)
+        {
+            if (sections.TryGetValue(configured.Name, out var existing))
+            {
+                existing.Entries.AddRange(configured.Entries);
+                continue;
+            }
+
+            sections.Add(configured.Name, configured);
+        }
         foreach (var recipe in _prototypes.EnumeratePrototypes<LatheRecipePrototype>())
         {
             if (recipe.Result is not { } result || recipe.Category is not { } category ||
@@ -89,16 +101,17 @@ public sealed partial class CMAutomatedVendorSystem : SharedCMAutomatedVendorSys
                 continue;
 
             tier = entryOverride?.Tier ?? tier;
-            if (tier is < 1 or > 4 || !_prototypes.HasIndex<EntityPrototype>(result))
+            if (tier is < 1 or > 5 || !_prototypes.HasIndex<EntityPrototype>(result))
                 continue;
 
-            if (!sections.TryGetValue(tier, out var section))
+            var sectionName = vendor.Comp.AuthorityTierNames.GetValueOrDefault(tier, $"Authority Tier {tier}");
+            if (!sections.TryGetValue(sectionName, out var section))
             {
                 section = new CMVendorSection
                 {
-                    Name = vendor.Comp.AuthorityTierNames.GetValueOrDefault(tier, $"Authority Tier {tier}")
+                    Name = sectionName
                 };
-                sections.Add(tier, section);
+                sections.Add(sectionName, section);
             }
 
             if (section.Entries.Any(entry => entry.Id == result))
@@ -113,18 +126,22 @@ public sealed partial class CMAutomatedVendorSystem : SharedCMAutomatedVendorSys
                 MaxAmount = entryOverride?.MaxAmount ?? amount,
                 Points = entryOverride?.Points,
                 ReplenishmentCost = entryOverride?.ReplenishmentCost,
+                Category = entryOverride?.Category ?? vendor.Comp.DefaultAllocationCategory,
                 Tier = tier,
             });
         }
 
-        vendor.Comp.Sections = sections.OrderBy(pair => pair.Key).Select(pair => pair.Value).ToList();
+        vendor.Comp.Sections = sections.Values
+            .OrderBy(section => section.Entries.Count == 0 ? int.MaxValue : section.Entries.Min(entry => entry.Tier))
+            .ThenBy(section => section.Name)
+            .ToList();
         vendor.Comp.BlueprintStockInitialized = true;
         Dirty(vendor);
     }
 
     private static int GetBlueprintTier(string category)
     {
-        for (var tier = 4; tier >= 1; tier--)
+        for (var tier = 5; tier >= 1; tier--)
         {
             if (category.EndsWith($"T{tier}", StringComparison.OrdinalIgnoreCase))
                 return tier;
@@ -150,11 +167,17 @@ public sealed partial class CMAutomatedVendorSystem : SharedCMAutomatedVendorSys
             return;
 
         var section = vendor.Comp.Sections[message.Section];
+        if (!HasSectionAuthorization(vendor, section, user))
+        {
+            Deny(vendor, user, "Your assignment does not authorize this allocation.");
+            return;
+        }
+
         if (message.Entry < 0 || message.Entry >= section.Entries.Count)
             return;
 
         var entry = section.Entries[message.Entry];
-        if (entry.Tier is < 1 or > 4 || entry.Tier > Math.Min(4, vendor.Comp.MaxAuthorityTier) ||
+        if (entry.Tier is < 1 or > 5 || entry.Tier > Math.Min(5, vendor.Comp.MaxAuthorityTier) ||
             !HasAuthorityTier(vendor, user, entry.Tier))
         {
             Deny(vendor, user, "Your faction authority is insufficient for this equipment.");
@@ -347,6 +370,21 @@ public sealed partial class CMAutomatedVendorSystem : SharedCMAutomatedVendorSys
                vendor.Comp.TierJobs.Any(job => _jobs.MindHasJobWithId(mindId, job.ToString()));
     }
 
+    private bool HasFullAllocationAuthorization(Entity<CMAutomatedVendorComponent> vendor, EntityUid user)
+    {
+        return vendor.Comp.FullAllocationJobs.Count > 0 &&
+               _minds.TryGetMind(user, out var mindId, out _) &&
+               vendor.Comp.FullAllocationJobs.Any(job => _jobs.MindHasJobWithId(mindId, job.ToString()));
+    }
+
+    private bool HasSectionAuthorization(Entity<CMAutomatedVendorComponent> vendor, CMVendorSection section, EntityUid user)
+    {
+        return section.Jobs.Count == 0 ||
+               HasFullAllocationAuthorization(vendor, user) ||
+               _minds.TryGetMind(user, out var mindId, out _) &&
+               section.Jobs.Any(job => _jobs.MindHasJobWithId(mindId, job.ToString()));
+    }
+
     private bool CanUseVendor(Entity<CMAutomatedVendorComponent> vendor, EntityUid user)
     {
         if (!vendor.Comp.Hacked && !_access.IsAllowed(user, vendor))
@@ -367,7 +405,12 @@ public sealed partial class CMAutomatedVendorSystem : SharedCMAutomatedVendorSys
     private static void InitializeStockCaps(Entity<CMAutomatedVendorComponent> vendor)
     {
         foreach (var entry in vendor.Comp.Sections.SelectMany(section => section.Entries))
+        {
+            // Former roundstart-kit entries are authored directly in YAML rather than generated from blueprints.
+            // Give them the same finite faction stock and replenishment path by default.
+            entry.Amount ??= vendor.Comp.BlueprintStockByTier.GetValueOrDefault(entry.Tier);
             entry.MaxAmount ??= entry.Amount;
+        }
     }
 
     /// <summary>
@@ -425,6 +468,9 @@ public sealed partial class CMAutomatedVendorSystem : SharedCMAutomatedVendorSys
         {
             foreach (var section in vendor.Comp.Sections)
             {
+                if (!HasSectionAuthorization(vendor, section, user))
+                    continue;
+
                 var purchases = section.Choices is { } choices
                     ? userComp.SectionPurchases.GetValueOrDefault(choices.Id)
                     : 0;
@@ -439,7 +485,8 @@ public sealed partial class CMAutomatedVendorSystem : SharedCMAutomatedVendorSys
                 entry.Points,
                 entry.Tier,
                 HasAuthorityTier(vendor, user, entry.Tier),
-                vendor.Comp.AuthorityTierNames.GetValueOrDefault(entry.Tier, $"authority tier {entry.Tier}"))).ToList()));
+                vendor.Comp.AuthorityTierNames.GetValueOrDefault(entry.Tier, $"authority tier {entry.Tier}"),
+                entry.Category ?? vendor.Comp.DefaultAllocationCategory)).ToList()));
             }
         }
 
@@ -452,7 +499,10 @@ public sealed partial class CMAutomatedVendorSystem : SharedCMAutomatedVendorSys
                 if (prototype == null)
                     continue;
 
-                storedItems.Add(new CMVendorStoredItemState(prototype.Name, prototype.ID));
+                storedItems.Add(new CMVendorStoredItemState(
+                    prototype.Name,
+                    prototype.ID,
+                    vendor.Comp.StorageCategories.GetValueOrDefault(prototype.ID, vendor.Comp.DefaultSharedEquipmentCategory)));
             }
         }
 
@@ -464,11 +514,20 @@ public sealed partial class CMAutomatedVendorSystem : SharedCMAutomatedVendorSys
                 vendor.Comp.ReplenishmentPoints,
                 vendor.Comp.Replenishment.Count > 0,
                 vendor.Comp.AllowEquipmentStorage,
-                vendor.Comp.DepartmentName));
+                vendor.Comp.DepartmentName,
+                vendor.Comp.VendorTitle,
+                vendor.Comp.AllocationCategories,
+                vendor.Comp.SharedEquipmentCategories));
     }
 
     private bool HasAuthorityTier(Entity<CMAutomatedVendorComponent> vendor, EntityUid user, int tier)
     {
+        if (HasFullAllocationAuthorization(vendor, user))
+            return true;
+
+        if (GetJobAuthorityTier(vendor, user) >= tier)
+            return true;
+
         if (!vendor.Comp.AuthorityTierAccess.TryGetValue(tier, out var required) || required.Count == 0)
             return tier == 1;
 
@@ -483,5 +542,20 @@ public sealed partial class CMAutomatedVendorSystem : SharedCMAutomatedVendorSys
         }
 
         return required.Any(tags.Contains);
+    }
+
+    private int GetJobAuthorityTier(Entity<CMAutomatedVendorComponent> vendor, EntityUid user)
+    {
+        if (!_minds.TryGetMind(user, out var mindId, out _))
+            return 0;
+
+        var highestTier = 0;
+        foreach (var (job, tier) in vendor.Comp.AuthorityJobTiers)
+        {
+            if (_jobs.MindHasJobWithId(mindId, job.ToString()))
+                highestTier = Math.Max(highestTier, tier);
+        }
+
+        return highestTier;
     }
 }

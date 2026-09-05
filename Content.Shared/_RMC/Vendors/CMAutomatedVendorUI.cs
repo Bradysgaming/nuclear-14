@@ -18,6 +18,9 @@ public sealed class CMAutomatedVendorState : BoundUserInterfaceState
     public bool CanReplenish { get; }
     public bool CanStoreEquipment { get; }
     public string DepartmentName { get; }
+    public string VendorTitle { get; }
+    public List<string> AllocationCategories { get; }
+    public List<string> SharedEquipmentCategories { get; }
 
     public CMAutomatedVendorState(
         List<CMVendorSectionState> sections,
@@ -26,7 +29,10 @@ public sealed class CMAutomatedVendorState : BoundUserInterfaceState
         int replenishmentPoints,
         bool canReplenish,
         bool canStoreEquipment,
-        string departmentName)
+        string departmentName,
+        string vendorTitle,
+        List<string> allocationCategories,
+        List<string> sharedEquipmentCategories)
     {
         Sections = sections;
         StoredItems = storedItems;
@@ -35,6 +41,9 @@ public sealed class CMAutomatedVendorState : BoundUserInterfaceState
         CanReplenish = canReplenish;
         CanStoreEquipment = canStoreEquipment;
         DepartmentName = departmentName;
+        VendorTitle = vendorTitle;
+        AllocationCategories = allocationCategories;
+        SharedEquipmentCategories = sharedEquipmentCategories;
     }
 }
 
@@ -49,10 +58,11 @@ public sealed record CMVendorEntryState(
     int? Points,
     int Tier,
     bool HasAuthority,
-    string? RequiredAuthority);
+    string? RequiredAuthority,
+    string Category);
 
 [Serializable, NetSerializable]
-public sealed record CMVendorStoredItemState(string Name, EntProtoId Id);
+public sealed record CMVendorStoredItemState(string Name, EntProtoId Id, string Category);
 
 [Serializable, NetSerializable]
 public sealed class CMAutomatedVendorVendMessage : BoundUserInterfaceMessage

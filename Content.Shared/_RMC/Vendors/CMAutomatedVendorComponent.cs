@@ -25,15 +25,28 @@ public sealed partial class CMAutomatedVendorComponent : Component
     [DataField, AutoNetworkedField]
     public List<ProtoId<JobPrototype>> TierJobs = new();
 
+    /// <summary>
+    /// Jobs that may issue every allocation tier at this vendor without also granting their access-card tags
+    /// everywhere else. This is deliberately vendor-local for roles such as a requisitions officer.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public List<ProtoId<JobPrototype>> FullAllocationJobs = new();
+
     [DataField, AutoNetworkedField]
     public List<ProtoId<AccessLevelPrototype>> Access = new();
 
     /// <summary>
-    /// Maximum blueprint-style authority tier exposed by this vendor.
-    /// Misfits vendor tiers intentionally stop at four.
+    /// Maximum authority tier exposed by this vendor.
     /// </summary>
     [DataField]
-    public int MaxAuthorityTier = 4;
+    public int MaxAuthorityTier = 5;
+
+    /// <summary>
+    /// Vendor-local authority tier by job. This supports faction role structures that do not mirror their
+    /// physical access-card hierarchy, without granting broader door access.
+    /// </summary>
+    [DataField]
+    public Dictionary<ProtoId<JobPrototype>, int> AuthorityJobTiers = new();
 
     /// <summary>
     /// Required cumulative access tag(s) for each authority tier.
@@ -53,6 +66,36 @@ public sealed partial class CMAutomatedVendorComponent : Component
     /// </summary>
     [DataField]
     public string DepartmentName = "department";
+
+    /// <summary>
+    /// Player-facing machine title. Weapon and equipment vendors intentionally identify themselves separately.
+    /// </summary>
+    [DataField]
+    public string VendorTitle = "Armory Vendor";
+
+    /// <summary>
+    /// Ordered allocation sub-tabs shown by this vendor. Additional categories used by entries are appended.
+    /// </summary>
+    [DataField]
+    public List<string> AllocationCategories = new();
+
+    /// <summary>
+    /// Ordered shared-equipment sub-tabs shown by this vendor. Additional categories used by stored items are appended.
+    /// </summary>
+    [DataField]
+    public List<string> SharedEquipmentCategories = new();
+
+    [DataField]
+    public string DefaultAllocationCategory = "Other";
+
+    [DataField]
+    public string DefaultSharedEquipmentCategory = "Other";
+
+    /// <summary>
+    /// Optional prototype-to-sub-tab map for stored physical equipment.
+    /// </summary>
+    [DataField]
+    public Dictionary<EntProtoId, string> StorageCategories = new();
 
     /// Builds stock from the same blueprint lathe recipes used by faction crafting.
     /// Explicit Sections remain available for non-blueprint stock and RMC bundles.
@@ -86,6 +129,7 @@ public sealed partial class CMAutomatedVendorComponent : Component
         [2] = 8,
         [3] = 5,
         [4] = 2,
+        [5] = 1,
     };
 
     /// <summary>
@@ -168,4 +212,7 @@ public sealed partial class CMVendorBlueprintEntryOverride
 
     [DataField]
     public int? ReplenishmentCost;
+
+    [DataField]
+    public string? Category;
 }
