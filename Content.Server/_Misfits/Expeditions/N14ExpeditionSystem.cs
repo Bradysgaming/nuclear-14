@@ -522,13 +522,14 @@ public sealed class N14ExpeditionSystem : EntitySystem
             else if (mapEntry.RuntimeProcedural && mapEntry.ProceduralTheme.HasValue)
             {
                 // Larger groups receive a broader ruin as well as denser encounters.
-                // One step per additional entrant grows the map by 16 tiles per side
-                // and adds two rooms, capped at five players / 192x192.
+                // One step per additional entrant grows the map by 12 tiles per side
+                // and 1.5 rooms (rounded across the group), capped at five players / 144x144.
                 var partySize = Math.Max(1, nearby.Count);
                 var partyScaleSteps = Math.Min(partySize - 1, 4);
-                var scaledGridSize = mapEntry.ProceduralGridSize + partyScaleSteps * 16;
-                var scaledMinRooms = mapEntry.ProceduralMinRooms + partyScaleSteps * 2;
-                var scaledMaxRooms = mapEntry.ProceduralMaxRooms + partyScaleSteps * 2;
+                var scaledGridSize = mapEntry.ProceduralGridSize + partyScaleSteps * 12;
+                var scaledRoomIncrease = (int) Math.Ceiling(partyScaleSteps * 1.5);
+                var scaledMinRooms = mapEntry.ProceduralMinRooms + scaledRoomIncrease;
+                var scaledMaxRooms = mapEntry.ProceduralMaxRooms + scaledRoomIncrease;
 
                 // Create a fresh map and grid, then run the procedural generator
                 mapUid = _mapSystem.CreateMap(out var mapId);
