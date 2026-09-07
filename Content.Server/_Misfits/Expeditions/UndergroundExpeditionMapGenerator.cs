@@ -131,30 +131,37 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
             MaypoleLimit = largeParty ? 3 : 2;
         }
 
-        public bool TryReserve(string prototype)
+        public bool CanReserve(string prototype)
         {
             if (prototype.StartsWith("N14MobDeathclaw", StringComparison.Ordinal))
             {
                 if (DeathclawsSpawned >= DeathclawLimit)
                     return false;
-                DeathclawsSpawned++;
             }
 
             if (prototype == "N14MobBehemoth")
             {
                 if (BehemothsSpawned >= BehemothLimit)
                     return false;
-                BehemothsSpawned++;
             }
 
             if (prototype == "N14MobGhoulMaypole")
             {
                 if (MaypolesSpawned >= MaypoleLimit)
                     return false;
-                MaypolesSpawned++;
             }
 
             return true;
+        }
+
+        public void Reserve(string prototype)
+        {
+            if (prototype.StartsWith("N14MobDeathclaw", StringComparison.Ordinal))
+                DeathclawsSpawned++;
+            if (prototype == "N14MobBehemoth")
+                BehemothsSpawned++;
+            if (prototype == "N14MobGhoulMaypole")
+                MaypolesSpawned++;
         }
     }
 
@@ -2174,6 +2181,7 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
         var plannedByRealizedRoom = roomsById.ToDictionary(pair => pair.Value, pair => planRoomsById[pair.Key]);
         var mobTheme = SelectExpeditionMobTheme(profile, rng);
         var population = new ExpeditionPopulationState(mobTheme, partySize);
+        var bossLootSockets = new List<(int x, int y)>();
 
         Log.Info($"[N14 ProcGen] enemy-theme='{mobTheme.Name}', faction='{mobTheme.Faction}', " +
                  $"hodgepodge={mobTheme.IsHodgepodge}, party={partySize}, " +
@@ -2192,7 +2200,7 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
             DressRoom(room, gridUid, grid, profile, envMods, rng, cellMap, W, H, depthFactor, reservedTile,
                 plannedRoom?.SecurityLevel ?? 0, plannedRoom?.IsObjective ?? false, difficultyTier);
             SpawnRoomMobs(room, gridUid, grid, mobTheme, population, envMods, difficultyTier, partySize, rng,
-                depthFactor, reservedTile);
+                depthFactor, reservedTile, bossLootSockets);
 
             // Exploration rooms get real weapon-table markers.  The objective
             // uses its own guaranteed, difficulty-tiered marker below.
@@ -2365,16 +2373,35 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
         {
             foreach (var room in rooms)
             {
+                if (room.RoomType == RoomType.FactionHub) continue;
                 if (ReferenceEquals(room, objectiveRoom)) continue;
                 if (room.W * room.H <= 100) continue;
                 if (rng.Next(100) >= 15) continue;
                 var (scx, scy) = room.Center;
                 string sentryProto = rng.Next(2) == 0 ? "N14MobRobotSentryBot" : "N14MobRobotSentryBotBallistic";
-                SpawnAt(sentryProto, gridUid, grid, scx, scy);
+                if (SpawnAt(sentryProto, gridUid, grid, scx, scy).HasValue)
+                    bossLootSockets.Add((scx, scy));
                 if (InBounds(scx + 1, scy, W, H))
                     SpawnAt("N14LootCrateVaultBigRusted", gridUid, grid, scx + 1, scy);
             }
         }
+
+        // All generated bosses and sentries receive a real reward.  The normal
+        // world markers retain their probabilistic tables; only expedition
+        // rewards use the guaranteed variants.  Multiple bosses make the entire
+        // encounter a Tier 5 event, so every participant can see the increased
+        // risk reflected in the reward sockets.
+        var bossRewardSpawner = bossLootSockets.Count > 1
+            ? "N14ExpeditionWeaponLootTier5Guaranteed"
+            : "N14ExpeditionWeaponLootTier4Guaranteed";
+        foreach (var (bossX, bossY) in bossLootSockets)
+            SpawnAt(bossRewardSpawner, gridUid, grid, bossX, bossY);
+
+        // High-risk focused sites get tangible baseline value even when their
+        // boss roll does not occur.  These are deliberately Tier 3 caches,
+        // separate from the guaranteed Tier 4/5 boss sockets above.
+        if (mobTheme.Family is ExpeditionMobFamily.SuperMutant or ExpeditionMobFamily.Deathclaw)
+            SpawnHighRiskFactionRewards(objectiveRoom, gridUid, grid, rng);
 
         // ── 7. LV wire routing: Vault only ─────────────────────────────────────
         if (theme == UndergroundTheme.Vault && reactorCenter.HasValue)
@@ -2643,7 +2670,7 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
         }
 
         // ── Junk scatter: env-state-scaled junk piles ───────────────────────────
-        int junkCount = (int)(rng.Next(1, 4) * envMods.JunkDensityMult);
+        int junkCount = (int)(rng.Next(0, 2) * envMods.JunkDensityMult);
         for (int j = 0; j < junkCount; j++)
         {
             for (int attempt = 0; attempt < 6; attempt++)
@@ -2683,6 +2710,29 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
                 if (occupiedTiles.Contains((bx, by))) continue;
                 SpawnAt(profile.BlueprintPool[rng.Next(profile.BlueprintPool.Length)], gridUid, grid, bx, by);
                 break;
+            }
+        }
+
+        // Replace the former junk-pile carpet with useful, low-tier discovery
+        // caches.  Hubs remain staging areas; every interior room gets one or
+        // two guaranteed Tier 1/2 rolls in addition to role-specific loot.
+        if (room.RoomType != RoomType.FactionHub)
+        {
+            var cacheCount = rng.Next(1, 3);
+            for (var cache = 0; cache < cacheCount; cache++)
+            {
+                for (var attempt = 0; attempt < 8; attempt++)
+                {
+                    var cacheX = room.X + 1 + rng.Next(innerW);
+                    var cacheY = room.Y + 1 + rng.Next(innerH);
+                    if (occupiedTiles.Contains((cacheX, cacheY))) continue;
+                    var cacheSpawner = rng.Next(2) == 0
+                        ? "N14ExpeditionWeaponLootTier1Guaranteed"
+                        : "N14ExpeditionWeaponLootTier2Guaranteed";
+                    SpawnAt(cacheSpawner, gridUid, grid, cacheX, cacheY);
+                    occupiedTiles.Add((cacheX, cacheY));
+                    break;
+                }
             }
         }
 
@@ -2936,7 +2986,8 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
     private void SpawnRoomMobs(RoomDef room, EntityUid gridUid, MapGridComponent grid,
                                 MobThemeDefinition mobTheme, ExpeditionPopulationState population,
                                 EnvironmentalStateModifiers envMods, int difficultyTier, int partySize, Random rng,
-                                float depthFactor = 0.5f, (int x, int y)? reservedTile = null)
+                                float depthFactor = 0.5f, (int x, int y)? reservedTile = null,
+                                List<(int x, int y)>? bossLootSockets = null)
     {
         // #Misfits Fix - FactionHub rooms are player spawn points; never populate with hostile NPCs
         if (room.RoomType == RoomType.FactionHub) return;
@@ -2986,7 +3037,8 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
         if (reservedTile.HasValue)
             taken.Add(reservedTile.Value);
 
-        TrySpawnThemedBoss(room, gridUid, grid, population, partySize, rng, depthFactor, innerW, innerH, taken);
+        var spawnedMobs = TrySpawnThemedBoss(room, gridUid, grid, population, partySize, rng, depthFactor,
+            innerW, innerH, taken, bossLootSockets) ? 1 : 0;
 
         for (int i = 0; i < mobCount; i++)
         {
@@ -3000,12 +3052,24 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
                 if (!SpawnPopulationMob(mob, population, gridUid, grid, mx, my))
                     break;
                 taken.Add((mx, my));
+                spawnedMobs++;
                 break;
             }
         }
+
+        // A room held by three or more super mutants is an explicit threat
+        // encounter, not ambient filler, and therefore always pays Tier 2/3.
+        if (mobTheme.Family == ExpeditionMobFamily.SuperMutant && spawnedMobs >= 3)
+        {
+            var (lootX, lootY) = room.Center;
+            var lootSpawner = rng.Next(2) == 0
+                ? "N14ExpeditionWeaponLootTier2Guaranteed"
+                : "N14ExpeditionWeaponLootTier3Guaranteed";
+            SpawnAt(lootSpawner, gridUid, grid, lootX, lootY);
+        }
     }
 
-    private void TrySpawnThemedBoss(
+    private bool TrySpawnThemedBoss(
         RoomDef room,
         EntityUid gridUid,
         MapGridComponent grid,
@@ -3015,10 +3079,11 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
         float depthFactor,
         int innerW,
         int innerH,
-        HashSet<(int, int)> taken)
+        HashSet<(int, int)> taken,
+        List<(int x, int y)>? bossLootSockets)
     {
         if (depthFactor < 0.7f)
-            return;
+            return false;
 
         var partyStep = Math.Min(Math.Max(partySize, 1) - 1, 4);
         string? boss = null;
@@ -3052,7 +3117,7 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
         }
 
         if (boss == null)
-            return;
+            return false;
 
         for (var attempt = 0; attempt < 8; attempt++)
         {
@@ -3062,10 +3127,12 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
                 continue;
 
             if (!SpawnPopulationMob(boss, population, gridUid, grid, x, y))
-                return;
-            SpawnBossLoot(x, y, partySize, gridUid, grid);
-            return;
+                return false;
+            bossLootSockets?.Add((x, y));
+            return true;
         }
+
+        return false;
     }
 
     private bool SpawnPopulationMob(
@@ -3076,10 +3143,12 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
         int x,
         int y)
     {
-        if (!population.TryReserve(prototype))
+        if (!population.CanReserve(prototype))
             return false;
 
-        SpawnAt(prototype, gridUid, grid, x, y);
+        if (!SpawnAt(prototype, gridUid, grid, x, y).HasValue)
+            return false;
+        population.Reserve(prototype);
         return true;
     }
 
@@ -3130,12 +3199,25 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
         return pool[^1].Prototype;
     }
 
-    private void SpawnBossLoot(int x, int y, int partySize, EntityUid gridUid, MapGridComponent grid)
+    private void SpawnHighRiskFactionRewards(RoomDef objectiveRoom, EntityUid gridUid, MapGridComponent grid, Random rng)
     {
-        // Tier 5 is reserved for the largest coordinated parties' boss fights;
-        // all other boss fights receive a direct Tier 4 reward.
-        var spawner = partySize >= 5 ? "N14WeaponLootTier5Spawner" : "N14WeaponLootTier4Spawner";
-        SpawnAt(spawner, gridUid, grid, x, y);
+        var used = new HashSet<(int x, int y)>();
+        for (var reward = 0; reward < 2; reward++)
+        {
+            var position = objectiveRoom.Center;
+            for (var attempt = 0; attempt < 8; attempt++)
+            {
+                var candidate = (
+                    objectiveRoom.X + 1 + rng.Next(Math.Max(1, objectiveRoom.W - 2)),
+                    objectiveRoom.Y + 1 + rng.Next(Math.Max(1, objectiveRoom.H - 2)));
+                if (used.Add(candidate))
+                {
+                    position = candidate;
+                    break;
+                }
+            }
+            SpawnAt("N14ExpeditionWeaponLootTier3Guaranteed", gridUid, grid, position.cx, position.cy);
+        }
     }
 
     /// <summary>
@@ -3189,18 +3271,18 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
     // Spawn helper
     // =========================================================================
 
-    private void SpawnAt(string proto, EntityUid gridUid, MapGridComponent grid, int x, int y)
+    private EntityUid? SpawnAt(string proto, EntityUid gridUid, MapGridComponent grid, int x, int y)
     {
         // Decorative dressing must not abort a generated expedition because an
         // optional prototype was retired or renamed.
         if (!_prototypeManager.HasIndex<EntityPrototype>(proto))
         {
             Log.Warning($"[N14 ProcGen] Skipping missing optional prototype '{proto}' at {x},{y}.");
-            return;
+            return null;
         }
 
         var coords = _mapSystem.GridTileToLocal(gridUid, grid, new Vector2i(x, y));
-        Spawn(proto, coords);
+        return Spawn(proto, coords);
     }
 
     /// <summary>
@@ -3218,9 +3300,9 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
     {
         var spawnerId = difficultyTier switch
         {
-            <= 0 => "N14WeaponLootTier2Spawner",
-            1 => "N14WeaponLootTier3Spawner",
-            _ => "N14WeaponLootTier4Spawner",
+            <= 0 => "N14ExpeditionWeaponLootTier2Guaranteed",
+            1 => "N14ExpeditionWeaponLootTier3Guaranteed",
+            _ => "N14ExpeditionWeaponLootTier4Guaranteed",
         };
 
         if (!_prototypeManager.HasIndex<EntityPrototype>(spawnerId))
