@@ -264,7 +264,7 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
-      - id: N14CeremonialSword # #Misfits Change: hunting rifle as Legion baseline primary
+      - id: N14CeremonialSword #
       - id: N14ClothingHandsPowerFistGoliath
       - id: N14LegionnaireShield
       - id: ClothingBeltQuiverSpear
@@ -624,6 +624,7 @@
   - type: SpawnItemsOnUse
     items:
       - id: N14LegionnaireShield
+      - id: N14CeremonialSword
       - id: N14WeaponUSHMG # #Misfits Change by BILL CLINTON!: Alternative choice to M60, gives variety.
       - id: Magazine762AmmoBelt # #Misfits Change - replaced GarandEnbloc308
         amount: 1
@@ -659,6 +660,7 @@
       - id: N14WeaponM60GPMG # #Misfits Change by BILL CLINTON!: HMG gunners are vet dec and prime dec.
       - id: Magazine308M60Box # #Misfits Change - replaced GarandEnbloc308
         amount: 1
+      - id: N14Gladius
       - id: ClothingBeltRope
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 pistol Legion sidearm
       - id: N14MagazinePistol45
@@ -756,7 +758,7 @@
       - id: N14WeaponPistol45Colt # #Misfits Change: .45 pistol Legion sidearm
       - id: N14MagazinePistol45
         amount: 2
-      - id: N14FireAxe
+      - id: N14TribalBigClubDecorated #swapped with fireaxe, the fireaxe is utter trash
       - id: ThrowingKnife
         amount: 3
       - id: N14HealingPoultice #Misfits Change /Tweak/: Legion uses tribal medicine, not stimpaks
