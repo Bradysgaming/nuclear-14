@@ -10,3 +10,17 @@
   - !type:TraitAddComponent
     components:
     - type: MisfitsParacusia
+
+
+# This is the auditory version of the Paracusia.
+# It produces sounds at randomized intervals.
+# Can make it hard to differentiate what is real and what is not.
+
+- type: trait
+  id: TraitParacusiaAuditory
+  category: Auditory
+  points: 2
+  functions:
+  - !type:TraitAddComponent
+    components:
+    - type: Paracusia
