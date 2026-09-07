@@ -11385,3 +11385,10 @@ Entries:
   id: 6416
   time: '2026-09-07T14:32:53.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1881
+- author: Vixting
+  changes:
+    - type: Fix
+      message: 'fix pacifists being able to ignite dynamite '
+  id: 6417
+  time: '2026-09-07T14:40:48.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1883
