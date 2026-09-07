@@ -11392,3 +11392,20 @@ Entries:
   id: 6417
   time: '2026-09-07T14:40:48.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1883
+- author: Superspheres
+  changes:
+    - type: Add
+      message: >-
+        Added new grenade, 40mm ammunition, Molotov, road-spike, and demolition
+        options.
+    - type: Tweak
+      message: >-
+        Rebalanced explosive damage, fragmentation, fire, EMP, and faction
+        crafting access.
+    - type: Fix
+      message: >-
+        Fixed impact grenades, Molotov sounds, road-spike collisions, and
+        excessive EMP damage.
+  id: 6418
+  time: '2026-09-07T15:39:19.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1882
