@@ -1,0 +1,219 @@
+﻿# ============================================================================
+# CRAFTED MEDICINE ITEMS
+# ============================================================================
+
+# Uses the working RadAway bloodbag injector as its functional base, then swaps
+# the contained reagent to MisfitsGlowingBloodPack.
+- type: entity
+  parent: N14RadAwayBloodbag
+  id: MisfitsGlowingBloodPack
+  name: glowing blood pack
+  description: A blood pack treated with irradiated fungus and medical alcohol. It emits a faint, unhealthy glow.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      pen:
+        maxVol: 10
+        reagents:
+        - ReagentId: MisfitsGlowingBloodPack
+          Quantity: 10
+  - type: Hypospray
+    solutionName: pen
+    transferAmount: 10
+  - type: Construction
+    graph: MisfitsGlowingBloodPack
+    node: glowingbloodpack
+
+- type: entity
+  parent: N14HealingPowder
+  id: MisfitsHerbalAnodyne
+  name: herbal anodyne
+  description: A pouch of bitter medicinal plants prepared to dull persistent pain and exhaustion.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: MisfitsHerbalAnodyne
+          Quantity: 10
+  - type: Construction
+    graph: MisfitsHerbalAnodyne
+    node: herbalanodyne
+
+- type: entity
+  parent: N14HealingPowder
+  id: MisfitsHerbalAntimicrobial
+  name: herbal antimicrobial
+  description: A pungent mixture of wasteland herbs traditionally used against infection and contaminated wounds.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: MisfitsHerbalAntimicrobial
+          Quantity: 10
+  - type: Construction
+    graph: MisfitsHerbalAntimicrobial
+    node: herbalantimicrobial
+
+- type: entity
+  parent: N14HealingPowder
+  id: MisfitsHerbalStimulant
+  name: herbal stimulant
+  description: A sharp herbal mixture prepared to keep an exhausted traveler awake and moving.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: MisfitsHerbalStimulant
+          Quantity: 10
+  - type: Construction
+    graph: MisfitsHerbalStimulant
+    node: herbalstimulant
+
+# ============================================================================
+# CONSTRUCTION MENU ENTRIES
+# ============================================================================
+
+- type: construction
+  name: glowing blood pack
+  id: MisfitsGlowingBloodPack
+  graph: MisfitsGlowingBloodPack
+  startNode: start
+  targetNode: glowingbloodpack
+  category: construction-category-medical
+  description: Treat a blood pack with irradiated fungus and ethanol to create a radioprotective transfusion.
+  hide: false
+  icon:
+    sprite: Objects/Specific/Medical/medical.rsi
+    state: bloodpack
+  objectType: Item
+
+- type: construction
+  name: herbal anodyne
+  id: MisfitsHerbalAnodyne
+  graph: MisfitsHerbalAnodyne
+  startNode: start
+  targetNode: herbalanodyne
+  category: construction-category-medical
+  description: Grind medicinal roots, irradiated fungus, nettles and razorgrain into a pain-dulling herbal preparation.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Objects/Specific/Medical/drugs.rsi
+    state: healingpowder
+  objectType: Item
+
+- type: construction
+  name: herbal antimicrobial
+  id: MisfitsHerbalAntimicrobial
+  graph: MisfitsHerbalAntimicrobial
+  startNode: start
+  targetNode: herbalantimicrobial
+  category: construction-category-medical
+  description: Prepare a bitter herbal mixture intended for contaminated wounds and infection.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Objects/Specific/Medical/drugs.rsi
+    state: healingpowder
+  objectType: Item
+
+- type: construction
+  name: herbal stimulant
+  id: MisfitsHerbalStimulant
+  graph: MisfitsHerbalStimulant
+  startNode: start
+  targetNode: herbalstimulant
+  category: construction-category-medical
+  description: Grind energizing wasteland plants into a crude stimulant powder.
+  hide: false
+  icon:
+    sprite: _Nuclear14/Objects/Specific/Medical/drugs.rsi
+    state: healingpowder
+  objectType: Item
+
+# ============================================================================
+# CONSTRUCTION GRAPHS
+# ============================================================================
+
+# Field-medic Glowing Blood Pack.
+# The normal Bloodpack already carries the Bloodpack crafting tag.
+- type: constructionGraph
+  id: MisfitsGlowingBloodPack
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: glowingbloodpack
+      steps:
+      - tag: Bloodpack
+        name: blood pack
+        icon:
+          sprite: Objects/Specific/Medical/medical.rsi
+          state: bloodpack
+      - material: CaveFungusRad
+        amount: 2
+      - tag: MisfitsEthanolBottle
+        name: ethanol bottle
+        icon:
+          sprite: _Nuclear14/Objects/Specific/Medical/drugs.rsi
+          state: ethanol
+        doAfter: 5
+  - node: glowingbloodpack
+    entity: MisfitsGlowingBloodPack
+
+# Fallout 4-inspired preventative herbal medicine.
+- type: constructionGraph
+  id: MisfitsHerbalAnodyne
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: herbalanodyne
+      steps:
+      - material: WildCarrot
+        amount: 2
+      - material: CaveFungusRad
+      - material: Nettles
+        amount: 2
+      - material: WildRazorgrain
+        doAfter: 4
+  - node: herbalanodyne
+    entity: MisfitsHerbalAnodyne
+
+- type: constructionGraph
+  id: MisfitsHerbalAntimicrobial
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: herbalantimicrobial
+      steps:
+      - material: WildCarrot
+      - material: CaveFungusRad
+      - material: WildBuffaloGourd
+        amount: 2
+      - material: Nettles
+        doAfter: 4
+  - node: herbalantimicrobial
+    entity: MisfitsHerbalAntimicrobial
+
+- type: constructionGraph
+  id: MisfitsHerbalStimulant
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: herbalstimulant
+      steps:
+      - material: CaveFungusRad
+      - material: WildBuffaloGourd
+      - material: Nettles
+      - material: WildRazorgrain
+        amount: 2
+        doAfter: 4
+  - node: herbalstimulant
+    entity: MisfitsHerbalStimulant
