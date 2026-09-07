@@ -483,14 +483,16 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
         int W,
         int H)
     {
-        // Sewer room doors are one tile wide.  Keeping the connecting tunnel to
-        // one tile prevents a broad channel from opening across an entire wall.
-        var width = plan.Theme == UndergroundTheme.Sewer ? 1 : Math.Max(1, profile.CorridorStyle.Width);
         foreach (var connection in plan.Connections)
         {
             if (!roomsById.TryGetValue(connection.From, out var from) ||
                 !roomsById.TryGetValue(connection.To, out var to))
                 continue;
+
+            // Wide links break up one-tile firing funnels and give both players
+            // and NPCs room to pass. A three-wide link deliberately has an open
+            // threshold; door marking below only services one/two-wide links.
+            var width = RollCorridorWidth(random);
             var horizontalFirst = random.Next(2) == 0;
             CarveLCorridor(cellMap, from.Center.cx, from.Center.cy, to.Center.cx, to.Center.cy,
                 random, W, H, width, horizontalFirst);
@@ -1478,7 +1480,7 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
     }
 
     // =========================================================================
-    // Corridor carving (minimum spanning tree, 2-tile-wide)
+    // Corridor carving (legacy generic path)
     // =========================================================================
 
     // #Misfits Change - CarveCorridors now accepts ThemeProfile for branch/loop post-passes
@@ -1486,7 +1488,6 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
                                         ThemeProfile profile, Random rng, int W, int H)
     {
         if (rooms.Count < 2) return;
-        var corridorWidth = profile.Theme == UndergroundTheme.Sewer ? 1 : 2;
 
         // ── Pass A: MST — connect every room via minimum spanning tree ───────
         var connected   = new List<RoomDef> { rooms[0] };
@@ -1513,7 +1514,7 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
 
             var (ax, ay) = bestFrom.Center;
             var (bx, by) = bestTo.Center;
-            CarveLCorridor(cellMap, ax, ay, bx, by, rng, W, H, corridorWidth);
+            CarveLCorridor(cellMap, ax, ay, bx, by, rng, W, H, RollCorridorWidth(rng));
 
             connected.Add(bestTo!);
             unconnected.Remove(bestTo!);
@@ -1529,7 +1530,7 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
 
             var (ax2, ay2) = rooms[idxA].Center;
             var (bx2, by2) = rooms[idxB].Center;
-            CarveLCorridor(cellMap, ax2, ay2, bx2, by2, rng, W, H, corridorWidth);
+            CarveLCorridor(cellMap, ax2, ay2, bx2, by2, rng, W, H, RollCorridorWidth(rng));
         }
 
         // ── Pass C: Loop corridors — probabilistic extra links between room pairs ────
@@ -1544,7 +1545,7 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
 
                 var (lx1, ly1) = rooms[i].Center;
                 var (lx2, ly2) = rooms[j].Center;
-                CarveLCorridor(cellMap, lx1, ly1, lx2, ly2, rng, W, H, corridorWidth);
+                CarveLCorridor(cellMap, lx1, ly1, lx2, ly2, rng, W, H, RollCorridorWidth(rng));
                 loopCount++;
             }
         }
@@ -1557,6 +1558,8 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
         if (carveHorizontalFirst) { CarveHLine(cellMap, ax, bx, ay, W, H, width); CarveVLine(cellMap, bx, ay, by, W, H, width); }
         else                      { CarveVLine(cellMap, ax, ay, by, W, H, width); CarveHLine(cellMap, ax, bx, by, W, H, width); }
     }
+
+    private static int RollCorridorWidth(Random random) => random.Next(1, 4);
 
     private static void CarveHLine(CellType[,] cellMap, int x0, int x1, int y, int W, int H, int width)
     {
@@ -1606,8 +1609,9 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
             if (cellMap[x, y] != CellType.Corridor)
                 continue;
 
-            if (IsRoomAt(cellMap, x + 1, y, W, H) || IsRoomAt(cellMap, x - 1, y, W, H) ||
-                IsRoomAt(cellMap, x, y + 1, W, H) || IsRoomAt(cellMap, x, y - 1, W, H))
+            if ((IsRoomAt(cellMap, x + 1, y, W, H) || IsRoomAt(cellMap, x - 1, y, W, H) ||
+                 IsRoomAt(cellMap, x, y + 1, W, H) || IsRoomAt(cellMap, x, y - 1, W, H)) &&
+                !IsThreeWideCorridorThreshold(cellMap, x, y, W, H))
             {
                 candidates.Add((x, y));
             }
@@ -1687,6 +1691,57 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
     {
         if (x < 0 || x >= W || y < 0 || y >= H) return false;
         return cellMap[x, y] is CellType.Room or CellType.FactionHub;
+    }
+
+    /// <summary>
+    /// A three-tile-wide link is an intentionally open entrance, not three
+    /// adjacent single doors. At a room threshold the corridor width runs
+    /// perpendicular to the room-facing direction, so count that cross-section
+    /// and suppress all door candidates once it reaches three cells.
+    /// </summary>
+    private static bool IsThreeWideCorridorThreshold(CellType[,] cellMap, int x, int y, int W, int H)
+    {
+        // The additional "away" check distinguishes a broad entrance from a
+        // one-tile corridor that happens to run alongside a room wall.
+        if (IsRoomAt(cellMap, x + 1, y, W, H) &&
+            CountContiguousThresholdCells(cellMap, x, y, 0, 1, 1, 0, -1, 0, W, H) >= 3)
+            return true;
+        if (IsRoomAt(cellMap, x - 1, y, W, H) &&
+            CountContiguousThresholdCells(cellMap, x, y, 0, 1, -1, 0, 1, 0, W, H) >= 3)
+            return true;
+        if (IsRoomAt(cellMap, x, y + 1, W, H) &&
+            CountContiguousThresholdCells(cellMap, x, y, 1, 0, 0, 1, 0, -1, W, H) >= 3)
+            return true;
+        return IsRoomAt(cellMap, x, y - 1, W, H) &&
+               CountContiguousThresholdCells(cellMap, x, y, 1, 0, 0, -1, 0, 1, W, H) >= 3;
+    }
+
+    private static int CountContiguousThresholdCells(
+        CellType[,] cellMap, int x, int y,
+        int crossX, int crossY, int roomX, int roomY, int awayX, int awayY,
+        int W, int H)
+    {
+        bool IsThresholdCell(int checkX, int checkY) =>
+            InBounds(checkX, checkY, W, H) &&
+            cellMap[checkX, checkY] == CellType.Corridor &&
+            IsRoomAt(cellMap, checkX + roomX, checkY + roomY, W, H) &&
+            InBounds(checkX + awayX, checkY + awayY, W, H) &&
+            cellMap[checkX + awayX, checkY + awayY] == CellType.Corridor;
+
+        var count = IsThresholdCell(x, y) ? 1 : 0;
+        for (var sign = -1; sign <= 1; sign += 2)
+        {
+            for (var distance = 1; ; distance++)
+            {
+                var checkX = x + crossX * distance * sign;
+                var checkY = y + crossY * distance * sign;
+                if (!IsThresholdCell(checkX, checkY))
+                    break;
+                count++;
+            }
+        }
+
+        return count;
     }
 
     // =========================================================================
