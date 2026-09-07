@@ -213,6 +213,7 @@
       - material: CaveFungusRad
       - material: WildBuffaloGourd
       - material: Nettles
+        amount: 2
       - material: WildRazorgrain
         amount: 2
         doAfter: 4
