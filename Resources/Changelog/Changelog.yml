@@ -11374,3 +11374,14 @@ Entries:
   id: 6415
   time: '2026-09-07T01:53:49.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1868
+- author: Oli
+  changes:
+    - type: Add
+      message: Khan ID and Big Sunglasses
+    - type: Tweak
+      message: >-
+        Khan loadout stuff to Khans exclusive & timelocked khans to eight hours
+        as wastelander.
+  id: 6416
+  time: '2026-09-07T14:32:53.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1881
