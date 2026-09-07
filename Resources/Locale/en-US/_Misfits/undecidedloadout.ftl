@@ -4,14 +4,13 @@
 
 undecided-loadout-category-explorer-tracker-name = Explorer Tracker
 undecided-loadout-category-explorer-tracker-description =
-    Includes a hunting rifle, 3 308. Ammo boxes, a bola, healing powder,
+    Includes a scavenged F1 Sniper, 2 308. Ammo boxes, a bola, healing powder,
     a healing poultice, 2 K rations, and a ceramic flask.
 
 undecided-loadout-category-explorer-raider-name = Explorer Raider
 undecided-loadout-category-explorer-raider-description =
-    Includes 2 bolas,
-    a grease gun and a 1911,
-    a healing poultice, 2 K rations, and a ceramic flask.
+    Includes a 10mm chinese smg, 2 bolas, 2 magazines for the smg, a 1911,
+    a healing poultice, a healing powder, 2 K rations, and a ceramic flask.
 
 # Migrated Corvax legacy Legion keys
 undecided-loadout-category-bestiary-name = Centurion-Bestiary Kit
@@ -250,7 +249,7 @@ undecided-loadout-category-corvax-centurion-command-description =
 undecided-loadout-category-corvax-centurion-marksman-name = Centurion Marksman
 undecided-loadout-category-corvax-centurion-marksman-description =
     Includes Republic's Demise, a scoped M1C looted from a dead NCR lieutenant,
-    4 en-bloc clips, a rope belt, a smoke grenade,
+    2 spare magazines, a rope belt, a smoke grenade,
     2 healing poultice, 2 K rations, and a ceramic flask.
 
 undecided-loadout-category-corvax-centurion-vanquisher-name = Centurion Vanquisher
@@ -667,7 +666,7 @@ undecided-loadout-category-misfits-ncra-captain-command-description =
 undecided-loadout-category-misfits-ncra-captain-marksman-name = Captain Frontier Marksman Kit
 undecided-loadout-category-misfits-ncra-captain-marksman-description =
     Includes an NCR trench coat, a loaded captain's revolver belt,
-    Republic's Pride with 4 en-bloc clips,
+    Republic's Pride with 2 308 magazines,
     a handheld radio, a smoke grenade, a C ration MRE,
     a stimpak, a super stimpak, a RadAway blood bag,
     2 gauze packs, and a flare.
@@ -756,14 +755,14 @@ undecided-loadout-category-misfits-priestess-zealot-desc =
 
 undecided-loadout-category-misfits-acolyte-healing-name = Acolyte Healer
 undecided-loadout-category-misfits-acolyte-healing-desc =
-    Includes 2 Smelling Salts, 1 health analyzer, 1 Bitter Drink,
+    Includes a 45 pistol, a gladius, 2 Smelling Salts, 1 health analyzer, 1 Bitter Drink,
     1 Poultices, 1 Powder, 1 bandage,
     2 K rations, and a ceramic flask.
 
 undecided-loadout-category-misfits-acolyte-zealot-name = Acolyte Zealot
 undecided-loadout-category-misfits-acolyte-zealot-desc =
     Includes a Gladius, Legionnaire buckler,
-    spear quiver, A battle rifle, 308 clips,
+    spear quiver, An SKS, 308 clips,
     2 K rations, and a ceramic flask.
 
 undecided-loadout-category-misfits-eighties-block-road-captain-name = Road Captain Kit
