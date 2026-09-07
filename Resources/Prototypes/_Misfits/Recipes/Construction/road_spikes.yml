@@ -2,29 +2,14 @@
 
 - type: construction
   name: road spikes
-  id: N14RoadSpikesConstruction
-  graph: N14RoadSpikesConstruction
+  id: MisfitsRoadSpikesConstruction
+  graph: MisfitsRoadSpikesConstruction
   startNode: start
   targetNode: roadSpikes
   category: construction-category-weapons
-  description: A strip of sharpened steel spikes for injuring pedestrians and disabling motorcycles.
+  description: A strip of sharpened steel spikes for injuring pedestrians and disabling motorcycles. Requires three steel and three metal rods.
   icon:
     sprite: _Misfits/Objects/Misc/road_spikes.rsi
     state: road_spikes
   objectType: Item
   hide: false
-
-- type: constructionGraph
-  id: N14RoadSpikesConstruction
-  start: start
-  graph:
-  - node: start
-    edges:
-    - to: roadSpikes
-      steps:
-      - material: Steel
-        amount: 2
-      - tool: Cutting
-        doAfter: 3
-  - node: roadSpikes
-    entity: N14RoadSpikes

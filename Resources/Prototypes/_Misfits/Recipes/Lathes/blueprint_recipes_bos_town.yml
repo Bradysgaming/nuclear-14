@@ -1041,11 +1041,12 @@
 
 # #Misfits Add - Issue #968 faction ordnance: Brotherhood plasma grenade.
 - type: latheRecipe
-  id: N14BPBoSGrenadePlasma
-  result: GrenadePlasma
+  id: MisfitsBPBoSGrenadePlasma
+  result: MisfitsGrenadePlasma
   category: N14BlueprintBoSAmmoT3
   completetime: 12
   requiresBlueprint: true
+  applyMaterialDiscount: false
   availableFaction:
   - BrotherhoodOfSteel
   materials:
@@ -2502,20 +2503,6 @@
 
     N14Gunpowder: 20
 
-
-# #Misfits Add - Issue #968 faction ordnance: Yuma/town improvised tin grenade.
-- type: latheRecipe
-  id: N14BPTownGrenadeTin
-  result: N14TinNade
-  category: N14BlueprintTownAmmoT3
-  completetime: 8
-  requiresBlueprint: true
-  availableFaction:
-  - Townsfolk
-  materials:
-    Steel: 500
-    N14Gunpowder: 700
-    Scrap: 500
 
 # --- Town Tier 4 Ammo ---
 - type: latheRecipe

@@ -8,6 +8,7 @@ using Content.Shared.Examine;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Popups;
 using Content.Shared.Throwing;
+using Content.Shared.Trigger;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Physics;
@@ -15,12 +16,13 @@ using Robust.Shared.Physics.Events;
 
 namespace Content.Server._Misfits.Weapons.Throwable;
 
-/// <summary>Manual safety and impact triggering for baseball grenades.</summary>
+/// <summary>Manual safety and impact triggering for impact grenades.</summary>
 public sealed class ImpactGrenadeSystem : EntitySystem
 {
     [Dependency] private readonly TriggerSystem _trigger = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
 
     private static readonly SoundSpecifier PrimeSound =
         new SoundPathSpecifier("/Audio/Items/smoke_grenade_prime.ogg");
@@ -53,6 +55,8 @@ public sealed class ImpactGrenadeSystem : EntitySystem
 
         ent.Comp.Armed = true;
         Dirty(ent);
+        if (TryComp<AppearanceComponent>(ent, out var appearance))
+            _appearance.SetData(ent, TriggerVisuals.VisualState, TriggerVisualState.Primed, appearance);
         _audio.PlayPvs(PrimeSound, ent.Owner);
         _popup.PopupEntity(Loc.GetString("impact-grenade-armed"), ent, args.User, PopupType.SmallCaution);
     }

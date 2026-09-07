@@ -1,6 +1,6 @@
 - type: entity
   parent: BaseItem
-  id: N14RoadSpikes
+  id: MisfitsRoadSpikes
   name: road spikes
   description: A strip of sharpened metal spikes made to punish careless feet and motorcycle tires.
   components:

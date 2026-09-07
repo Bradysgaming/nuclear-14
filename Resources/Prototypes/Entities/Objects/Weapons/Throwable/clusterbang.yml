@@ -193,8 +193,8 @@
     fillPrototype: PelletClusterLethal
     maxGrenadesCount: 20
     grenadeType: enum.GrenadeType.Shoot
-  - type: SpawnOnTrigger #trigger explosion after the fragmmentation is dispersed
-    proto: GrenadeFragExplosion
+  - type: SpawnOnTrigger # Trigger the blast after dispersing the fragments.
+    proto: MisfitsGrenadeFragExplosion
   - type: PacifismBlocked
   - type: OnUseTimerTrigger
     beepSound:
@@ -209,69 +209,6 @@
   - type: ContainerContainer
     containers:
       cluster-payload: !type:Container
-
-- type: entity
-  parent: GrenadeBase
-  id: GrenadeFragDefensive
-  name: defensive frag grenade
-  description: A fragmentation-heavy grenade intended to be thrown from cover. Its small blast scatters lethal fragments across a wide area.
-  components:
-  - type: Sprite
-    sprite: _Misfits/Objects/Weapons/Throwable/defensive_frag_grenade.rsi
-    layers:
-    - state: icon
-      map: ["enum.TriggerVisualLayers.Base"]
-  - type: ClusterGrenade
-    fillPrototype: PelletClusterDefensive
-    maxGrenadesCount: 45
-    grenadeType: enum.GrenadeType.Shoot
-  - type: SpawnOnTrigger
-    proto: GrenadeFragDefensiveExplosion
-  - type: PacifismBlocked
-  - type: OnUseTimerTrigger
-    delay: 4
-    beepSound:
-      path: "/Audio/Effects/beep1.ogg"
-      params:
-        volume: 5
-    initialBeepDelay: 0
-    beepInterval: 2
-  - type: EmitSoundOnTrigger
-    sound:
-      path: "/Audio/Weapons/Guns/Gunshots/batrifle.ogg"
-  - type: ContainerContainer
-    containers:
-      cluster-payload: !type:Container
-
-- type: entity
-  id: GrenadeFragExplosion
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: TriggerOnSpawn
-  - type: ExplodeOnTrigger
-  - type: Explosive
-    explosionType: N14DefaultStructural
-    maxIntensity: 8
-    intensitySlope: 4
-    totalIntensity: 50
-    canCreateVacuum: false
-    maxTileBreak: 0
-    tileBreakScale: 0
-
-- type: entity
-  id: GrenadeFragDefensiveExplosion
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: TriggerOnSpawn
-  - type: ExplodeOnTrigger
-  - type: Explosive
-    explosionType: N14DefaultStructural
-    maxIntensity: 4
-    intensitySlope: 4
-    totalIntensity: 20
-    canCreateVacuum: false
-    maxTileBreak: 0
-    tileBreakScale: 0
 
 - type: entity
   parent: SoapSyndie

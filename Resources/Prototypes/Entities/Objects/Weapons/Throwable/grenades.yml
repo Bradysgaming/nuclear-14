@@ -343,53 +343,9 @@
     range: 4
     energyConsumption: 2700000
   - type: SpawnOnTrigger
-    proto: PulseGrenadeExplosion
+    proto: MisfitsPulseGrenadeExplosion
   - type: DeleteOnTrigger
   - type: Appearance
-  - type: TimerTriggerVisuals
-    primingSound:
-      path: /Audio/Effects/countdown.ogg
-
-- type: entity
-  id: PulseGrenadeExplosion
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: TriggerOnSpawn
-  - type: ExplodeOnTrigger
-  - type: Explosive
-    explosionType: N14Pulse
-    maxIntensity: 5
-    intensitySlope: 5
-    totalIntensity: 20
-    canCreateVacuum: false
-    maxTileBreak: 0
-    tileBreakScale: 0
-
-- type: entity
-  name: plasma grenade
-  description: A high-energy grenade that erupts in a devastating burst of caustic green plasma.
-  parent: GrenadeBase
-  id: GrenadePlasma
-  components:
-  - type: Sprite
-    sprite: Objects/Weapons/Grenades/empgrenade.rsi
-    color: "#53FF38"
-  - type: ExplodeOnTrigger
-  - type: Explosive
-    explosionType: N14Plasma
-    maxIntensity: 8
-    intensitySlope: 4
-    totalIntensity: 55
-    canCreateVacuum: false
-    maxTileBreak: 0
-    tileBreakScale: 0
-  - type: OnUseTimerTrigger
-    beepSound:
-      path: "/Audio/Effects/beep1.ogg"
-      params:
-        volume: 5
-    initialBeepDelay: 0
-    beepInterval: 2
   - type: TimerTriggerVisuals
     primingSound:
       path: /Audio/Effects/countdown.ogg
@@ -453,23 +409,6 @@
       reagents:
       - ReagentId: SpaceCleaner
         Quantity: 30
-
-- type: entity
-  parent: SmokeGrenade
-  id: GrenadeWhitePhosphorus
-  name: white phosphorus grenade
-  description: A screening grenade that releases pale, corrosive smoke. Prolonged exposure causes severe chemical burns.
-  components:
-  - type: Sprite
-    sprite: Objects/Weapons/Grenades/smoke.rsi
-    color: "#E8E8E8"
-  - type: SmokeOnTrigger
-    duration: 25
-    spreadAmount: 50
-    solution:
-      reagents:
-      - ReagentId: WhitePhosphorusSmoke
-        Quantity: 50
 
 - type: entity
   parent: SmokeGrenade

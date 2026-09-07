@@ -31,7 +31,7 @@
   - type: Explosive
     # Misfits Change - retain the 100-damage cap but broaden the blast to
     # approximately 2.5 tiles, compensating for HE having no fragmentation.
-    explosionType: N1440mmHE
+    explosionType: Misfits40mmHE
     maxIntensity: 8
     intensitySlope: 4
     totalIntensity: 65
@@ -52,7 +52,7 @@
   - type: Explosive
     # Misfits Change - applies four fire stacks over a wider radius without
     # reaching the explosion system's knockdown threshold.
-    explosionType: N1440mmIncendiary
+    explosionType: Misfits40mmIncendiary
     maxIntensity: 2
     intensitySlope: 1
     totalIntensity: 28
@@ -119,7 +119,7 @@
   - type: Explosive
     # Misfits Change - lethal 220-damage center with a broad three-tile
     # knockdown radius supplied by the existing explosion crowd control.
-    explosionType: N14Missile
+    explosionType: MisfitsMissile
     maxIntensity: 22
     intensitySlope: 6
     # 310 total intensity is enough for the curve to reach its 22-point cap;
