@@ -11444,3 +11444,10 @@ Entries:
   id: 6419
   time: '2026-09-07T16:20:42.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1884
+- author: Bradysgaming
+  changes:
+    - type: Tweak
+      message: Nerfed the CaneBlade
+  id: 6420
+  time: '2026-09-07T21:50:07.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1886
