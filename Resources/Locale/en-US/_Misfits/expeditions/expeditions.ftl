@@ -26,6 +26,8 @@ n14-expedition-confirm-cancel = Do Not Proceed
 
 n14-expedition-countdown-start = Expedition launching in {$seconds} seconds! {$tier}. Stand near the board to join!
 n14-expedition-launched = Expedition launched! {$tier}. Good luck out there.
+n14-expedition-joined = You joined the active expedition.
+n14-expedition-death-extracting = You died in the expedition and have been returned to the surface entrance.
 n14-expedition-launch-failed = Expedition launch failed — the location could not be loaded.
 
 n14-expedition-warning-5min = WARNING: 5 minutes remaining! Head to the return point to exit safely.

@@ -13,6 +13,7 @@ using Content.Shared._Misfits.CCVar;
 using Content.Shared._Misfits.Expeditions;
 using Robust.Shared.Configuration;
 using Content.Shared.Interaction;
+using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.NPC.Components;
 using Content.Shared.NPC.Systems;
@@ -85,6 +86,10 @@ public sealed class N14ExpeditionSystem : EntitySystem
 
         // Return rope interaction (press E/click).
         SubscribeLocalEvent<N14ExpeditionExitComponent, ActivateInWorldEvent>(OnExitActivated);
+        // Do not subscribe this system on MobStateComponent: SharedStunSystem
+        // owns that directed component/event pair. The unrestricted event still
+        // reaches every state change and is filtered to expedition members below.
+        SubscribeLocalEvent<MobStateChangedEvent>(OnParticipantMobStateChanged);
     }
 
     public override void Update(float frameTime)
@@ -306,8 +311,7 @@ public sealed class N14ExpeditionSystem : EntitySystem
 
         if (entrance.ActiveExpedition is { } active && Exists(active) && !Deleted(active))
         {
-            _popup.PopupEntity(Loc.GetString("n14-expedition-entrance-busy"), entranceUid, user);
-            return false;
+            return TryJoinActiveExpedition(entranceUid, active, user);
         }
 
         if (entrance.CooldownEnd is { } cooldownEnd && _timing.CurTime < cooldownEnd)
@@ -320,6 +324,40 @@ public sealed class N14ExpeditionSystem : EntitySystem
         entrance.ActiveExpedition = null;
         StartLaunchCountdown(entranceUid, entrance, entrance.DirectDifficultyId);
         return entrance.PendingLaunchTime != null;
+    }
+
+    /// <summary>
+    /// An active surface entrance remains an entrance.  Latecomers join the
+    /// existing session at its recorded safe hub; they never make a second map
+    /// or restart its timer/encounter scaling.
+    /// </summary>
+    private bool TryJoinActiveExpedition(EntityUid entranceUid, EntityUid mapUid, EntityUid user)
+    {
+        if (!TryComp<N14ExpeditionComponent>(mapUid, out var expedition))
+            return false;
+
+        var session = expedition.Sessions.FirstOrDefault(candidate =>
+            !candidate.Finished && candidate.SourceBoard == entranceUid && candidate.EndTime > _timing.CurTime);
+        if (session == null)
+        {
+            _popup.PopupEntity(Loc.GetString("n14-expedition-entrance-busy"), entranceUid, user);
+            return false;
+        }
+
+        // Do not duplicate a roster entry if somebody clicks the ladder after
+        // their warp has already completed.
+        if (session.Players.Contains(user))
+            return true;
+
+        if (!TeleportEntitySafely(user, session.EntryPoint))
+            return false;
+
+        session.Players.Add(user);
+        var joined = Loc.GetString("n14-expedition-joined");
+        _popup.PopupEntity(joined, user, user, PopupType.Medium);
+        if (_playerManager.TryGetSessionByEntity(user, out var playerSession))
+            _chatManager.DispatchServerMessage(playerSession, joined);
+        return true;
     }
 
     private void OnDirectEntranceVerbs(
@@ -487,13 +525,14 @@ public sealed class N14ExpeditionSystem : EntitySystem
             else if (mapEntry.RuntimeProcedural && mapEntry.ProceduralTheme.HasValue)
             {
                 // Larger groups receive a broader ruin as well as denser encounters.
-                // One step per additional entrant grows the map by 16 tiles per side
-                // and adds two rooms, capped at five players / 192x192.
+                // One step per additional entrant grows the map by 12 tiles per side
+                // and 1.5 rooms (rounded across the group), capped at five players / 144x144.
                 var partySize = Math.Max(1, nearby.Count);
                 var partyScaleSteps = Math.Min(partySize - 1, 4);
-                var scaledGridSize = mapEntry.ProceduralGridSize + partyScaleSteps * 16;
-                var scaledMinRooms = mapEntry.ProceduralMinRooms + partyScaleSteps * 2;
-                var scaledMaxRooms = mapEntry.ProceduralMaxRooms + partyScaleSteps * 2;
+                var scaledGridSize = mapEntry.ProceduralGridSize + partyScaleSteps * 12;
+                var scaledRoomIncrease = (int) Math.Ceiling(partyScaleSteps * 1.5);
+                var scaledMinRooms = mapEntry.ProceduralMinRooms + scaledRoomIncrease;
+                var scaledMaxRooms = mapEntry.ProceduralMaxRooms + scaledRoomIncrease;
 
                 // Create a fresh map and grid, then run the procedural generator
                 mapUid = _mapSystem.CreateMap(out var mapId);
@@ -619,6 +658,7 @@ public sealed class N14ExpeditionSystem : EntitySystem
         {
             SourceBoard = boardUid,
             ReturnPoint = boardXform.Coordinates,
+            EntryPoint = defaultSpawn,
             EndTime = _timing.CurTime + TimeSpan.FromSeconds(diff.Duration),
             DifficultyId = board.PendingDifficulty,
         };
@@ -645,8 +685,8 @@ public sealed class N14ExpeditionSystem : EntitySystem
                 }
             }
 
-            session.Players.Add(ent);
-            TeleportEntitySafely(ent, dest);
+            if (TeleportEntitySafely(ent, dest))
+                session.Players.Add(ent);
         }
 
         // #Misfits Fix - Re-register session, spawn exits, link board state
@@ -750,11 +790,51 @@ public sealed class N14ExpeditionSystem : EntitySystem
     /// normal ladder. The temporary destination marker lets WarperSystem carry
     /// a pulled person/crate and recruited followers to arbitrary coordinates.
     /// </summary>
-    private void TeleportEntitySafely(EntityUid uid, EntityCoordinates destination)
+    private bool TeleportEntitySafely(EntityUid uid, EntityCoordinates destination)
     {
         var marker = Spawn("N14ExpeditionWarpMarker", destination);
-        _warper.WarpEntityTo(uid, marker);
+        var warped = _warper.WarpEntityTo(uid, marker);
         QueueDel(marker);
+        return warped;
+    }
+
+    /// <summary>
+    /// Critical is recoverable inside an expedition.  A full death is not: move
+    /// the body back through the source ladder immediately and remove it from
+    /// the session so it cannot be stranded until the timer expires.
+    /// </summary>
+    private void OnParticipantMobStateChanged(MobStateChangedEvent args)
+    {
+        if (args.NewMobState != MobState.Dead)
+            return;
+
+        var uid = args.Target;
+
+        var expQuery = EntityQueryEnumerator<N14ExpeditionComponent>();
+        while (expQuery.MoveNext(out var mapUid, out var expedition))
+        {
+            if (Transform(uid).MapID != Transform(mapUid).MapID)
+                continue;
+
+            var session = expedition.Sessions.FirstOrDefault(candidate =>
+                !candidate.Finished && candidate.Players.Contains(uid));
+            if (session == null)
+                continue;
+
+            if (TeleportEntitySafely(uid, session.ReturnPoint))
+            {
+                session.Players.Remove(uid);
+                var extracted = Loc.GetString("n14-expedition-death-extracting");
+                _popup.PopupEntity(extracted, uid, uid, PopupType.Medium);
+                if (_playerManager.TryGetSessionByEntity(uid, out var playerSession))
+                    _chatManager.DispatchServerMessage(playerSession, extracted);
+            }
+
+            if (session.Players.Count == 0)
+                EndSession(mapUid, expedition, session);
+
+            return;
+        }
     }
 
     #endregion
