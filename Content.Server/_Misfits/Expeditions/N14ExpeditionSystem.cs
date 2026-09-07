@@ -86,7 +86,10 @@ public sealed class N14ExpeditionSystem : EntitySystem
 
         // Return rope interaction (press E/click).
         SubscribeLocalEvent<N14ExpeditionExitComponent, ActivateInWorldEvent>(OnExitActivated);
-        SubscribeLocalEvent<MobStateComponent, MobStateChangedEvent>(OnParticipantMobStateChanged);
+        // Do not subscribe this system on MobStateComponent: SharedStunSystem
+        // owns that directed component/event pair. The unrestricted event still
+        // reaches every state change and is filtered to expedition members below.
+        SubscribeLocalEvent<MobStateChangedEvent>(OnParticipantMobStateChanged);
     }
 
     public override void Update(float frameTime)
@@ -800,10 +803,12 @@ public sealed class N14ExpeditionSystem : EntitySystem
     /// the body back through the source ladder immediately and remove it from
     /// the session so it cannot be stranded until the timer expires.
     /// </summary>
-    private void OnParticipantMobStateChanged(EntityUid uid, MobStateComponent component, MobStateChangedEvent args)
+    private void OnParticipantMobStateChanged(MobStateChangedEvent args)
     {
         if (args.NewMobState != MobState.Dead)
             return;
+
+        var uid = args.Target;
 
         var expQuery = EntityQueryEnumerator<N14ExpeditionComponent>();
         while (expQuery.MoveNext(out var mapUid, out var expedition))
