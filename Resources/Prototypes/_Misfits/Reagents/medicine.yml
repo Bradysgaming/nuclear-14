@@ -904,7 +904,7 @@
     Medicine:
       metabolismRate: 0.5
       effects:
-      # Emergency broad purge for the custom poison family.
+      # Emergency broad purge for the poison family.
       - !type:AdjustReagent
         reagent: MisfitsGhostcapExtract
         amount: -1.5

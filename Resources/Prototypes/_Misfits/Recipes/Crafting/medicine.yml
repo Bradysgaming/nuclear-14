@@ -132,7 +132,7 @@
   parent: N14HealingPowder
   id: MisfitsBloodShield
   name: blood shield
-  description: A bitter Zion-style herbal mash used to strengthen the body against poison.
+  description: A bitter herbal mash used to strengthen the body against poison.
   components:
   - type: SolutionContainerManager
     solutions:
