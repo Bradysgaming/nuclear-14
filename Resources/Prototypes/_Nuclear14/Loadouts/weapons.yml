@@ -1919,7 +1919,7 @@
 - type: loadout
   id: ThrowingBrick
   category: Weapons
-  cost: 2
+  cost: 5
   requirements:
     - !type:CharacterItemGroupRequirement
       group: N14LoadoutMelee
