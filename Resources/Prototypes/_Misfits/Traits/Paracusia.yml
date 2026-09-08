@@ -10,3 +10,8 @@
   - !type:TraitAddComponent
     components:
     - type: Paracusia
+      minTimeBetweenIncidents: 30
+      maxTimeBetweenIncidents: 60
+      maxSoundDistance: 7
+      sounds:
+        collection: Paracusia
