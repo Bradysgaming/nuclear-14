@@ -113,7 +113,7 @@ public sealed partial class N14ExpeditionBoardComponent : Component
     /// Cooldown in seconds between expeditions from this board.
     /// </summary>
     [DataField]
-    public float CooldownSeconds = 1800f;
+    public float CooldownSeconds = 600f;
 
     /// <summary>
     /// Server time when the pending launch will fire, null if idle.
