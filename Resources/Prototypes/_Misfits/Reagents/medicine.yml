@@ -79,16 +79,14 @@
     Medicine:
       metabolismRate: 0.2
       effects:
-      # Fallout gives attack-speed rather than movement speed. This is the closest
-      # approximation until a combat/action-speed reagent effect exists.
       - !type:MovespeedModifier
-        walkSpeedModifier: 1.20
-        sprintSpeedModifier: 1.20
+        walkSpeedModifier: 1.10
+        sprintSpeedModifier: 1.10
       - !type:HealthChange
         damage:
           groups:
-            Brute: -0.5
-            Burn: -0.5
+            Brute: -0.25
+            Burn: -0.25
       - !type:Jitter
 
 - type: reagent
@@ -240,6 +238,8 @@
           groups:
             Brute: -0.5
             Burn: -0.5
+          types:
+            Asphyxiation: -0.5
             Bloodloss: -1.5
       # Same underlying component as MisfitsRadShield, but the faster metabolism makes
       # the protection considerably shorter-lived.
@@ -321,29 +321,6 @@
       - !type:SpecialStatBoostEffect
         enduranceBoost: 2
 # no idea if this actually works
-
-- type: reagent
-  id: MisfitsChlorpromazine
-  name: reagent-name-chlorpromazine
-  group: Medicine
-  desc: reagent-desc-chlorpromazine
-  physicalDesc: reagent-physical-desc-cloudy
-  flavor: medicine
-  color: "#d5d7e6"
-  metabolisms:
-    Medicine:
-      metabolismRate: 0.1
-      effects:
-      - !type:GenericStatusEffect
-        key: Drowsiness
-        component: Drowsiness
-        type: Add
-        time: 3
-        refresh: true
-      - !type:MovespeedModifier
-        walkSpeedModifier: 0.92
-        sprintSpeedModifier: 0.92
-      # TODO: add into HallucinationsSystem to surpress hallucinations.
 
 - type: reagent
   id: MisfitsPenicillin
