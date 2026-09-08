@@ -105,7 +105,7 @@
 
 - type: storeContractsPreset
   id: PresetBazar
-  # #Misfits Change — retier system: 6 tiers replace Easy/Medium/Hard -TWEAKED, lower tiers more abundent, higher tiers more scarce
+  # #Misfits Change — retier system: 6 tiers replace Easy/Medium/Hard -TWEAKED, lower tiers more abundant, higher tiers more scarce
   limits:
     Road Kill: 6
     Lazy Lizard: 5
@@ -138,7 +138,7 @@
 - type: storeContract
   id: caravan_contract_N14FloraProduceWildBrocFlower
   name: "Flowers for the Needy"
-  description: "The Followers of the Apocalypse meed to restock their medical supplies, provide broc flowers for the overworked volunteers."
+  description: "The Followers of the Apocalypse need to restock their medical supplies, provide broc flowers for the overworked volunteers."
   difficulty: Road Kill
   targets:
   - id: N14FloraProduceWildBrocFlower
