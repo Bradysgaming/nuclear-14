@@ -11458,3 +11458,14 @@ Entries:
   id: 6421
   time: '2026-09-08T03:11:03.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1889
+- author: Tytos
+  changes:
+    - type: Tweak
+      message: buffed legion equipment and kits
+    - type: Tweak
+      message: made legion tacmap work properly
+    - type: Tweak
+      message: changed bible of mars to torch of mars
+  id: 6422
+  time: '2026-09-08T03:51:03.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1885
