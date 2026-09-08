@@ -19,7 +19,7 @@
     directDifficultyId: N14ExpeditionUnknownProcedural
     gatherRadius: 7
     launchCountdownSeconds: 10
-    cooldownSeconds: 1800
+    cooldownSeconds: 600
 
 - type: entity
   parent: N14ExpeditionEntranceBase
@@ -63,4 +63,3 @@
     state: well
     noRot: true
     netsync: false
-
