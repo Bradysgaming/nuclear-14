@@ -274,7 +274,7 @@
   name: reagent-name-herbal-antimicrobial
   group: Medicine
   desc: reagent-desc-herbal-antimicrobial
-  physicalDesc: reagent-physical-desc-herbal
+  physicalDesc: reagent-physical-desc-aromatic
   flavor: leafy
   color: "#4d8250"
   metabolisms:
@@ -363,7 +363,7 @@
   name: reagent-name-pilgrims-remedy
   group: Medicine
   desc: reagent-desc-pilgrims-remedy
-  physicalDesc: reagent-physical-desc-herbal
+  physicalDesc: reagent-physical-desc-aromatic
   flavor: leafy
   color: "#847a45"
   metabolisms:
