@@ -8,6 +8,10 @@
     },
     "states": [
         {
+            "name": "grey_brahdo_horizontal",
+            "directions": 4
+        },
+        {
             "name": "base",
             "directions": 4,
             "delays": [
