@@ -315,6 +315,7 @@
     - N14BPLegionWeaponRifle556EM2
     - N14BPLegionWeaponTribalMachete
     - N14BPLegionWeaponMachete
+    - N14BPLegionWeaponGladius
     - N14BPLegionWeaponRevolver44TribalUpgraded
     - N14BPLegionWeaponShotgunPipe
     - N14BPLegionWeaponTrenchClub
@@ -414,6 +415,8 @@
   - type: Blueprint
     recipes:
     - N14BPLegionArmorVeteranArmor
+    - N14BPLegionArmorExplorerArmor
+    - N14BPLegionArmorVexillariusArmor
     - N14BPLegionArmorReconnaissanceArmor
     # #Misfits Add - paired veteran headgear (hunter hoods and trophy skulls)
     - N14BPLegionArmorHelmetTribalHunterHood

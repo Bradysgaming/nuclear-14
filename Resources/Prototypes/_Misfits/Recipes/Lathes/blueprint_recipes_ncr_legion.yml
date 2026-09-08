@@ -2492,6 +2492,40 @@
     N14Iron: 500
 
 - type: latheRecipe
+  id: N14BPLegionArmorExplorerArmor
+  result: N14ClothingOuterLegionnaireExplorerArmor
+  category: N14BlueprintLegionArmorT3
+  completetime: 12
+  requiresBlueprint: true
+  availableFaction:
+  - CaesarLegion
+  materials:
+    Leather: 1400
+
+    Cloth: 800
+
+    Thread: 600
+
+    N14Iron: 500
+
+- type: latheRecipe
+  id: N14BPLegionArmorVexillariusArmor
+  result: N14ClothingOuterLegionnaireVexillariusArmor
+  category: N14BlueprintLegionArmorT3
+  completetime: 12
+  requiresBlueprint: true
+  availableFaction:
+  - CaesarLegion
+  materials:
+    Leather: 1500
+
+    Cloth: 800
+
+    Thread: 600
+
+    N14Iron: 500
+
+- type: latheRecipe
   id: N14BPLegionArmorBaseballHelmet
   result: N14ClothingHeadHatBaseballHelmet
   category: N14BlueprintLegionArmorT3
