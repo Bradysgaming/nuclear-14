@@ -107,11 +107,11 @@
   id: PresetBazar
   # #Misfits Change — retier system: 6 tiers replace Easy/Medium/Hard -TWEAKED, lower tiers more abundent, higher tiers more scarce
   limits:
-    Road Kill: 5
-    Lazy Lizard: 3
-    Junktown Rat: 2
-    Hub Mercenary: 2
-    Bunker Buster: 1
+    Road Kill: 6
+    Lazy Lizard: 5
+    Junktown Rat: 4
+    Hub Mercenary: 3
+    Bunker Buster: 2
     Wasteland Legend: 1
   packs:
   - id: PackBazar
@@ -919,7 +919,7 @@
 - type: storeContract
   id: caravan_contract_N14VaultPDA
   name: "Corporate Espionage"
-  description: "The pip-boys from the local vault have valuable data and the demand among the caravan network's clientelle is significant. We don't care if you have to saw it off their wrists, get it done."
+  description: "The pip-boys from the local vault have valuable data and the demand among the caravan network's clientele is significant. We don't care if you have to saw it off their wrists, get it done."
   difficulty: Wasteland Legend
   targets:
   - id: N14VaultPDA
