@@ -43,7 +43,6 @@ reagent-physical-desc-gloopy = gloopy
 reagent-physical-desc-glowing = glowing
 reagent-physical-desc-grainy = grainy
 reagent-physical-desc-ground-brass = ground brass
-reagent-physical-desc-herbal = herbal
 reagent-physical-desc-heterogeneous = heterogeneous
 reagent-physical-desc-holy = holy
 reagent-physical-desc-inky = inky

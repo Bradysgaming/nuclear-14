@@ -14,4 +14,4 @@
   icon:
     sprite: Objects/Specific/Medical/Morgue/bodybags.rsi
     state: bag_folded
-  objectType: Item6
+  objectType: Item

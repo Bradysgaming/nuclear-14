@@ -256,7 +256,7 @@
   group: Medicine
   desc: reagent-desc-herbal-anodyne
   physicalDesc: reagent-physical-desc-soothing
-  flavor: herbal
+  flavor: leafy
   color: "#8b9c63"
   metabolisms:
     Medicine:
@@ -275,7 +275,7 @@
   group: Medicine
   desc: reagent-desc-herbal-antimicrobial
   physicalDesc: reagent-physical-desc-herbal
-  flavor: herbal
+  flavor: leafy
   color: "#4d8250"
   metabolisms:
     Medicine:
@@ -292,7 +292,7 @@
   group: Medicine
   desc: reagent-desc-herbal-stimulant
   physicalDesc: reagent-physical-desc-refreshing
-  flavor: herbal
+  flavor: leafy
   color: "#a1ad59"
   metabolisms:
     Medicine:
@@ -312,7 +312,7 @@
   group: Medicine
   desc: reagent-desc-skeeto-spit
   physicalDesc: reagent-physical-desc-sticky
-  flavor: herbal
+  flavor: leafy
   color: "#b7954f"
   metabolisms:
     Medicine:
@@ -364,7 +364,7 @@
   group: Medicine
   desc: reagent-desc-pilgrims-remedy
   physicalDesc: reagent-physical-desc-herbal
-  flavor: herbal
+  flavor: leafy
   color: "#847a45"
   metabolisms:
     Medicine:
@@ -389,7 +389,7 @@
   group: Medicine
   desc: reagent-desc-healing-salve
   physicalDesc: reagent-physical-desc-soothing
-  flavor: herbal
+  flavor: leafy
   color: "#9ca66b"
   metabolisms:
     Medicine:
