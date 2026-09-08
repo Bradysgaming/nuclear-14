@@ -633,6 +633,7 @@ public sealed partial class RequisitionsSystem : SharedRequisitionsSystem
             nameOverride: Loc.GetString("n14-requisition-paperwork-receiver-name"));
 
         _audio.PlayPvs(computerComp.IncomingSurplus, computerEnt);
+        _popup.PopupEntity(flavorText, computerEnt, PopupType.Medium);
     }
 
     private void SendUIFeedback(string group, string flavorText)
@@ -1250,6 +1251,8 @@ public sealed partial class RequisitionsSystem : SharedRequisitionsSystem
             _adminLogs.Add(LogType.Action,
                 $"Requisitions account {group} completed random request for {targetsLog} " +
                 $"(score {request.Score}, reward {rewardLog})");
+
+            SendUIFeedback(group, Loc.GetString("n14-requisition-request-fulfilled"));
 
             slot.Request = null;
             slot.NextRollAt = _timing.CurTime + config.RandomRequestRefillDelay;
