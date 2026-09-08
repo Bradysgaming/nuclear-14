@@ -11469,3 +11469,20 @@ Entries:
   id: 6422
   time: '2026-09-08T03:51:03.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1885
+- author: cythiaiax
+  changes:
+    - type: Fix
+      message: Terminal Database adjustments for MOVE/DEL/PERM DEL buttons
+    - type: Fix
+      message: >-
+        expedition mutant pool spawning Armored variant that had invalid .rsi >>
+        centuar
+    - type: Tweak
+      message: Updated map render
+    - type: Tweak
+      message: expedition cooldown 30 > 10 minutes
+    - type: Add
+      message: Brahdo sprite(s) (one for now) by Wollow@Discord, proper .json attached
+  id: 6423
+  time: '2026-09-08T03:51:43.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1888
