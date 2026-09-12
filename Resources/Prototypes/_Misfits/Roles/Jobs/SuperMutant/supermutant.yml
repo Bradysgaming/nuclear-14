@@ -490,7 +490,7 @@
         - type: NpcFactionMember
           factions:
             - PlayerSuperMutant
-            - Enclave
+            - Enclaveapple
         - type: ReplacementAccent
           accent: n14Enclave
         - type: PowerArmorProficiency
