@@ -54,7 +54,7 @@
       - IntercomElectronics
       key_slots:
       - EncryptionKeyWastelandGlobal
-      - EncryptionKeyNCRRanger
+      - EncryptionKeyNCRRangers
   - type: EncryptionKeyHolder
     keysUnlocked: false
 
