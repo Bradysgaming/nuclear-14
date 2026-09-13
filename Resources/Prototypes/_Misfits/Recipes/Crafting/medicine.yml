@@ -8,35 +8,6 @@
 # Ingested remedies use the existing food/reagent route. Topical medicines use
 # the built-in Healing component and require no custom C#.
 
-# ============================================================================
-# SPRITE REUSE
-# ============================================================================
-#
-# These medicines deliberately reuse different sprites already present in the
-# Nuclear 14 texture tree so the tribal crafting menu is visually readable.
-# No new texture assets are required.
-#
-# Topicals:
-# - Datura Hide          -> ms13_medical_new.rsi / ointment4
-# - Snakebite Tourniquet -> ms13_medical_new.rsi / tourniquet
-# - Healing Salve        -> ms13_medical_new.rsi / ointment1
-# - Herbal Anodyne       -> ms13_medical_new.rsi / ointment2
-# - Herbal Antimicrobial -> ms13_medical_new.rsi / ointment3
-#
-# Field preparations:
-# - Fiery Purgative      -> drugs.rsi / bitterdrink
-# - Blood Shield         -> drugs.rsi / bottle_primitive
-# - Pilgrim's Remedy     -> ms13_medical.rsi / powder2
-# - Gravesalt            -> ms13_medical.rsi / powder1
-# - Herbal Stimulant     -> drugs.rsi / berserkerpowder
-#
-# Glowing Blood Pack keeps the parent entity's solution visuals, but its
-# construction-menu icon uses ms13_medical_new.rsi / ivbag-irradiated.
-#
-- type: Tag
-  id: MisfitsEthanolBottle
-
-
 # Shared base for single-use topical medicines.
 - type: stack
   id: MisfitsDaturaHide
