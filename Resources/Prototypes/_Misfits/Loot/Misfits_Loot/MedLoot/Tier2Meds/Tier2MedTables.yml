@@ -1,6 +1,6 @@
 # tier 2
 - type: entityTable
-  id: M14MedsLootTier2
+  id: M14MedsLootTier2_Common
   table: !type:GroupSelector
     children:
     - !type:EntSelector

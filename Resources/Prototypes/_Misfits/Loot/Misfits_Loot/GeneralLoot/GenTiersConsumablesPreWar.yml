@@ -1,17 +1,17 @@
 #TODO add more later on
 - type: entityTable
-  id: M14ConsumableLootNoTier_PreWarAll
+  id: M14ConsumableLootTier0_PreWarAll
   table: !type:GroupSelector
     children:
     - !type:NestedSelector
-      tableId: M14ConsumableLootNoTier_PreWarGrocery
+      tableId: M14ConsumableLootTier0_PreWarGrocery
     - !type:NestedSelector
-      tableId: M14ConsumableLootNoTier_PreWarCanned
+      tableId: M14ConsumableLootTier0_PreWarCanned
     - !type:EntSelector
       id: N14FoodMouldy
 
 - type: entityTable
-  id: M14ConsumableLootNoTier_PreWarGrocery
+  id: M14ConsumableLootTier0_PreWarGrocery
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -37,16 +37,16 @@
       id: N14FoodFancyladssnackcakes
 
 - type: entityTable
-  id: M14ConsumableLootNoTier_PreWarCanned
+  id: M14ConsumableLootTier0_PreWarCanned
   table: !type:GroupSelector
     children:
     - !type:NestedSelector
-      tableId: M14ConsumableLootNoTier_PreWarCannedDogFood
+      tableId: M14ConsumableLootTier0_PreWarCannedDogFood
     - !type:NestedSelector
-      tableId: M14ConsumableLootNoTier_PreWarCannedNoDogFood
+      tableId: M14ConsumableLootTier0_PreWarCannedNoDogFood
 
 - type: entityTable
-  id: M14ConsumableLootNoTier_PreWarCannedDogFood
+  id: M14ConsumableLootTier0_PreWarCannedDogFood
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -55,7 +55,7 @@
       id: N14FoodDinki-Di
 
 - type: entityTable
-  id: M14ConsumableLootNoTier_PreWarCannedNoDogFood
+  id: M14ConsumableLootTier0_PreWarCannedNoDogFood
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -64,7 +64,7 @@
       id: N14FoodPorkBeans
 
 - type: entityTable
-  id: M14ConsumableLootNoTier_PreWarSweets
+  id: M14ConsumableLootTier0_PreWarSweets
   table: !type:GroupSelector
     children:
     - !type:EntSelector

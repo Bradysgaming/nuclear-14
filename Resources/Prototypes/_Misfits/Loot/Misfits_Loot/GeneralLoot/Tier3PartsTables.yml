@@ -1,5 +1,5 @@
 - type: entityTable
-  id: M34PartsLootTier3_ElectricComp
+  id: M14PartsLootTier3_ElectricComp
   table: !type:GroupSelector
     children:
     - !type:EntSelector

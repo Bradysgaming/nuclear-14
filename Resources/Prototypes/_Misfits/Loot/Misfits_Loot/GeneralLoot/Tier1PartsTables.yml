@@ -18,7 +18,7 @@
       id: N14JunkComponentResistor1
 
 - type: entityTable
-  id: M14PartsLootNoTier_EletricMisc
+  id: M14PartsLootTier0_EletricMisc
   table: !type:GroupSelector
     children:
     - !type:EntSelector

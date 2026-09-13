@@ -2,7 +2,7 @@
 
 # tier 3
 - type: entityTable
-  id: M14MedsLootTier3
+  id: M14MedsLootTier3_Common
   table: !type:GroupSelector
     children:
     - !type:EntSelector

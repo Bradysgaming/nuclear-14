@@ -1,20 +1,20 @@
 # TODO: weights
 - type: entityTable
-  id: M14AnimalDropsLootNoTier_All
+  id: M14AnimalDropsLootTier0_All
   table: !type:GroupSelector
     children:
     - !type:NestedSelector
-      tableId: M14AnimalDropsLootNoTier_InsectOrgans
+      tableId: M14AnimalDropsLootTier0_InsectOrgans
     - !type:NestedSelector
-      tableId: M14AnimalDropsLootNoTier_AllGecko
+      tableId: M14AnimalDropsLootTier0_AllGecko
     - !type:NestedSelector
-      tableId: M14AnimalDropsLootNoTier_Generic
+      tableId: M14AnimalDropsLootTier0_Generic
     - !type:NestedSelector
-      tableId: M14AnimalDropsLootNoTier_RadScorp
+      tableId: M14AnimalDropsLootTier0_RadScorp
     - !type:NestedSelector
-      tableId: M14AnimalDropsLootNoTier_Bovine
+      tableId: M14AnimalDropsLootTier0_Bovine
     - !type:NestedSelector
-      tableId: M14AnimalDropsLootNoTier_YaoGuai
+      tableId: M14AnimalDropsLootTier0_YaoGuai
     - !type:EntSelector
       id: N14FoodMeatRadroachFillet
     - !type:EntSelector
@@ -29,7 +29,7 @@
       id: N14FoodEggDeathclaw
 
 - type: entityTable
-  id: M14AnimalDropsLootNoTier_Generic
+  id: M14AnimalDropsLootTier0_Generic
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -40,7 +40,7 @@
       id: N14FoodMeatRadRaw
 
 - type: entityTable
-  id: M14AnimalDropsLootNoTier_GenericMammal
+  id: M14AnimalDropsLootTier0_GenericMammal
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -49,7 +49,7 @@
       id: N14FoodMeatRadRaw
 
 - type: entityTable
-  id: M14AnimalDropsLootNoTier_GenericInsect
+  id: M14AnimalDropsLootTier0_GenericInsect
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -58,20 +58,20 @@
       id: N14FoodMeatRadRaw
 
 - type: entityTable
-  id: M14AnimalDropsLootNoTier_AnyInsect
+  id: M14AnimalDropsLootTier0_AnyInsect
   table: !type:GroupSelector
     children:
     - !type:NestedSelector
-      tableId: M14AnimalDropsLootNoTier_GenericInsect
+      tableId: M14AnimalDropsLootTier0_GenericInsect
     - !type:NestedSelector
-      tableId: M14AnimalDropsLootNoTier_InsectOrgans
+      tableId: M14AnimalDropsLootTier0_InsectOrgans
     - !type:NestedSelector
-      tableId: M14AnimalDropsLootNoTier_RadScorp
+      tableId: M14AnimalDropsLootTier0_RadScorp
     - !type:EntSelector
       id: N14FoodMeatRadroachFillet
 
 - type: entityTable
-  id: M14AnimalDropsLootNoTier_MoleRat
+  id: M14AnimalDropsLootTier0_MoleRat
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -80,25 +80,25 @@
       id: N14FoodMeatPigrat
 
 - type: entityTable
-  id: M14AnimalDropsLootNoTier_MirelurkFull
+  id: M14AnimalDropsLootTier0_MirelurkFull
   table: !type:GroupSelector
     children:
     - !type:NestedSelector
-      tableId: M14AnimalDropsLootNoTier_GenericInsect
+      tableId: M14AnimalDropsLootTier0_GenericInsect
     - !type:EntSelector
       id: N14FoodMeatMirelurkClaw
 
 - type: entityTable
-  id: M14AnimalDropsLootNoTier_RadroachFull
+  id: M14AnimalDropsLootTier0_RadroachFull
   table: !type:GroupSelector
     children:
     - !type:NestedSelector
-      tableId: M14AnimalDropsLootNoTier_GenericInsect
+      tableId: M14AnimalDropsLootTier0_GenericInsect
     - !type:EntSelector
       id: N14FoodMeatRadroachFillet
 
 - type: entityTable
-  id: M14AnimalDropsLootNoTier_NightstalkerFull
+  id: M14AnimalDropsLootTier0_NightstalkerFull
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -107,7 +107,7 @@
       id: N14MaterialNightstalkerPelt
 
 - type: entityTable
-  id: M14AnimalDropsLootNoTier_InsectOrgans
+  id: M14AnimalDropsLootTier0_InsectOrgans
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -119,7 +119,7 @@
 
 
 - type: entityTable
-  id: M14AnimalDropsLootNoTier_RadScorp
+  id: M14AnimalDropsLootTier0_RadScorp
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -134,19 +134,19 @@
 
 
 - type: entityTable
-  id: M14AnimalDropsLootNoTier_AllGecko
+  id: M14AnimalDropsLootTier0_AllGecko
   table: !type:GroupSelector
     children:
     - !type:NestedSelector
-      tableId: M14AnimalDropsLootNoTier_Gecko
+      tableId: M14AnimalDropsLootTier0_Gecko
     - !type:NestedSelector
-      tableId: M14AnimalDropsLootNoTier_FireGecko
+      tableId: M14AnimalDropsLootTier0_FireGecko
     - !type:NestedSelector
-      tableId: M14AnimalDropsLootNoTier_GoldGecko
+      tableId: M14AnimalDropsLootTier0_GoldGecko
 
 
 - type: entityTable
-  id: M14AnimalDropsLootNoTier_Gecko
+  id: M14AnimalDropsLootTier0_Gecko
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -155,7 +155,7 @@
       id: N14MaterialHideGecko
 
 - type: entityTable
-  id: M14AnimalDropsLootNoTier_FireGecko
+  id: M14AnimalDropsLootTier0_FireGecko
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -164,7 +164,7 @@
       id: N14MaterialHideGeckoFire
 
 - type: entityTable
-  id: M14AnimalDropsLootNoTier_GoldGecko
+  id: M14AnimalDropsLootTier0_GoldGecko
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -174,7 +174,7 @@
 
 
 - type: entityTable
-  id: M14AnimalDropsLootNoTier_YaoGuai
+  id: M14AnimalDropsLootTier0_YaoGuai
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -183,27 +183,27 @@
       id: N14FoodMeatYaoguai
 
 - type: entityTable
-  id: M14AnimalDropsLootNoTier_Bovine
+  id: M14AnimalDropsLootTier0_Bovine
   table: !type:GroupSelector
     children:
     - !type:EntSelector
       id: N14MaterialBrahminHide1
     - !type:NestedSelector
-      tableId: M14AnimalDropsLootNoTier_BovineMeats
+      tableId: M14AnimalDropsLootTier0_BovineMeats
     - !type:NestedSelector
-      tableId: M14AnimalDropsLootNoTier_BovineSkulls
+      tableId: M14AnimalDropsLootTier0_BovineSkulls
 
 - type: entityTable
-  id: M14AnimalDropsLootNoTier_BovineComplete
+  id: M14AnimalDropsLootTier0_BovineComplete
   table: !type:GroupSelector
     children:
     - !type:EntSelector
       id: N14MaterialRawLeather1
     - !type:NestedSelector
-      tableId: M14AnimalDropsLootNoTier_Bovine
+      tableId: M14AnimalDropsLootTier0_Bovine
 
 - type: entityTable
-  id: M14AnimalDropsLootNoTier_BovineSkulls
+  id: M14AnimalDropsLootTier0_BovineSkulls
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -215,7 +215,7 @@
 
 
 - type: entityTable
-  id: M14AnimalDropsLootNoTier_BovineMeats
+  id: M14AnimalDropsLootTier0_BovineMeats
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -227,22 +227,22 @@
 
 
 - type: entityTable
-  id: M14AnimalDropsLootNoTier_MammalAll
+  id: M14AnimalDropsLootTier0_MammalAll
   table: !type:GroupSelector
     children:
     - !type:NestedSelector
-      tableId: M14AnimalDropsLootNoTier_GenericMammal
+      tableId: M14AnimalDropsLootTier0_GenericMammal
     - !type:NestedSelector
-      tableId: M14AnimalDropsLootNoTier_Bovine
+      tableId: M14AnimalDropsLootTier0_Bovine
     - !type:NestedSelector
-      tableId: M14AnimalDropsLootNoTier_YaoGuai
+      tableId: M14AnimalDropsLootTier0_YaoGuai
     - !type:EntSelector
       id: N14MaterialNightstalkerPelt
     - !type:EntSelector
       id: N14FoodMeatPigrat
 
 - type: entityTable
-  id: M14AnimalDropsLootNoTier_Brahmin
+  id: M14AnimalDropsLootTier0_Brahmin
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -253,7 +253,7 @@
       id: N14MiscBrahminSkull
 
 - type: entityTable
-  id: M14AnimalDropsLootNoTier_Bighorner
+  id: M14AnimalDropsLootTier0_Bighorner
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -262,7 +262,7 @@
       id: N14MiscBighornerSkull
 
 - type: entityTable
-  id: M14AnimalDropsLootNoTier_Ragstag
+  id: M14AnimalDropsLootTier0_Ragstag
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -271,7 +271,7 @@
       id: N14MiscRadstagSkull
 
 - type: entityTable
-  id: M14AnimalDropsLootNoTier_AllMeats
+  id: M14AnimalDropsLootTier0_AllMeats
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -299,18 +299,18 @@
 
 
 - type: entityTable
-  id: M14AnimalDropsLootNoTier_AllHides
+  id: M14AnimalDropsLootTier0_AllHides
   table: !type:GroupSelector
     children:
     - !type:NestedSelector
-      tableId: M14AnimalDropsLootNoTier_AllHidesMammal
+      tableId: M14AnimalDropsLootTier0_AllHidesMammal
     - !type:NestedSelector
-      tableId: M14AnimalDropsLootNoTier_AllHidesExoSkeleton
+      tableId: M14AnimalDropsLootTier0_AllHidesExoSkeleton
     - !type:NestedSelector
-      tableId: M14AnimalDropsLootNoTier_AllHidesReptile
+      tableId: M14AnimalDropsLootTier0_AllHidesReptile
 
 - type: entityTable
-  id: M14AnimalDropsLootNoTier_AllHidesExoSkeleton
+  id: M14AnimalDropsLootTier0_AllHidesExoSkeleton
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -319,7 +319,7 @@
       id: N14MaterialExoskeleton
 
 - type: entityTable
-  id: M14AnimalDropsLootNoTier_AllHidesReptile
+  id: M14AnimalDropsLootTier0_AllHidesReptile
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -330,7 +330,7 @@
       id: N14MaterialHideGeckoGolden
 
 - type: entityTable
-  id: M14AnimalDropsLootNoTier_AllHidesMammal
+  id: M14AnimalDropsLootTier0_AllHidesMammal
   table: !type:GroupSelector
     children:
     - !type:EntSelector

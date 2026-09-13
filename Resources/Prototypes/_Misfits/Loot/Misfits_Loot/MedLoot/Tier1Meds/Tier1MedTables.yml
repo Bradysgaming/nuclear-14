@@ -1,5 +1,5 @@
 - type: entityTable
-  id: M14MedsLootTier1
+  id: M14MedsLootTier1_Common
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -7,7 +7,7 @@
       weight: 15
 
 - type: entityTable
-  id: M14MedsLootTier1_Plus
+  id: M14MedsLootTier1_CommonPlus
   table: !type:GroupSelector
     children:
     - !type:EntSelector

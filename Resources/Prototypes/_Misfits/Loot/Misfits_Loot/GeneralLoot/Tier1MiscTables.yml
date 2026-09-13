@@ -259,7 +259,7 @@
     - !type:EntSelector
       id: N14Multitool
     - !type:NestedSelector
-      tableId: M14PartsLootNoTier_EletricMisc
+      tableId: M14PartsLootTier0_EletricMisc
     - !type:NestedSelector
       tableId: M14PartsLootTier1_UsablesElectric
     - !type:NestedSelector

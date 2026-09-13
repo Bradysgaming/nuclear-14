@@ -1,21 +1,21 @@
 
 - type: entityTable
-  id: M14ConsumableLootNoTier_DrinksAll
+  id: M14ConsumableLootTier0_DrinksAll
   table: !type:GroupSelector
     children:
     - !type:NestedSelector
-      tableId: M14ConsumableLootNoTier_DrinksNukaColaDefault
+      tableId: M14ConsumableLootTier0_DrinksNukaColaDefault
     - !type:NestedSelector
-      tableId: M14ConsumableLootNoTier_DrinksOther
+      tableId: M14ConsumableLootTier0_DrinksOther
 
 - type: entityTable
-  id: M14ConsumableLootNoTier_DrinksOther
+  id: M14ConsumableLootTier0_DrinksOther
   table: !type:GroupSelector
     children:
     - !type:NestedSelector
-      tableId: M14ConsumableLootNoTier_DrinksVim
+      tableId: M14ConsumableLootTier0_DrinksVim
     - !type:NestedSelector
-      tableId: M14ConsumableLootNoTier_DrinksAlcoholAll
+      tableId: M14ConsumableLootTier0_DrinksAlcoholAll
 
 # shit tier
 - type: entityTable
@@ -51,7 +51,7 @@
 
 # tier 2 and up
 - type: entityTable
-  id: M14ConsumableLootNoTier_DrinksNukaColaDefault
+  id: M14ConsumableLootTier0_DrinksNukaColaDefault
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -66,7 +66,7 @@
 
 # tier 2 and up in rad environments
 - type: entityTable
-  id: M14ConsumableLootNoTier_DrinksNukaColaRadEnvironmentDefault
+  id: M14ConsumableLootTier0_DrinksNukaColaRadEnvironmentDefault
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -105,7 +105,7 @@
 #tier 3
 
 - type: entityTable
-  id: M14ConsumableLootTier3Up_DrinksNukaCola
+  id: M14ConsumableLootTier3_DrinksNukaCola
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -116,7 +116,7 @@
       weight: 10
 
 - type: entityTable
-  id: M14ConsumableLootTier3Up_DrinksNukaColaRad
+  id: M14ConsumableLootTier3_DrinksNukaColaRad
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -188,7 +188,7 @@
       weight: 1
 
 - type: entityTable
-  id: M14ConsumableLootNoTier_DrinksNukaCola
+  id: M14ConsumableLootTier0_DrinksNukaCola
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -213,7 +213,7 @@
       id: N14DrinkNukaColaWild
 
 - type: entityTable
-  id: M14ConsumableLootNoTier_DrinksAlcoholAll
+  id: M14ConsumableLootTier0_DrinksAlcoholAll
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -226,7 +226,7 @@
       id: N14DrinkWine
 
 - type: entityTable
-  id: M14ConsumableLootNoTier_DrinksVim
+  id: M14ConsumableLootTier0_DrinksVim
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -240,7 +240,7 @@
 
 # I dunno what vim is
 - type: entityTable
-  id: M14ConsumableLootNoTier_DrinksVimWeighted
+  id: M14ConsumableLootTier0_DrinksVimWeighted
   table: !type:GroupSelector
     children:
     - !type:EntSelector
@@ -257,7 +257,7 @@
       weight: 5
 
 - type: entityTable
-  id: M14ConsumableLootNoTier_DrinksVimWeightedRare
+  id: M14ConsumableLootTier0_DrinksVimWeightedRare
   table: !type:GroupSelector
     children:
     - !type:EntSelector
