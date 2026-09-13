@@ -119,37 +119,6 @@
     node: daturahide
 
 - type: entity
-  parent: MisfitsDaturaHide
-  id: MisfitsDaturaHide3
-  name: datura hide
-  suffix: 3
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Stack
-    stackType: MisfitsDaturaHide
-    count: 3
-
-- type: entity
-  parent: MisfitsDaturaHide
-  id: MisfitsDaturaHide5
-  name: datura hide
-  suffix: 5
-  components:
-  - type: Stack
-    stackType: MisfitsDaturaHide
-    count: 5
-
-- type: entity
-  parent: MisfitsDaturaHide
-  id: MisfitsDaturaHide10
-  name: datura hide
-  suffix: Full
-  components:
-  - type: Stack
-    stackType: MisfitsDaturaHide
-    count: 10
-
-- type: entity
   parent: BaseHealingItem
   id: MisfitsSnakebiteTourniquet
   name: snakebite tourniquet
@@ -178,37 +147,6 @@
   - type: Construction
     graph: MisfitsSnakebiteTourniquet
     node: snakebitetourniquet
-
-- type: entity
-  parent: MisfitsSnakebiteTourniquet
-  id: MisfitsSnakebiteTourniquet3
-  name: snakebite tourniquet
-  suffix: 3
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Stack
-    stackType: MisfitsSnakebiteTourniquet
-    count: 3
-
-- type: entity
-  parent: MisfitsSnakebiteTourniquet
-  id: MisfitsSnakebiteTourniquet5
-  name: snakebite tourniquet
-  suffix: 5
-  components:
-  - type: Stack
-    stackType: MisfitsSnakebiteTourniquet
-    count: 5
-
-- type: entity
-  parent: MisfitsSnakebiteTourniquet
-  id: MisfitsSnakebiteTourniquet10
-  name: snakebite tourniquet
-  suffix: Full
-  components:
-  - type: Stack
-    stackType: MisfitsSnakebiteTourniquet
-    count: 10
 
 - type: entity
   parent: N14HealingPowder
@@ -301,37 +239,6 @@
   - type: Construction
     graph: MisfitsHealingSalve
     node: healingsalve
-
-- type: entity
-  parent: MisfitsHealingSalve
-  id: MisfitsHealingSalve3
-  name: healing salve
-  suffix: 3
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Stack
-    stackType: MisfitsHealingSalve
-    count: 3
-
-- type: entity
-  parent: MisfitsHealingSalve
-  id: MisfitsHealingSalve5
-  name: healing salve
-  suffix: 5
-  components:
-  - type: Stack
-    stackType: MisfitsHealingSalve
-    count: 5
-
-- type: entity
-  parent: MisfitsHealingSalve
-  id: MisfitsHealingSalve10
-  name: healing salve
-  suffix: Full
-  components:
-  - type: Stack
-    stackType: MisfitsHealingSalve
-    count: 10
 
 - type: entity
   parent: N14HealingPowder
@@ -668,36 +575,6 @@
     graph: MisfitsHerbalAnodyne
     node: herbalanodyne
 
-- type: entity
-  parent: MisfitsHerbalAnodyne
-  id: MisfitsHerbalAnodyne3
-  name: herbal anodyne
-  suffix: 3
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Stack
-    stackType: MisfitsHerbalAnodyne
-    count: 3
-
-- type: entity
-  parent: MisfitsHerbalAnodyne
-  id: MisfitsHerbalAnodyne5
-  name: herbal anodyne
-  suffix: 5
-  components:
-  - type: Stack
-    stackType: MisfitsHerbalAnodyne
-    count: 5
-
-- type: entity
-  parent: MisfitsHerbalAnodyne
-  id: MisfitsHerbalAnodyne10
-  name: herbal anodyne
-  suffix: Full
-  components:
-  - type: Stack
-    stackType: MisfitsHerbalAnodyne
-    count: 10
 
 - type: entity
   parent: BaseHealingItem
@@ -732,36 +609,6 @@
     graph: MisfitsHerbalAntimicrobial
     node: herbalantimicrobial
 
-- type: entity
-  parent: MisfitsHerbalAntimicrobial
-  id: MisfitsHerbalAntimicrobial3
-  name: herbal antimicrobial
-  suffix: 3
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Stack
-    stackType: MisfitsHerbalAntimicrobial
-    count: 3
-
-- type: entity
-  parent: MisfitsHerbalAntimicrobial
-  id: MisfitsHerbalAntimicrobial5
-  name: herbal antimicrobial
-  suffix: 5
-  components:
-  - type: Stack
-    stackType: MisfitsHerbalAntimicrobial
-    count: 5
-
-- type: entity
-  parent: MisfitsHerbalAntimicrobial
-  id: MisfitsHerbalAntimicrobial10
-  name: herbal antimicrobial
-  suffix: Full
-  components:
-  - type: Stack
-    stackType: MisfitsHerbalAntimicrobial
-    count: 10
 
 - type: entity
   parent: N14HealingPowder
