@@ -10,6 +10,7 @@
       key_slots:
       - EncryptionKeyBrotherhoodOfSteel
       - EncryptionKeyWastelandGlobal
+  - type: EncryptionKeyHolder
     keysUnlocked: false
   - type: Sprite
     sprite: _Misfits/Clothing/Ears/Headsets/bos.rsi
@@ -26,6 +27,7 @@
       key_slots:
       - EncryptionKeyBrotherhoodOfSteel
       - EncryptionKeyWastelandGlobal
+  - type: EncryptionKeyHolder
     keysUnlocked: false
   # Keep light-capable state names while applying the new BoS sprite set.
   - type: Sprite
