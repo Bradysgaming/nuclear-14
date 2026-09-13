@@ -5,8 +5,8 @@
   table: !type:GroupSelector
     children:
     - !type:EntSelector
-      id: N14WeaponLaserGatling
-      weight: 1
+      id: Error
+
 
 - type: entityTable
   id: M14WeaponLootTier2_PlasmaHeavy

@@ -8,7 +8,7 @@
           tableId: M14WeaponLootTier1_MeleeSharp
 #      - !type:NestedSelector
 #          tableId: M14WeaponLootTier1_MeleeOther
-# stuff here
+
 
 - type: entityTable
   id: M14WeaponLootTier1_MeleeBlunt
@@ -34,5 +34,5 @@
     children:
       - !type:NestedSelector
           tableId: M14WeaponLootTier1_MeleeOtherOneHanded
-      - !type:NestedSelector
-          tableId: M14WeaponLootTier1_MeleeOtherTwoHanded
+#      - !type:NestedSelector
+#          tableId: M14WeaponLootTier1_MeleeOtherTwoHanded

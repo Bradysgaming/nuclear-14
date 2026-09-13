@@ -29,8 +29,6 @@
     - !type:EntSelector
       id: N14WeaponLaserRifleMakeshift
       weight: 1
-    - !type:EntSelector
-      id: Error
 
 - type: entityTable
   id: M14WeaponLootTier2_PlasmaRifleSemi

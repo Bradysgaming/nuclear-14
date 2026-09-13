@@ -18,5 +18,5 @@
           tableId: M14WeaponLootTier1_GunsBulletAll
       - !type:NestedSelector
           tableId: M14WeaponLootTier1_GunsEnergyAll
-      - !type:NestedSelector
-          tableId: M14WeaponLootTier1_GunsExplosiveAll
+#      - !type:NestedSelector
+#          tableId: M14WeaponLootTier1_GunsExplosiveAll

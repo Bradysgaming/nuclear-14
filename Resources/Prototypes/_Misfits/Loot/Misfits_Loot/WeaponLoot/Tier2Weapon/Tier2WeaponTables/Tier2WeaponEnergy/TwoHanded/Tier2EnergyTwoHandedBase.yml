@@ -25,10 +25,10 @@
     children:
       - !type:NestedSelector
           tableId: M14WeaponLootTier2_LaserRifleSemi
-      - !type:NestedSelector
-          tableId: M14WeaponLootTier2_PlasmaRifleSemi
-      - !type:NestedSelector
-          tableId: M14WeaponLootTier2_OtherRifleSemi
+#      - !type:NestedSelector
+#          tableId: M14WeaponLootTier2_PlasmaRifleSemi
+#      - !type:NestedSelector
+#          tableId: M14WeaponLootTier2_OtherRifleSemi
 
 
 - type: entityTable

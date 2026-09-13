@@ -6,8 +6,8 @@
           tableId: M14WeaponLootTier3_MeleeBlunt
       - !type:NestedSelector
           tableId: M14WeaponLootTier3_MeleeSharp
-      - !type:NestedSelector
-          tableId: M14WeaponLootTier3_MeleeOther
+#      - !type:NestedSelector
+#          tableId: M14WeaponLootTier3_MeleeOther
 # stuff here
 
 - type: entityTable
