@@ -3,116 +3,116 @@
 # should create a varied expedition haul, not another weapon-only cache.
 
 - type: entityTable
-  id: N14ExpeditionBossPrimaryReward
+  id: M14ExpeditionBossPrimaryReward
   table: !type:GroupSelector
     children:
     # Weapons remain possible, but high-end guns are a minority of final-boss drops.
     - !type:NestedSelector
-      tableId: N14WeaponLootTier3
+      tableId: M14WeaponLootTier3
       weight: 30
     - !type:NestedSelector
-      tableId: N14WeaponLootTier4
+      tableId: M14WeaponLootTier4
       weight: 10
     # Equipment outcomes are deliberately faction-neutral and portable.
     - !type:EntSelector
-      id: N14ClothingOuterLeatherArmor
+      id: M14ClothingOuterLeatherArmor
       weight: 18
     - !type:EntSelector
-      id: N14ClothingOuterMetalArmor
+      id: M14ClothingOuterMetalArmor
       weight: 14
     - !type:EntSelector
-      id: N14ClothingOuterCombatArmor
+      id: M14ClothingOuterCombatArmor
       weight: 8
     - !type:EntSelector
-      id: N14ClothingOuterJacketBomber
+      id: M14ClothingOuterJacketBomber
       weight: 10
     - !type:EntSelector
-      id: N14ClothingOuterPoliceVest
+      id: M14ClothingOuterPoliceVest
       weight: 10
 
 - type: entityTable
-  id: N14ExpeditionBossRecoveryReward
+  id: M14ExpeditionBossRecoveryReward
   table: !type:GroupSelector
     children:
     - !type:EntSelector
-      id: N14Stimpak
+      id: M14Stimpak
       weight: 35
     - !type:EntSelector
-      id: N14RadAwayInhaler
+      id: M14RadAwayInhaler
       weight: 20
     - !type:EntSelector
-      id: N14Hydra
+      id: M14Hydra
       weight: 10
     - !type:EntSelector
-      id: N14MedkitBruteFilled
+      id: M14MedkitBruteFilled
       weight: 20
     - !type:EntSelector
-      id: N14MedkitCombatFilled
+      id: M14MedkitCombatFilled
       weight: 15
 
 - type: entityTable
-  id: N14ExpeditionBossMaterialsReward
+  id: M14ExpeditionBossMaterialsReward
   table: !type:GroupSelector
     children:
     - !type:EntSelector
-      id: N14ScrapElectronic10
+      id: M14ScrapElectronic10
       weight: 28
     - !type:EntSelector
-      id: N14ScrapSteel10
+      id: M14ScrapSteel10
       weight: 28
     - !type:EntSelector
-      id: N14ScrapCopper10
+      id: M14ScrapCopper10
       weight: 18
     - !type:EntSelector
-      id: N14ScrapBrass10
+      id: M14ScrapBrass10
       weight: 14
     - !type:EntSelector
-      id: N14ScrapLead10
+      id: M14ScrapLead10
       weight: 12
 
 - type: entityTable
-  id: N14ExpeditionBossReward
+  id: M14ExpeditionBossReward
   table: !type:AllSelector
     children:
     - !type:NestedSelector
-      tableId: N14ExpeditionBossPrimaryReward
+      tableId: M14ExpeditionBossPrimaryReward
     - !type:NestedSelector
-      tableId: N14ExpeditionBossRecoveryReward
+      tableId: M14ExpeditionBossRecoveryReward
     - !type:NestedSelector
-      tableId: N14ExpeditionBossMaterialsReward
+      tableId: M14ExpeditionBossMaterialsReward
 
 # Optional deep guardians pay a meaningful but deliberately smaller reward.
 # The table favors recovery, materials, and Tier 2 over another high-end gun.
 - type: entityTable
-  id: N14ExpeditionGuardianReward
+  id: M14ExpeditionGuardianReward
   table: !type:GroupSelector
     children:
     - !type:NestedSelector
-      tableId: N14WeaponLootTier2
+      tableId: M14WeaponLootTier2
       weight: 45
     - !type:NestedSelector
-      tableId: N14WeaponLootTier3
+      tableId: M14WeaponLootTier3
       weight: 12
     - !type:EntSelector
-      id: N14ClothingOuterLeatherArmor
+      id: M14ClothingOuterLeatherArmor
       weight: 14
     - !type:EntSelector
-      id: N14Stimpak
+      id: M14Stimpak
       weight: 14
     - !type:EntSelector
-      id: N14ScrapElectronic10
+      id: M14ScrapElectronic10
       weight: 15
 
 # Retains the previous two guaranteed Tier 3 caches for dangerous focused
 # Deathclaw and Super Mutant expeditions, but releases them only from the
 # final guardian's corpse rather than placing loot before the fight.
 - type: entityTable
-  id: N14ExpeditionHighRiskBossReward
+  id: M14ExpeditionHighRiskBossReward
   table: !type:AllSelector
     children:
     - !type:NestedSelector
-      tableId: N14ExpeditionBossReward
+      tableId: M14ExpeditionBossReward
     - !type:NestedSelector
-      tableId: N14WeaponLootTier3
+      tableId: M14WeaponLootTier3
     - !type:NestedSelector
-      tableId: N14WeaponLootTier3
+      tableId: M14WeaponLootTier3

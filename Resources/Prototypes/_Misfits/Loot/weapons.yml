@@ -1,10 +1,11 @@
 ﻿
+# TODO: get rid of this when tier loot is done
 # Generic world-weapon marker. Use the tier markers below when a map area needs
 # a guaranteed power band; this marker is for ordinary, unthemed exploration loot.
 - type: entity
   name: Weapon Loot Spawner
   suffix: Tiered
-  id: N14WeaponLootSpawner
+  id: M14WeaponLootSpawner
   parent: MarkerBase
   components:
   - type: Sprite
@@ -14,7 +15,7 @@
       state: icon
   - type: EntityTableSpawner
     table: !type:NestedSelector
-      tableId: N14WeaponLootAllTiers
+      tableId: M14WeaponLootAllTiers
       prob: 0.75
     # Keep the MarkerBase after its one map-init roll so mappers can reveal and
     # delete it with Show Spawns, like the existing N14 map spawners.
@@ -25,7 +26,7 @@
 # Every concrete N14 and Misfits weapon is represented in a tier. Only abstract base
 # prototypes and stock SS14 weapons are excluded from these world-loot tables.
 - type: entityTable
-  id: N14WeaponLootAllTiers
+  id: M14WeaponLootAllTiers
   table: !type:GroupSelector
     children:
     - !type:NestedSelector
