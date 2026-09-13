@@ -1,4 +1,7 @@
-﻿- type: entity
+# Misfits - medicine pill canisters
+#
+#
+- type: entity
   parent: PillCanister
   id: MisfitsPillCanisterAntibiotics
   suffix: Antibiotics, 5
@@ -10,6 +13,9 @@
     - id: MisfitsPillAntibiotics
       amount: 5
 
+# ============================================================================
+# RAD SHIELD
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterRadShield
@@ -22,6 +28,9 @@
     - id: MisfitsPillRadShield
       amount: 5
 
+# ============================================================================
+# X-111 COMPOUND
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterX111Compound
@@ -34,6 +43,9 @@
     - id: MisfitsPillX111Compound
       amount: 5
 
+# ============================================================================
+# RUSHING WATER
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterRushingWater
@@ -46,6 +58,9 @@
     - id: MisfitsPillRushingWater
       amount: 5
 
+# ============================================================================
+# BLOOD SHIELD
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterBloodShield
@@ -58,6 +73,9 @@
     - id: MisfitsPillBloodShield
       amount: 5
 
+# ============================================================================
+# FIERY PURGATIVE
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterFieryPurgative
@@ -70,6 +88,9 @@
     - id: MisfitsPillFieryPurgative
       amount: 5
 
+# ============================================================================
+# REFRESHING BEVERAGE
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterRefreshingBeverage
@@ -82,6 +103,9 @@
     - id: MisfitsPillRefreshingBeverage
       amount: 5
 
+# ============================================================================
+# HERBAL STIMULANT
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterHerbalStimulant
@@ -94,6 +118,9 @@
     - id: MisfitsPillHerbalStimulant
       amount: 5
 
+# ============================================================================
+# SKEETO SPIT
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterSkeetoSpit
@@ -106,6 +133,9 @@
     - id: MisfitsPillSkeetoSpit
       amount: 5
 
+# ============================================================================
+# PENICILLIN
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterPenicillin
@@ -118,6 +148,9 @@
     - id: MisfitsPillPenicillin
       amount: 5
 
+# ============================================================================
+# PRUSSIAN BLUE
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterPrussianBlue
@@ -130,6 +163,9 @@
     - id: MisfitsPillPrussianBlue
       amount: 5
 
+# ============================================================================
+# PILGRIM'S REMEDY
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterPilgrimsRemedy
@@ -142,6 +178,9 @@
     - id: MisfitsPillPilgrimsRemedy
       amount: 5
 
+# ============================================================================
+# FURY
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterFury
@@ -154,6 +193,9 @@
     - id: MisfitsPillFury
       amount: 5
 
+# ============================================================================
+# CALMEX
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterCalmex
@@ -166,6 +208,9 @@
     - id: MisfitsPillCalmex
       amount: 5
 
+# ============================================================================
+# OVERDRIVE
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterOverdrive
@@ -178,6 +223,9 @@
     - id: MisfitsPillOverdrive
       amount: 5
 
+# ============================================================================
+# X-CELL
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterXCell
@@ -190,6 +238,9 @@
     - id: MisfitsPillXCell
       amount: 5
 
+# ============================================================================
+# CRANK
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterCrank
@@ -202,6 +253,9 @@
     - id: MisfitsPillCrank
       amount: 5
 
+# ============================================================================
+# LAZARUS COMPOUND
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterLazarusCompound
@@ -214,6 +268,9 @@
     - id: MisfitsPillLazarusCompound
       amount: 5
 
+# ============================================================================
+# CLEARWAKE
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterClearwake
@@ -226,6 +283,9 @@
     - id: MisfitsPillClearwake
       amount: 5
 
+# ============================================================================
+# WIDOWBANE
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterWidowbane
@@ -238,6 +298,9 @@
     - id: MisfitsPillWidowbane
       amount: 5
 
+# ============================================================================
+# CINDER SERUM
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterCinderSerum
@@ -250,6 +313,9 @@
     - id: MisfitsPillCinderSerum
       amount: 5
 
+# ============================================================================
+# GRAVESALT
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterGravesalt
@@ -273,6 +339,9 @@
     - id: MisfitsPillClearhead
       amount: 5
 
+# ============================================================================
+# CHLORPROMAZINE
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterChlorpromazine
@@ -285,6 +354,9 @@
     - id: MisfitsPillChlorpromazine
       amount: 5
 
+# ============================================================================
+# LUCIDINE
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterLucidine
@@ -297,6 +369,9 @@
     - id: MisfitsPillLucidine
       amount: 5
 
+# ============================================================================
+# PSYCHOCLINE
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterPsychocline
@@ -309,6 +384,9 @@
     - id: MisfitsPillPsychocline
       amount: 5
 
+# ============================================================================
+# NEUROSTATIC
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterNeurostatic
@@ -321,6 +399,9 @@
     - id: MisfitsPillNeurostatic
       amount: 5
 
+# ============================================================================
+# WILLOWBARK ANALGESIC
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterWillowbark
@@ -333,6 +414,9 @@
     - id: MisfitsPillWillowbark
       amount: 5
 
+# ============================================================================
+# ANODYNE
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterAnodyne
@@ -345,6 +429,9 @@
     - id: MisfitsPillAnodyne
       amount: 5
 
+# ============================================================================
+# ANALGESINE
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterAnalgesine
@@ -357,6 +444,9 @@
     - id: MisfitsPillAnalgesine
       amount: 5
 
+# ============================================================================
+# NERVEBLOCK
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterNerveblock
@@ -369,6 +459,9 @@
     - id: MisfitsPillNerveblock
       amount: 5
 
+# ============================================================================
+# TRAUMADOL
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterTraumadol
@@ -381,6 +474,9 @@
     - id: MisfitsPillTraumadol
       amount: 5
 
+# ============================================================================
+# ANESTHEZINE
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterAnesthezine
@@ -393,6 +489,9 @@
     - id: MisfitsPillAnesthezine
       amount: 5
 
+# ============================================================================
+# NEUROBLOCK
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterNeuroblock
@@ -405,6 +504,9 @@
     - id: MisfitsPillNeuroblock
       amount: 5
 
+# ============================================================================
+# NEUROREGULINE
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterNeuroreguline
@@ -428,6 +530,9 @@
     - id: MisfitsPillVigilazine
       amount: 5
 
+# ============================================================================
+# WAKEGUARD
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterWakeguard
@@ -440,6 +545,9 @@
     - id: MisfitsPillWakeguard
       amount: 5
 
+# ============================================================================
+# SOMNOREGULINE
+# ============================================================================
 - type: entity
   parent: PillCanister
   id: MisfitsPillCanisterSomnoreguline
