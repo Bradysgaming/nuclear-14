@@ -15,19 +15,19 @@
       weight: 10
     # Equipment outcomes are deliberately faction-neutral and portable.
     - !type:EntSelector
-      id: M14ClothingOuterLeatherArmor
+      id: N14ClothingOuterLeatherArmor
       weight: 18
     - !type:EntSelector
-      id: M14ClothingOuterMetalArmor
+      id: N14ClothingOuterMetalArmor
       weight: 14
     - !type:EntSelector
-      id: M14ClothingOuterCombatArmor
+      id: N14ClothingOuterCombatArmor
       weight: 8
     - !type:EntSelector
-      id: M14ClothingOuterJacketBomber
+      id: N14ClothingOuterJacketBomber
       weight: 10
     - !type:EntSelector
-      id: M14ClothingOuterPoliceVest
+      id: N14ClothingOuterPoliceVest
       weight: 10
 
 - type: entityTable
@@ -35,19 +35,19 @@
   table: !type:GroupSelector
     children:
     - !type:EntSelector
-      id: M14Stimpak
+      id: N14Stimpak
       weight: 35
     - !type:EntSelector
-      id: M14RadAwayInhaler
+      id: N14RadAwayInhaler
       weight: 20
     - !type:EntSelector
-      id: M14Hydra
+      id: N14Hydra
       weight: 10
     - !type:EntSelector
-      id: M14MedkitBruteFilled
+      id: N14MedkitBruteFilled
       weight: 20
     - !type:EntSelector
-      id: M14MedkitCombatFilled
+      id: N14MedkitCombatFilled
       weight: 15
 
 - type: entityTable
@@ -55,19 +55,19 @@
   table: !type:GroupSelector
     children:
     - !type:EntSelector
-      id: M14ScrapElectronic10
+      id: N14ScrapElectronic10
       weight: 28
     - !type:EntSelector
-      id: M14ScrapSteel10
+      id: N14ScrapSteel10
       weight: 28
     - !type:EntSelector
-      id: M14ScrapCopper10
+      id: N14ScrapCopper10
       weight: 18
     - !type:EntSelector
-      id: M14ScrapBrass10
+      id: N14ScrapBrass10
       weight: 14
     - !type:EntSelector
-      id: M14ScrapLead10
+      id: N14ScrapLead10
       weight: 12
 
 - type: entityTable
@@ -94,13 +94,13 @@
       tableId: M14WeaponLootTier3
       weight: 12
     - !type:EntSelector
-      id: M14ClothingOuterLeatherArmor
+      id: N14ClothingOuterLeatherArmor
       weight: 14
     - !type:EntSelector
-      id: M14Stimpak
+      id: N14Stimpak
       weight: 14
     - !type:EntSelector
-      id: M14ScrapElectronic10
+      id: N14ScrapElectronic10
       weight: 15
 
 # Retains the previous two guaranteed Tier 3 caches for dangerous focused
