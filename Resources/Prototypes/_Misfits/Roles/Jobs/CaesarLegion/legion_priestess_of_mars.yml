@@ -90,7 +90,7 @@
     ears: N14ClothingHeadsetLegion
     back: N14ClothingBackpackMilitary
     id: N14IDLegionaryBadgePriestessOfMars
-    outerClothing: N14ClothingOuterLegionnaireReconnaissanceArmor
+    outerClothing: N14ClothingOuterPriestessMarsArmor
     pocket1: LegionPriestessLoadoutKits
     pocket2: N14Whip
   storage:
