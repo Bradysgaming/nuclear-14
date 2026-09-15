@@ -29,7 +29,7 @@ public sealed partial class ConstructorBUI : BoundUserInterface
         var recipes = new List<ConstructionPrototype>();
         foreach (var recipe in _proto.EnumeratePrototypes<ConstructionPrototype>())
         {
-            if (recipe.Hide || recipe.Type != ConstructionType.Item)
+            if (recipe.Hide)
                 continue;
 
             if (PlayerManager.LocalEntity is {} user && _whitelist.IsWhitelistFail(recipe.EntityWhitelist, user))
