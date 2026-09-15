@@ -729,7 +729,7 @@
     factions:
       - Wastelander
 
-# Bibbles - unique NCR cat companion.
+# Bibbles - unique cat companion.
 - type: entity
   name: Bibbles
   id: MisfitsMobPetBibbles
