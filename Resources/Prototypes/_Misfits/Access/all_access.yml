@@ -120,7 +120,6 @@
   - CaesarLegion
   - CaesarLegionSlave
   - CaesarLegionRecruit
-  - CaesarLegionAuxilia
   - CaesarLegionHoundmaster
   - CaesarLegionFrumentarii
   - CaesarLegionVexillarius
@@ -129,9 +128,6 @@
   - CaesarLegionLegionnaireWarrior
   - CaesarLegionLegionnaireVeteran
   - CaesarLegionDean
-  - CaesarLegionTempleGuard
-  - CaesarLegionAcolyteOfMars
-  - CaesarLegionPriestessOfMars
   - CaesarLegionVeteranDecanus
   - CaesarLegionOptio
   - CaesarLegionCenturion
