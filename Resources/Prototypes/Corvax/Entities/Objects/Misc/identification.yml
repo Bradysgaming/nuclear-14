@@ -209,8 +209,8 @@
   - type: Tag
     tags:
     - IdCardLegion
-  
-  - type: entity
+
+- type: entity
   parent: N14IDPassportBlank
   id: N14IDLegionaryBadgeTempleGuard
   name: distinctive sign

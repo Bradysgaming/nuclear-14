@@ -611,9 +611,9 @@
   description: Armored robes, made with special care and skill, worn by the rankining Priestess of a Castrum, the pulsating cage of fire is said to contain a small piece of Mars' divide power.
   components:
   - type: Sprite
-    sprite: Corvax/Clothing/OuterClothing/CaesarLegion/priestessarmor.rsi
+    sprite: _Misfits/Clothing/CaesarLegion/priestessarmor.rsi
   - type: Clothing
-    sprite: Corvax/Clothing/OuterClothing/CaesarLegion/priestessarmor.rsi
+    sprite: _Misfits/Clothing/CaesarLegion/priestessarmor.rsi
   - type: ClothingSpeedModifier
     walkModifier: 1.05
     sprintModifier: 1.05
@@ -634,9 +634,9 @@
   description: red robes worn by lower ranks among the cult of Mars, with forged armored plates over top.
   components:
   - type: Sprite
-    sprite: Corvax/Clothing/OuterClothing/CaesarLegion/armoredrobes.rsi
+    sprite: _Misfits/Clothing/CaesarLegion/armoredrobes.rsi
   - type: Clothing
-    sprite: Corvax/Clothing/OuterClothing/CaesarLegion/armoredrobes.rsi
+    sprite: _Misfits/Clothing/CaesarLegion/armoredrobes.rsi
   - type: ClothingSpeedModifier
     walkModifier: 1.10
     sprintModifier: 1.10

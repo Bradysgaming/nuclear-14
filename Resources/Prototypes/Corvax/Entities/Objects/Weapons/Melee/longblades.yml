@@ -236,8 +236,7 @@
   - type: IgnitionSource
     temperature: 700
 
-
-  - type: entity
+- type: entity
   parent: N14WeaponKebab
   id: N14WeaponMarsblade
   name: Blade of Mars
