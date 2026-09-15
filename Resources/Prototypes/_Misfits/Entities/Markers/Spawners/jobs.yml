@@ -355,7 +355,7 @@
   - type: Sprite
     layers:
       - state: green
-      - state: Warrior
+      - state: warrior
 
 # Priestess of Mars spawner — 1 slot, same Legion camp area as Auxilia.
 - type: entity

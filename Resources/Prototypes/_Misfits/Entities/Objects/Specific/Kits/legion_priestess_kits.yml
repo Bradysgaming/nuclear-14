@@ -183,8 +183,6 @@
       - id: N14PoliceBaton
       - id: N14WeaponPistol45Colt
       - id: BoxHandcuff
-      - id: LegionSlaveCollar
-        amount: 2
       - id: Bola
         amount: 2
     sound:

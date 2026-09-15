@@ -643,9 +643,9 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.70
-        Slash: 0.70
-        Piercing: 0.70 #meant to be on par with recruit decan
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.75
         Heat: 0.65 # yeah boo hoo the priestess of the fire god is resistant to fire
   - type: ExplosionResistance
     damageCoefficient: 0.9

@@ -33,7 +33,7 @@
   content:
   - KitPriestessZealot
 
--  type: UndecidedLoadoutBackpackSet
+- type: UndecidedLoadoutBackpackSet
   id: PriestessPurifierSet
   name: undecided-loadout-category-misfits-priestess-purifier-name
   description: undecided-loadout-category-misfits-priestess-purifier-desc
