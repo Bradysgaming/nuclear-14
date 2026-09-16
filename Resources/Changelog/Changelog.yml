@@ -11658,3 +11658,10 @@ Entries:
   id: 6441
   time: '2026-09-16T01:42:42.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1927
+- author: Tytos
+  changes:
+    - type: Tweak
+      message: expanded sellable item lists for all three new markets.
+  id: 6442
+  time: '2026-09-16T01:43:31.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1925
