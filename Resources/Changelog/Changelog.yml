@@ -11678,3 +11678,10 @@ Entries:
   id: 6443
   time: '2026-09-16T01:49:59.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1914
+- author: alekszejg
+  changes:
+    - type: Fix
+      message: Fixed stackable ingredients disappearing after cooking in microwaves.
+  id: 6444
+  time: '2026-09-16T01:56:50.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1922
