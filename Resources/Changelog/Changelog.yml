@@ -2657,7 +2657,7 @@ Entries:
 - author: cythisiax
   changes:
     - type: Add
-      message:  of Mars claw glove sprites by Pinky109 and Nequizia
+      message: of Mars claw glove sprites by Pinky109 and Nequizia
     - type: Add
       message: ArmorComponent values to Supermutant Gladiator 15%/helmet gets 50% ARC
     - type: Add
@@ -11641,3 +11641,20 @@ Entries:
   id: 6440
   time: '2026-09-16T00:28:35.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1909
+- author: Tytos
+  changes:
+    - type: Add
+      message: added legion temple guard
+    - type: Add
+      message: added new kits for pom, aom
+    - type: Add
+      message: added new armored robes for aom and pom
+    - type: Add
+      message: added a new weapon, the blade of mars
+    - type: Tweak
+      message: auxilia are now female only
+    - type: Tweak
+      message: adusted existing aom and pom kits to be not awful
+  id: 6441
+  time: '2026-09-16T01:42:42.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1927
