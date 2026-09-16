@@ -773,8 +773,14 @@ undecided-loadout-category-misfits-priestess-healing-desc =
 
 undecided-loadout-category-misfits-priestess-zealot-name = Priestess of Zealotry
 undecided-loadout-category-misfits-priestess-zealot-desc =
-    Includes a Ceremonial Sword, Legionnaire Shield, A combat shotgun with two extra drums,
+    Includes a Neostead, Legionnaire Shield, two 12 guage ammo boxes,
     spear quiver, 3 pilum, 2 Bolas, 2 Cazador acid sacs,
+    2 K rations, and a ceramic flask.
+
+undecided-loadout-category-misfits-priestess-purifier-name = Priestess of Purification
+undecided-loadout-category-misfits-priestess-purifier-desc =
+    Includes a flaming blade of Mars, 2 incendiary grenades, a heater shield,
+    a colt 45 with two magazines, 1 bandage, 1 Healing Poultice, 1 Healing Powder,
     2 K rations, and a ceramic flask.
 
 undecided-loadout-category-misfits-acolyte-healing-name = Acolyte Healer
@@ -788,6 +794,29 @@ undecided-loadout-category-misfits-acolyte-zealot-desc =
     Includes a Gladius, Legionnaire buckler,
     spear quiver, An SKS, 308 clips,
     2 K rations, and a ceramic flask.
+
+undecided-loadout-category-misfits-acolyte-slaver-name = Acolyte Slaver
+undecided-loadout-category-misfits-acolyte-slaver-desc =
+    Includes an automatic shotgun, three boxes of beanbag ammo, handcuffs,
+    bolas, a baton, slave collars, a colt 45 with two magazines,
+    1 bandage, 1 Healing Poultice, 1 Healing Powder,
+    2 K rations, and a ceramic flask.
+
+undecided-loadout-category-misfits-temple-guard-protector-name = Temple Guard Protector
+undecided-loadout-category-misfits-temple-guard-protector-desc =
+    Includes a poleaxe, a heater shield, a colt 45 with two magazines,
+    1 bandage, 2 Healing Powders, 2 K rations, and a ceramic flask.
+
+undecided-loadout-category-misfits-temple-guard-enforcer-name = Temple Guard Enforcer
+undecided-loadout-category-misfits-temple-guard-enforcer-desc =
+    Includes an automatic shotgun, a gladius, three boxes of 12 gauge ammo,
+    1 bandage, 2 Healing Powders, 2 K rations, and a ceramic flask.
+
+undecided-loadout-category-misfits-temple-guard-executor-name = Temple Guard Executor
+undecided-loadout-category-misfits-temple-guard-executor-desc =
+    Includes a kebab, a buckler, a colt 45 with two magazines,
+    1 bandage, 2 Healing Powders, 2 K rations, and a ceramic flask.
+
 
 undecided-loadout-category-misfits-eighties-block-road-captain-name = Road Captain Kit
 undecided-loadout-category-misfits-eighties-block-road-captain-description =

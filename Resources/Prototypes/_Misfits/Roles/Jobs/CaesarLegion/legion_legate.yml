@@ -58,6 +58,7 @@
         - CaesarLegionLegate
         - CaesarLegionOptio
         - CaesarLegionPriestessOfMars
+        - CaesarLegionAcolyteOfMars
         - CaesarLegionPraefectusDecanus
         - CaesarLegionTribunusDecanus
   - !type:AddTraitSpecial
