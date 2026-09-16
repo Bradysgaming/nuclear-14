@@ -20,7 +20,7 @@
       sex: Male
     - !type:CharacterGenderRequirement
       gender: Male
-  startingGear: CaesarLegionVeteranDecanusGear
+  startingGear: CaesarLegionPraefectusDecanusGear
   alwaysUseSpawner: true
   icon: "JobIconlegionerDean"
   supervisors: job-name-caesar-legion-supervisors
