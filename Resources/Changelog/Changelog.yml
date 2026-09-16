@@ -11632,3 +11632,12 @@ Entries:
   id: 6439
   time: '2026-09-16T00:12:42.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1923
+- author: Tytos
+  changes:
+    - type: Add
+      message: Added legion decanus praefectus and tribunus jobs
+    - type: Tweak
+      message: Changed decanus kits
+  id: 6440
+  time: '2026-09-16T00:28:35.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1909
