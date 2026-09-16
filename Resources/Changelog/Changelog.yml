@@ -11685,3 +11685,10 @@ Entries:
   id: 6444
   time: '2026-09-16T01:56:50.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1922
+- author: Enkidienne
+  changes:
+    - type: Tweak
+      message: MPs get NCR loadout access
+  id: 6445
+  time: '2026-09-16T12:49:42.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1929
