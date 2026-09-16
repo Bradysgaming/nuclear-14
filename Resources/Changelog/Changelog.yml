@@ -11625,3 +11625,10 @@ Entries:
   id: 6438
   time: '2026-09-16T00:12:15.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1921
+- author: Enkidienne
+  changes:
+    - type: Remove
+      message: Plasma Defender from the BOS
+  id: 6439
+  time: '2026-09-16T00:12:42.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1923
