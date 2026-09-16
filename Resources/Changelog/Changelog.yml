@@ -11618,3 +11618,10 @@ Entries:
   id: 6437
   time: '2026-09-13T00:33:28.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1913
+- author: JohnKieser
+  changes:
+    - type: Fix
+      message: T-60 weapon BP now in BOS BP spawn crate as intended
+  id: 6438
+  time: '2026-09-16T00:12:15.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1921
