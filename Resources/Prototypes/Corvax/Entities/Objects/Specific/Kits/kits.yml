@@ -955,7 +955,7 @@
         amount: 2
       - id: N14Bandage
         amount: 2
-      - id: Ointment
+      - id: N14AloeSalve
       - id: N14FoodTinK
         amount: 2
       - id: N14JunkCeramicFlask
@@ -1110,7 +1110,7 @@
         amount: 2
       - id: N14HealingPoultice
         amount: 2
-      - id: Ointment
+      - id: N14AloeSalve
       - id: N14HealingPowder
       - id: N14FoodTinK
         amount: 2
@@ -1180,7 +1180,7 @@
       - id: N14TribalMachete
       - id: N14Bandage
         amount: 2
-      - id: Ointment
+      - id: N14AloeSalve
       - id: N14HealingPoultice
         amount: 2
       - id: N14FoodTinK
