@@ -68,6 +68,11 @@ signal-port-description-plumbing-input = A plumbing automation slot to pump liqu
 signal-port-name-plumbing-output = Plumbing: Output
 signal-port-description-plumbing-output = A plumbing automation slot to pump liquids out of.
 
+# Solution automation
+
+signal-port-name-automation-slot-solution = Solution: Reagents
+signal-port-description-automation-slot-solution = An automation slot for a machine's reagent solution, usable by liquid pumps.
+
 # Lathe
 
 signal-port-name-lathe-print = Print last recipe

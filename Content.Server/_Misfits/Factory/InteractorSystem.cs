@@ -86,8 +86,6 @@ public sealed partial class InteractorSystem : EntitySystem
     private void OnDoAfterEnded(Entity<InteractorComponent> ent, ref DoAfterEndedEvent args)
     {
         UpdateToolAppearance(ent);
-        if (args.Target is not {} target)
-            return;
 
         if (args.Cancelled)
             _machine.Failed(ent.Owner);
@@ -233,11 +231,14 @@ public sealed partial class InteractorSystem : EntitySystem
         var newCount = construction?.InteractionQueue.Count ?? 0;
         var doing = HasDoAfter(ent);
         _machine.Started(ent.Owner);
-        if (newCount > originalCount || doing)
+        if (doing)
         {
             UpdateAppearance(ent, InteractorState.Active);
-            if (doing) // for steps with doafter they just get queued
-                _machine.Completed(ent.Owner); // OnDoAfterEnded resets the sprite once it actually ends
+        }
+        else if (newCount > originalCount)
+        {
+            UpdateAppearance(ent, InteractorState.Active);
+            _machine.Completed(ent.Owner);
         }
         else
         {

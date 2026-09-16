@@ -130,12 +130,15 @@ public sealed partial class StartableMachineSystem : EntitySystem
     /// <summary>
     /// Invoke the failed port if powered.
     /// </summary>
-    public void Failed(Entity<StartableMachineComponent?> ent)
+    public void Failed(Entity<StartableMachineComponent?> ent, bool autoStart = true)
     {
         if (!_query.Resolve(ent, ref ent.Comp))
             return;
 
         InvokeIfPowered(ent, ent.Comp.FailedPort);
+
+        if (autoStart)
+            ent.Comp.AutoStartQueued = true;
     }
 
     #endregion

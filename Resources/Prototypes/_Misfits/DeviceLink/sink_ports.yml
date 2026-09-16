@@ -66,6 +66,13 @@
   name: signal-port-name-plumbing-input
   description: signal-port-description-plumbing-input
 
+# Solution automation
+
+- type: sinkPort
+  id: AutomationSlotSolution
+  name: signal-port-name-automation-slot-solution
+  description: signal-port-description-automation-slot-solution
+
 # Lathe
 
 - type: sinkPort
