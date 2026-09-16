@@ -11665,3 +11665,16 @@ Entries:
   id: 6442
   time: '2026-09-16T01:43:31.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1925
+- author: Lucky
+  changes:
+    - type: Tweak
+      message: >-
+        Changed some sprites around to make new craftables in the G menu
+        clearer.
+    - type: Add
+      message: multiple pre-filled medical loot stuff
+    - type: Add
+      message: Daytripper can be made of Ethanol, Nuka Cola, Sugar and Mentats.
+  id: 6443
+  time: '2026-09-16T01:49:59.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1914
