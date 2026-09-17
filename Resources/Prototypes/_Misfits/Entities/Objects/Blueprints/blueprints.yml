@@ -981,7 +981,6 @@
     - N14BPVaultWeaponPistol9mmChinese
     - N14BPVaultWeaponPistolM1911
     - N14BPVaultWeaponShotgunSawedOff
-    - N14BPVaultWeaponSMGAmerican180
 
 - type: entity
   parent: N14BlueprintBase
