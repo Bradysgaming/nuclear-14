@@ -18,7 +18,7 @@
       sprite: _Nuclear14/Mobs/Animals/dogwolf.rsi
   - type: MovementSpeedModifier
     baseWalkSpeed: 3.16
-    baseSprintSpeed: 6.33
+    baseSprintSpeed: 6.99
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -56,4 +56,4 @@
     damage:
       types:
         Blunt: 10
-        Slash: 10
+        Slash: 20
