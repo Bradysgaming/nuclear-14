@@ -436,6 +436,14 @@ undecided-loadout-category-corvax-decanus-sharpshooter-description =
     a rope belt, 2 healing poultices, 2 K rations, the divine mustard, a .45 Colt pistol,
     2 .45 magazines, and a ceramic flask.
 
+undecided-loadout-category-corvax-decanus--destroyer-name = Decanus Heavy Destroyer
+undecided-loadout-category-corvax-decanus--destroyer-description =
+    Includes a M240B with a spare belt, a .45 Colt pistol,
+    2 .45 magazines, a Legion shield, a rope belt,
+    a singular smoke grenade and a box of handcuffs,
+    2 healing poultice, 2 K rations,
+    a ceramic flask, and mustard.
+
 undecided-loadout-category-corvax-veteran-rifleman-name = Veteran Rifleman
 undecided-loadout-category-corvax-veteran-rifleman-description =
     Includes a M14 rifle with 4 mags, a .45 Colt pistol,
