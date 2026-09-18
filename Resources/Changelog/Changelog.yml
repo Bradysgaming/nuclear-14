@@ -11720,3 +11720,12 @@ Entries:
   id: 6449
   time: '2026-09-18T21:05:04.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1928
+- author: RedBookcase
+  changes:
+    - type: Remove
+      message: Removed Tribunus and Praefectus roles
+    - type: Remove
+      message: Removed Legion HAR kit & ammo BP
+  id: 6450
+  time: '2026-09-18T21:06:54.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1935
