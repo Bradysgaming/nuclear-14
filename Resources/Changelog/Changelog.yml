@@ -11729,3 +11729,12 @@ Entries:
   id: 6450
   time: '2026-09-18T21:06:54.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1935
+- author: qevie
+  changes:
+    - type: Tweak
+      message: >-
+        Spoon has gotten a spiffy new bandana! Credits to enchantedcrocolisk for
+        the sprite.
+  id: 6451
+  time: '2026-09-18T21:09:34.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1932
