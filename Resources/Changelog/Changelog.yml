@@ -11738,3 +11738,10 @@ Entries:
   id: 6451
   time: '2026-09-18T21:09:34.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1932
+- author: Enkidienne
+  changes:
+    - type: Tweak
+      message: C27 can be customized
+  id: 6452
+  time: '2026-09-18T21:14:33.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1939
