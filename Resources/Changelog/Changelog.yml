@@ -11745,3 +11745,10 @@ Entries:
   id: 6452
   time: '2026-09-18T21:14:33.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1939
+- author: aftemath434
+  changes:
+    - type: Add
+      message: medieval armor sets
+  id: 6453
+  time: '2026-09-18T21:29:24.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1938
