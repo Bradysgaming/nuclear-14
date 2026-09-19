@@ -11812,3 +11812,10 @@ Entries:
   id: 6459
   time: '2026-09-19T23:23:27.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1955
+- author: The Brickthrowers
+  changes:
+    - type: Add
+      message: Due to recent developments in masonry, bricks are slightly cheaper!
+  id: 6460
+  time: '2026-09-19T23:24:36.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1951
