@@ -11786,3 +11786,10 @@ Entries:
   id: 6457
   time: '2026-09-19T01:28:36.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1950
+- author: cythisiax
+  changes:
+    - type: Add
+      message: blood decals fade over time
+  id: 6458
+  time: '2026-09-19T23:21:52.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1956
