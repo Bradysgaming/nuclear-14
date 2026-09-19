@@ -11819,3 +11819,12 @@ Entries:
   id: 6460
   time: '2026-09-19T23:24:36.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1951
+- author: Lucky
+  changes:
+    - type: Tweak
+      message: Encryption Keys can no longer be removed from headsets.
+    - type: Add
+      message: Added more intercoms for factions (to be mapped).
+  id: 6461
+  time: '2026-09-19T23:26:20.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1917
