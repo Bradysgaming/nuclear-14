@@ -11752,3 +11752,12 @@ Entries:
   id: 6453
   time: '2026-09-18T21:29:24.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1938
+- author: cythisiax
+  changes:
+    - type: Fix
+      message: >-
+        Removed Prefectus, and Tribanueualslaalsus markers on mapfile, missed by
+        someone's PR.
+  id: 6454
+  time: '2026-09-19T00:28:06.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1949
