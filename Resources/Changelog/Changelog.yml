@@ -11779,3 +11779,10 @@ Entries:
   id: 6456
   time: '2026-09-19T01:17:26.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1940
+- author: cythisiax
+  changes:
+    - type: Tweak
+      message: Head Paladin gets their cool Bonneville/509th recolor back.
+  id: 6457
+  time: '2026-09-19T01:28:36.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1950
