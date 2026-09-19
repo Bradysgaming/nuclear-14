@@ -11793,3 +11793,22 @@ Entries:
   id: 6458
   time: '2026-09-19T23:21:52.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1956
+- author: Lucky
+  changes:
+    - type: Tweak
+      message: Moved the ranger base.
+    - type: Tweak
+      message: Old ranger base is now a POI.
+    - type: Tweak
+      message: Extended railway tunnel at NCR.
+    - type: Fix
+      message: Most BOS bunkerwalls are no longer indestructible.
+    - type: Fix
+      message: Replaced the fridge in the Town.
+    - type: Tweak
+      message: Minor loot replacements.
+    - type: Add
+      message: Spawns for NCR Lt.Col and FotA Director.
+  id: 6459
+  time: '2026-09-19T23:23:27.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1955
