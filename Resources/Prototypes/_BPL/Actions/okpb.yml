@@ -1,0 +1,78 @@
+- type: entity
+  id: ActionOKPB
+  name: OKPB
+  description: Redirect photons into a kinetic barrier
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    useDelay: 10
+    itemIconStyle: BigAction
+    sound: !type:SoundPathSpecifier
+      path: /Audio/Magic/forcewall.ogg
+    icon:
+      sprite: Objects/Magic/magicactions.rsi
+      state: shield
+    event: !type:InstantSpawnSpellEvent
+      prototype: WallOKPB
+      posData: !type:TargetInFront
+      
+      
+# Spell book trials to give
+
+- type: entity
+  id: OKPBSpellbook
+  name: OKPB spellbook
+  parent: BaseSpellbook
+  components:
+    - type: Sprite
+      sprite: Objects/Misc/books.rsi
+      layers:
+      - state: paper
+      - state: cover_strong
+        color: "#366ed6"
+      - state: decor_vertical_middle
+        color: "#95ffff"
+      - state: decor_wingette_circle
+        color: "#95ffff"
+      - state: icon_magic_forcewall
+        shader: unshaded
+      - state: detail_rivets
+        color: gold
+    - type: Spellbook
+      learnPermanently: true
+      spellActions:
+        ActionOKPB: -1
+
+# The wall itself
+
+- type: entity
+  id: WallOKPB
+  name: Organic Kinetic Photon Barrier
+  components:
+    - type: TimedDespawn
+      lifetime: 12
+    - type: Tag
+      tags:
+        - Wall
+    - type: Physics
+      bodyType: Static
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeAabb
+            bounds: "-0.5,-0.5,0.5,0.5"
+          mask:
+            - FullTileMask
+          layer:
+            - WallLayer
+    - type: Airtight
+    - type: Sprite
+      sprite: _BPL/OKPB.rsi
+      state: okpb_alpha
+    - type: Icon
+      sprite: _BPL/OKPB.rsi
+      state: okpb_alpha
+    - type: Clickable #Nyano
+    - type: Reflect
+      reflectProb: 1
