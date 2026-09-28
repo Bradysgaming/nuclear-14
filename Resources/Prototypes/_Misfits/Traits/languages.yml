@@ -6,7 +6,7 @@
   obfuscation:
     !type:SyllableObfuscation
     minSyllables: 1
-    maxSyllables: 10 # literate
+    maxSyllables: 1
     replacement:
     - neigh
     - nicker

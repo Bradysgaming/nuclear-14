@@ -3,6 +3,10 @@
   id: MisfitsMobBrahdo_Base
   abstract: true
   components:
+  - type: OpenSlot
+    openSlots:
+      - outerClothing
+      - back
   - type: Vehicle # for some reason this is the only comp that forces it to take just one hand.
   - type: Sprite
     drawdepth: Mobs
@@ -21,8 +25,8 @@
         density: 50
         mask:
         - MobMask
-#        layer:
-#        - MobLayer
+        layer:
+        - MobLayer
   - type: DamageStateVisuals
     states:
       Alive:
@@ -103,6 +107,12 @@
     - id: MisfitsMobBrahdo_Standard
       maxAmount: 1
   - type: ReproductivePartner
+  - type: TriggerOnMobstateChange
+    mobState:
+    - Dead
+  - type: UnequipOnTrigger
+    slotsToUnequip:
+    - outerClothing
   - type: Inventory
     templateId: brahdo
   - type: InventorySlots
@@ -122,6 +132,7 @@
     speaks:
     - MisfitsHorse
     understands:
+    - MisfitsHorse
     - Crab
     - N14Dog
     - N14Insect
@@ -139,7 +150,7 @@
 
 - type: entity
   parent: MisfitsMobBrahdo_Base
-  id: MisfitsMobBrahdo_Tan
+  id: MisfitsMobBrahdo_Fast
   name: small Brahdo
   description: "A mutated horse favored among couriers and scouts. It is a head shorter than others, and seems to have needed that nimble stature to survive through uneven terrain. Treat it right and it'll never let you down"
   components:
@@ -154,13 +165,14 @@
   - type: Fixtures
     fixtures:
       fix1:
-        hard: true
         shape:
           !type:PhysShapeCircle
           radius: 0.65
         density: 40
         mask:
         - MobMask
+        layer:
+        - MobLayer
   - type: MobThresholds
     allowRevives: true
     thresholds:
@@ -186,7 +198,7 @@
 
 - type: entity
   parent: MisfitsMobBrahdo_Base
-  id: MisfitsMobBrahdo_Grey
+  id: MisfitsMobBrahdo_Old
   name: old Brahdo
   description: "A Mutated horse that was likely ridden by an experienced waster. It is past its prime, but history has left it faster and sturdier than most."
   components:
@@ -235,6 +247,8 @@
         density: 70
         mask:
         - MobMask
+        layer:
+        - MobLayer
   - type: Sprite
     drawdepth: Mobs
     scale: 1.2, 1.2

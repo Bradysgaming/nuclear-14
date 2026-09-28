@@ -3,18 +3,19 @@
   slots:
     - name: back
       fullTextureName: template_small
+      slotTexture: back
       slotFlags: BACK
       slotGroup: SecondHotbar
       dependsOn: outerClothing
-      stripTime: 3
+      stripTime: 2
       uiWindowPos: 0,0
       strippingWindowPos: 0,0
       displayName: Back Pack
     - name: outerClothing
-      fullTextureName: template_small
+      slotTexture: suit_storage
       slotFlags: OUTERCLOTHING
       slotGroup: SecondHotbar
-      stripTime: 3
+      stripTime: 2
       uiWindowPos: 1,0
       strippingWindowPos: 1,0
       displayName: Saddle
