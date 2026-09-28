@@ -17,6 +17,7 @@ using Content.Shared.Interaction.Events;
 using Content.Shared.Materials;
 using Content.Shared.Mind;
 using Content.Shared.Nutrition.EntitySystems;
+using Content.Shared.Stacks;
 using Robust.Server.GameObjects;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
@@ -205,9 +206,11 @@ public sealed class MaterialReclaimerSystem : SharedMaterialReclaimerSystem
         if (!Resolve(item, ref composition, false))
             return;
 
+        var stackCount = TryComp<StackComponent>(item, out var itemStack) ? itemStack.Count : 1;
+
         foreach (var (material, amount) in composition.MaterialComposition)
         {
-            var outputAmount = (int) (amount * efficiency);
+            var outputAmount = (int) (amount * efficiency * stackCount);
             _materialStorage.TryChangeMaterialAmount(reclaimer, material, outputAmount, storage);
         }
 
@@ -239,6 +242,7 @@ public sealed class MaterialReclaimerSystem : SharedMaterialReclaimerSystem
             return;
 
         efficiency *= reclaimerComponent.Efficiency;
+        var stackCount = TryComp<StackComponent>(item, out var itemStack) ? itemStack.Count : 1;
 
         var totalChemicals = new Solution();
 
@@ -247,7 +251,7 @@ public sealed class MaterialReclaimerSystem : SharedMaterialReclaimerSystem
             foreach (var (key, value) in composition.ChemicalComposition)
             {
                 // TODO use ReagentQuantity
-                totalChemicals.AddReagent(key, value * efficiency, false);
+                totalChemicals.AddReagent(key, value * efficiency * stackCount, false);
             }
         }
 
@@ -259,7 +263,7 @@ public sealed class MaterialReclaimerSystem : SharedMaterialReclaimerSystem
                 var solution = soln.Comp.Solution;
                 foreach (var quantity in solution.Contents)
                 {
-                    totalChemicals.AddReagent(quantity.Reagent.Prototype, quantity.Quantity * efficiency, false);
+                    totalChemicals.AddReagent(quantity.Reagent.Prototype, quantity.Quantity * efficiency * stackCount, false);
                 }
             }
         }

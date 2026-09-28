@@ -17,8 +17,35 @@
     access: [[ "NCR" ]]
   - type: CMAutomatedVendor
     departmentName: NCR
+    # NCR Army baseline. Rangers and NCR civilian roles use separate provisioning paths.
+    jobs: &ncrArmyVendorJobs
+    - NCRCadet
+    - NCRSoldier
+    - NCRPrivateFirstClass
+    - NCRMedic
+    - NCRDoctor
+    - NCREngineer
+    - NCRWS
+    - NCRHeavyTrooper
+    - NCRHeavyTrooperLead
+    - NCRNCO
+    - NCRStaffSergeant
+    - NCRFirstSergeant
+    - NCRVertibirdPilot
+    - NCRMPinvestigator
+    - NCRProvost
+    - NCRMilitaryPoliceRecruit
+    - NCRMilitaryPoliceSergeant
+    - NCRMilitaryPoliceCaptain
+    - NCRExecutiveOfficer
+    - NCRPlatoonLeader
+    - NCRRO
+    - NCRCommander
+    - NCRMajor
+    - NCRLTCol
     # Role authority is vendor-local: it does not grant corresponding physical door access.
     fullAllocationJobs: [ NCRRO, NCRCommander ]
+    replenishmentJobs: [ NCRRO ]
     authorityJobTiers:
       NCRCadet: 1
       NCRSoldier: 1
@@ -35,11 +62,15 @@
       NCRFirstSergeant: 3
       NCRMPinvestigator: 3
       NCRProvost: 3
+      NCRMilitaryPoliceRecruit: 1
+      NCRMilitaryPoliceSergeant: 3
+      NCRMilitaryPoliceCaptain: 4
       NCRExecutiveOfficer: 4
       NCRPlatoonLeader: 4
       NCRRO: 5
       NCRCommander: 5
       NCRMajor: 5
+      NCRLTCol: 5
     allocationCategories: [ Ballistic, Laser, Plasma, Energy, Melee, Explosives, Other weapons ]
     sharedEquipmentCategories: [ Ballistic, Laser, Plasma, Energy, Melee, Explosives, Other weapons ]
     defaultAllocationCategory: Other weapons
@@ -62,6 +93,11 @@
       - { id: N14WeaponRifleGrenade, category: Explosives, tier: 1 }
       - { id: N14WeaponRifle308SniperRifle, category: Ballistic, tier: 1 }
       - { id: N14WeaponSMG9mminfiltrator, category: Ballistic, tier: 1 }
+      - { id: N14WeaponShotgunBlowback, category: Ballistic, tier: 1 }
+      - { id: N14WeaponRevolverWebley, category: Ballistic, tier: 1 }
+      - { id: N14WeaponRifleOperative, category: Ballistic, tier: 1 }
+      - { id: N14PoliceBaton, category: Melee, tier: 1 }
+      - { id: N14TinNade, category: Explosives, tier: 1 }
     - name: Tier 2 - Heavy Trooper allocation
       entries:
       - { id: SmokeGrenade, category: Explosives, tier: 2 }
@@ -82,11 +118,9 @@
       - { id: GrenadeIncendiary, category: Explosives, tier: 2 }
       - { id: GrenadeShrapnel, category: Explosives, tier: 2 }
       - { id: MisfitsGrenadeFragDefensive, category: Explosives, tier: 2 }
-    - name: Tier 3 - Advanced grenade allocation
-      choices: { MisfitsNCRGrenadeTier3: 5 }
+    - name: Tier 3 - Military Police allocation
       entries:
-      - { id: MisfitsGrenadePlasma, category: Explosives, tier: 3 }
-      - { id: EmpGrenade, category: Explosives, tier: 3 }
+      - { id: MisfitsNCRMPShockBaton, category: Melee, tier: 3 }
     - name: Tier 4 - Executive Officer / Platoon Leader allocation
       entries:
       # A laser sight does not make this .44 Magnum pistol an energy weapon.
@@ -97,6 +131,9 @@
       - { id: N14WeaponRifleM1GarandRepublicsPride, category: Ballistic, tier: 5 }
     replenishment:
     - currency: Bottlecaps
+    - currency: NCRDollars
+    replenishmentPrompt: caps or NCR dollars
+    replenishmentInterval: 30m
     replenishmentCosts:
       1: 1
       2: 2
@@ -151,7 +188,7 @@
       N14WeaponLMG: { category: Ballistic, tier: 2 }
       N14WeaponLMGAutoRifle: { category: Ballistic, tier: 2 }
       N14WeaponMinigun: { category: Ballistic }
-      N14WeaponSniper50NCRRifle: { category: Ballistic, tier: 1 }
+      N14WeaponSniper50NCRRifle: { enabled: false }
     authorityTierNames:
       1: Tier 1 - Trooper / Specialist allocation
       2: Tier 2 - Heavy Trooper allocation
@@ -175,8 +212,10 @@
     access: [[ "NCR" ]]
   - type: CMAutomatedVendor
     departmentName: NCR
+    jobs: *ncrArmyVendorJobs
     # Role authority is vendor-local: it does not grant corresponding physical door access.
     fullAllocationJobs: [ NCRRO, NCRCommander ]
+    replenishmentJobs: [ NCRRO ]
     authorityJobTiers:
       NCRCadet: 1
       NCRSoldier: 1
@@ -193,16 +232,22 @@
       NCRFirstSergeant: 3
       NCRMPinvestigator: 3
       NCRProvost: 3
+      NCRMilitaryPoliceRecruit: 1
+      NCRMilitaryPoliceSergeant: 3
+      NCRMilitaryPoliceCaptain: 4
       NCRExecutiveOfficer: 4
       NCRPlatoonLeader: 4
       NCRRO: 5
       NCRCommander: 5
       NCRMajor: 5
+      NCRLTCol: 5
     allocationCategories: [ Helmet, Armor, Uniform, Mask, Gloves, Belt, Boots, Backpack, Neck, Eyes, Radio, Medical, Utility, Other equipment ]
     sharedEquipmentCategories: [ Helmet, Armor, Uniform, Mask, Gloves, Belt, Boots, Backpack, Neck, Eyes, Radio, Medical, Utility, Other equipment ]
     defaultAllocationCategory: Other equipment
     defaultSharedEquipmentCategory: Other equipment
     # Direct, mix-and-match replacements for the wearable/usable part of the former NCR loadout kits.
+    # The old random military box is decomposed into its medical/flare contents here; its NCR-dollar roll is
+    # intentionally not vendable, otherwise the vendor could create the currency used to fund its own resupply.
     sections:
     - name: Tier 1 - Trooper / Specialist allocation
       entries:
@@ -220,10 +265,31 @@
       - { id: N14Stimpak, category: Medical, tier: 1 }
       - { id: N14RadXPill, category: Medical, tier: 1 }
       - { id: N14CleanGauze10, category: Medical, tier: 1 }
+      - { id: N14ChemicalSyringeAntidote, category: Medical, tier: 1 }
       - { id: N14Flare, category: Utility, tier: 1 }
+      - { id: Flare, category: Utility, tier: 1 }
       - { id: N14BoxCardboardMREBoxCFilled, category: Utility, tier: 1 }
       - { id: N14Psycho, category: Medical, tier: 1 }
       - { id: WarhornNCRBugle, category: Utility, tier: 1 }
+      - { id: MisfitsMilitaryDetonator, category: Utility, tier: 1 }
+      - { id: N14BoxCardboardMREBoxKFilled, category: Utility, tier: 1 }
+      - { id: N14ClothingEyesGlassesGoggles, category: Eyes, tier: 1 }
+      - { id: N14ClothingEyesNCRGoggles, category: Eyes, tier: 1 }
+      - { id: N14ClothingHeadHatWinterBoonie, category: Helmet, tier: 1 }
+      - { id: N14ClothingHeadHatWoodBoonie, category: Helmet, tier: 1 }
+      - { id: N14ClothingHeadHatDesertBoonie, category: Helmet, tier: 1 }
+      - { id: N14ClothingHeadHatNCRStetson, category: Helmet, tier: 1 }
+      - { id: N14ClothingNeckCloakGhillie, category: Neck, tier: 1 }
+      - { id: N14ClothingNeckCloakNCRSnow, category: Neck, tier: 1 }
+      - { id: N14ClothingMaskBrownBalaclava, category: Mask, tier: 1 }
+      - { id: ClothingBeltNCRHarness, category: Belt, tier: 1 }
+      - { id: ClothingBeltMilitary, category: Belt, tier: 1 }
+      - { id: ClothingNeckStethoscope, category: Medical, tier: 1 }
+      - { id: SurgicalSterilanSpray, category: Medical, tier: 1 }
+      - { id: MisfitsHealingSalve5, category: Medical, tier: 1 }
+      - { id: MisfitsHerbalAnodyne5, category: Medical, tier: 1 }
+      - { id: MisfitsDaturaHide5, category: Medical, tier: 1 }
+      - { id: MisfitsSnakebiteTourniquet5, category: Medical, tier: 1 }
     - name: Tier 1 - Trooper / Specialist allocation
       entries:
       - { id: N14ClothingBeltUtilityFilled, category: Belt, tier: 1 }
@@ -241,7 +307,7 @@
       - { id: N14ClothingBeltMedicalFilled, category: Belt, tier: 1 }
       - { id: N14ClothingHandsGlovesNitrile, category: Gloves, tier: 1 }
       - { id: ClothingMaskSterile, category: Mask, tier: 1 }
-      - { id: ClothingBackpackDuffelSurgeryFilled, category: Backpack, tier: 1 }
+      - { id: N14ClothingBackpackDuffelMilitaryMedical, category: Backpack, tier: 1 }
       - { id: N14MedkitCombatFilled, category: Medical, tier: 1 }
       - { id: DefibrillatorCompact, category: Medical, tier: 1 }
       - { id: N14HandheldHealthAnalyzer, category: Medical, tier: 1 }
@@ -280,10 +346,14 @@
       - { id: N14ClothingEyesGlassesWelding, category: Eyes, tier: 1 }
       - { id: N14ClothingOuterNCREngineerVest, category: Armor, tier: 1 }
       - { id: N14ClothingOuterCoatFollowersArmored, category: Armor, tier: 1 }
+      - { id: MisfitsClothingOuterNCRMedicLabCoat, category: Armor, tier: 1 }
       - { id: MisfitsNCREnhancedVest, category: Armor, tier: 1 }
       - { id: MisfitsNCRPouchedCombatArmor, category: Armor, tier: 1 }
+      - { id: MisfitsNCRMPRecruitArmor, category: Armor, tier: 1 }
+      - { id: ClothingNeckPinNCRRecruit, category: Neck, tier: 1 }
       - { id: ClothingNeckPinNCRPrivate, category: Neck, tier: 1 }
       - { id: ClothingNeckPinNCRPrivate1st, category: Neck, tier: 1 }
+      - { id: ClothingNeckPinNCRSpecialist, category: Neck, tier: 1 }
     - name: Tier 2 - Heavy Trooper allocation
       entries:
       - { id: N14Stimpak, category: Medical, tier: 2 }
@@ -291,7 +361,8 @@
       - { id: N14RadAwayBloodbag, category: Medical, tier: 2 }
       - { id: N14CleanGauze10, category: Medical, tier: 2 }
       - { id: N14ClothingBootsCombatFilled, category: Boots, tier: 2 }
-      - { id: MisfitsNCRHeavyTrooperSalvagedPowerArmorT45, category: Armor, tier: 2 }
+      - { id: MisfitsNCRHeavyTrooperSalvagedPowerArmorT45, category: Armor, tier: 2, jobs: [ NCRHeavyTrooper ], requiredJob: Heavy Trooper }
+      - { id: ClothingNeckPinNCRCorporal, category: Neck, tier: 2 }
     - name: Tier 3 - Squad Leader / Medical Officer allocation
       entries:
       - { id: MisfitsNCRMSLUniform, category: Uniform, tier: 3 }
@@ -308,7 +379,8 @@
       - { id: MisfitsNCRCommandArmor, category: Armor, tier: 3 }
       - { id: MisfitsNCREliteCombatArmor, category: Armor, tier: 3 }
       - { id: MisfitsNCRMPCombatArmor, category: Armor, tier: 3 }
-      - { id: MisfitsNCRHeavyTrooperLeadPowerArmorT51, category: Armor, tier: 3 }
+      - { id: ClothingBeltRevolver, category: Belt, tier: 3 }
+      - { id: MisfitsNCRHeavyTrooperLeadPowerArmorT51, category: Armor, tier: 3, jobs: [ NCRHeavyTrooperLead ], requiredJob: Heavy Trooper Lead }
       - { id: N14ClothingEyesGlassesPilot, category: Eyes, tier: 3 }
       - { id: ClothingNeckPinNCRSergeant1st, category: Neck, tier: 3 }
       - { id: N14ClothingBackpackMilitary, category: Backpack, tier: 3 }
@@ -316,6 +388,18 @@
       - { id: N14ClothingUniformNCRCFUniform, category: Uniform, tier: 3 }
       - { id: N14ClothingOuterNCRVestCoatBlackArmored, category: Armor, tier: 3 }
       - { id: N14ClothingNeckMantleNCR, category: Neck, tier: 3 }
+      - { id: FalloutNCRmilitarypoliceHelmet, category: Helmet, tier: 3 }
+      - { id: Handcuffs, category: Utility, tier: 3 }
+      - { id: ForensicScanner, category: Utility, tier: 3 }
+      - { id: BoxTapeRecorder, category: Utility, tier: 3 }
+      - { id: RiotShield, category: Utility, tier: 3 }
+      - { id: ClothingNeckPinNCRSergeant, category: Neck, tier: 3 }
+      - { id: ClothingNeckPinNCRStaffSergeant, category: Neck, tier: 3 }
+      - { id: ClothingNeckPinNCRMasterSergeant, category: Neck, tier: 3 }
+      - { id: ClothingNeckPinNCR1stSergeant, category: Neck, tier: 3 }
+      - { id: ClothingNeckPinNCRWarrantOfficer, category: Neck, tier: 3 }
+      - { id: ClothingNeckPinNCRChiefWarrantOfficer2, category: Neck, tier: 3 }
+      - { id: ClothingNeckPinNCRChiefWarrantOfficer3, category: Neck, tier: 3 }
     - name: Tier 4 - Executive Officer / Platoon Leader allocation
       entries:
       - { id: MisfitsNCROfficerArmor, category: Armor, tier: 4 }
@@ -325,14 +409,28 @@
       - { id: N14ClothingHeadHatNCRCommissarHat, category: Helmet, tier: 4 }
       - { id: N14ClothingHeadHatNCRBeretOfficer, category: Helmet, tier: 4 }
       - { id: N14ClothingOuterNCRDressJacket, category: Armor, tier: 4 }
+      - { id: MisfitsNCRMPLieutenantArmor, category: Armor, tier: 4 }
       - { id: ClothingEyesGlassesSunglasses, category: Eyes, tier: 4 }
+      - { id: LuxuryPen, category: Utility, tier: 4 }
+      - { id: ClothingNeckPinNCRSecondLieutenant, category: Neck, tier: 4 }
+      - { id: ClothingNeckPinNCRFirstLieutenant, category: Neck, tier: 4 }
+      - { id: ClothingNeckPinNCRCaptain, category: Neck, tier: 4 }
     - name: Tier 5 - Commander / Requisition Officer allocation
       entries:
       - { id: N14ClothingOuterNCRDressJacketCO, category: Armor, tier: 5 }
+      - { id: MisfitsClothingHeadsetNCRMaster, category: Radio, tier: 5 }
       - { id: ClothingNeckPinNCRMajor, category: Neck, tier: 5 }
       - { id: N14ClothingNeckROmantleNCR, category: Neck, tier: 5 }
+      - { id: ClothingNeckPinNCRLtColonel, category: Neck, tier: 5 }
+      - { id: BoxFolderClipboard, category: Utility, tier: 5 }
+      - { id: N14Binoculars, category: Utility, tier: 5 }
+      - { id: SyndicateWhistle, category: Utility, tier: 5 }
+      - { id: SprayPaintDesertTan, category: Utility, tier: 5 }
     replenishment:
     - currency: Bottlecaps
+    - currency: NCRDollars
+    replenishmentPrompt: caps or NCR dollars
+    replenishmentInterval: 30m
     replenishmentCosts:
       1: 1
       2: 2
@@ -373,7 +471,7 @@
       N14ClothingHeadHatCombatHelmetMK2: { category: Helmet }
       N14ClothingHeadHatRangerHelmetElite: { enabled: false }
       N14ClothingOuterNCRCombatArmorMK2: { category: Armor }
-      N14ClothingOuterPowerArmorT51NCR: { category: Armor }
+      N14ClothingOuterPowerArmorT51NCR: { enabled: false }
       N14ClothingOuterRangerCombat: { enabled: false }
       N14ClothingOuterRangerElite: { enabled: false }
     authorityTierNames:
