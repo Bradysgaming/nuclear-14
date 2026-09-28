@@ -1,3 +1,5 @@
+# The action
+
 - type: entity
   id: ActionOKPB
   name: OKPB
@@ -8,41 +10,17 @@
     useDelay: 10
     itemIconStyle: BigAction
     sound: !type:SoundPathSpecifier
-      path: /Audio/Magic/Cults/ClockCult/steam_whoosh.ogg
+    
+    E:\SS14\nuclear-14-fork\Resources\Audio\_Misfits\Effects
+      path: /Audio/_Misfits/Effects/okpb_deploy.ogg
     icon:
-      sprite: _BPL/OKPB.rsi
+      sprite: _Misfits/Objects/Misc/okpb.rsi
       state: okpb
     event: !type:InstantSpawnSpellEvent
       prototype: WallOKPB
       posData: !type:TargetInFront
       
       
-# Spell book trials to give
-
-- type: entity
-  id: OKPBSpellbook
-  name: OKPB spellbook
-  parent: BaseSpellbook
-  components:
-    - type: Sprite
-      sprite: Objects/Misc/books.rsi
-      layers:
-      - state: paper
-      - state: cover_strong
-        color: "#366ed6"
-      - state: decor_vertical_middle
-        color: "#95ffff"
-      - state: decor_wingette_circle
-        color: "#95ffff"
-      - state: icon_magic_forcewall
-        shader: unshaded
-      - state: detail_rivets
-        color: gold
-    - type: Spellbook
-      learnPermanently: true
-      spellActions:
-        ActionOKPB: -1
-
 # The wall itself
 
 - type: entity
@@ -69,11 +47,11 @@
     - type: Airtight
     - type: Sprite
       drawdepth: WallTops
-      sprite: _BPL/OKPB.rsi
+      sprite: _Misfits/Objects/Misc/okpb.rsi
       state: okpb_alpha
     - type: Icon
-      sprite: _BPL/OKPB.rsi
+      sprite: _Misfits/Objects/Misc/okpb.rsi
       state: okpb_alpha
-    - type: Clickable #Nyano
+    - type: Clickable
     - type: Reflect
-      reflectProb: 1
+      reflectProb: 0.7
