@@ -8,24 +8,6 @@
   },
   "states": [
     {
-      "name": "forcewallspawn",
-      "delays": [
-        [
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.1,
-          0.3,
-          0.1
-        ]
-      ]
-    },
-    {
-      "name": "forcewall"
-    },
-    {
       "name": "okpb"
     },
     {

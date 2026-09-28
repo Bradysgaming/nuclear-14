@@ -8,10 +8,10 @@
     useDelay: 10
     itemIconStyle: BigAction
     sound: !type:SoundPathSpecifier
-      path: /Audio/Magic/forcewall.ogg
+      path: /Audio/Magic/Cults/ClockCult/steam_whoosh.ogg
     icon:
-      sprite: Objects/Magic/magicactions.rsi
-      state: shield
+      sprite: _BPL/OKPB.rsi
+      state: okpb
     event: !type:InstantSpawnSpellEvent
       prototype: WallOKPB
       posData: !type:TargetInFront
@@ -65,9 +65,10 @@
           mask:
             - FullTileMask
           layer:
-            - WallLayer
+            - GlassLayer
     - type: Airtight
     - type: Sprite
+      drawdepth: WallTops
       sprite: _BPL/OKPB.rsi
       state: okpb_alpha
     - type: Icon
