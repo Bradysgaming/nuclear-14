@@ -10,8 +10,6 @@
     useDelay: 10
     itemIconStyle: BigAction
     sound: !type:SoundPathSpecifier
-    
-    E:\SS14\nuclear-14-fork\Resources\Audio\_Misfits\Effects
       path: /Audio/_Misfits/Effects/okpb_deploy.ogg
     icon:
       sprite: _Misfits/Objects/Misc/okpb.rsi
