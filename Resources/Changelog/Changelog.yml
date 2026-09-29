@@ -11979,3 +11979,10 @@ Entries:
   id: 6478
   time: '2026-09-28T02:52:02.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2005
+- author: Enkidienne
+  changes:
+    - type: Add
+      message: 2 craftable katanas
+  id: 6479
+  time: '2026-09-29T15:43:05.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1984
