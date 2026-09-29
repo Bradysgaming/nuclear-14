@@ -21,6 +21,7 @@
   - type: Tag
     tags:
     - Brahdo
+
 # WHY IS THERE LIKE 100000 WAYS TO DO CLOTHING VISUALS????
 
 - type: entity
@@ -37,7 +38,6 @@
         Slash: 0.7
         Piercing: 0.7
         Heat: 0.7
-
 
 - type: entity
   parent: ClothingBrahdoSaddleBase
@@ -97,6 +97,32 @@
     - state: icon-cloth
   - type: Clothing
     sprite: _Misfits/Clothing/Animal/Brahdo/Armor/saddle.rsi
+  - type: GeneralConstructs
+    generalEnts:
+      saddleStorage: ClothingBrahdoSaddle_BasicStorage
+  - type: Construction
+    graph: ConstructGraph_BrahdoSaddleStorage
+    node: saddleStorage
+
+- type: entity
+  parent: ClothingBrahdoSaddle_ArmorBase
+  id: ClothingBrahdoSaddle_BasicArmor
+  name: followers brahdo saddle
+  description: an armored saddle for your brahdo. It still lets you latch backpacks!
+  components:
+  - type: Sprite
+    layers:
+    - state: icon-saddle
+    - state: icon-cloth
+  - type: Clothing
+    saddleArmor: _Misfits/Clothing/Animal/Brahdo/Armor/saddle.rsi
+  - type: GeneralConstructs
+    generalEnts:
+      saddle: ClothingBrahdoSaddle_BasicArmor
+  - type: Construction
+    graph: ConstructGraph_BrahdoSaddleArmor
+    node: saddleArmor
+
 
 - type: entity
   parent: ClothingBrahdoSaddle_StorageBase
@@ -160,7 +186,7 @@
     - state: icon-cloth
       color: '#513d39'
 
-# unimplemented
+
 - type: entity
   parent: ClothingBrahdoSaddle_StorageBase
   id: ClothingBrahdoSaddle_NCRMedic
