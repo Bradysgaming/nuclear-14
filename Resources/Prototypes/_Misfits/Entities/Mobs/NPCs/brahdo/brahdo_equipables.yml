@@ -12,7 +12,6 @@
     - state: icon-cloth
   - type: Clothing
     sprite: _Misfits/Clothing/Animal/Brahdo/Armor/saddle.rsi
-    inSlot: saddle
     clothingVisuals:
       outerClothing:
       - state: base
@@ -77,13 +76,13 @@
       color: '#2b2201'
   - type: Clothing
     sprite: _Misfits/Clothing/Animal/Brahdo/Armor/saddle.rsi
-    inSlot: saddle
     clothingVisuals:
       outerClothing:
       - state: base
         color: '#2b2201'
     slots:
     - outerClothing
+
 
 - type: entity
   parent: ClothingBrahdoSaddle_StorageBase
@@ -115,13 +114,13 @@
     - state: icon-saddle
     - state: icon-cloth
   - type: Clothing
-    saddleArmor: _Misfits/Clothing/Animal/Brahdo/Armor/saddle.rsi
-  - type: GeneralConstructs
-    generalEnts:
-      saddle: ClothingBrahdoSaddle_BasicArmor
-  - type: Construction
-    graph: ConstructGraph_BrahdoSaddleArmor
-    node: saddleArmor
+    sprite: _Misfits/Clothing/Animal/Brahdo/Armor/saddle.rsi
+  # - type: GeneralConstructs
+  #   generalEnts:
+  #     saddle: ClothingBrahdoSaddle_BasicArmor
+  # - type: Construction
+  #   graph: ConstructGraph_BrahdoSaddleArmor
+  #   node: saddleArmor
 
 
 - type: entity
