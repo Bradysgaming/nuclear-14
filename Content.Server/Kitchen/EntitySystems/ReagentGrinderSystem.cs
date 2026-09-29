@@ -1,3 +1,4 @@
+using Content.Server.Botany.Systems;
 using Content.Server.Chemistry.Containers.EntitySystems;
 using Content.Server.Construction;
 using Content.Server.Kitchen.Components;
@@ -40,6 +41,7 @@ namespace Content.Server.Kitchen.EntitySystems
         [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
         [Dependency] private readonly RandomHelperSystem _randomHelper = default!;
         [Dependency] private readonly JitteringSystem _jitter = default!;
+        [Dependency] private readonly LogSystem _log = default!; // #Misfits Add
 
         public override void Initialize()
         {
@@ -84,12 +86,41 @@ namespace Content.Server.Kitchen.EntitySystems
                 RemCompDeferred<ActiveReagentGrinderComponent>(uid);
 
                 var inputContainer = _containerSystem.EnsureContainer<Container>(uid, SharedReagentGrinder.InputContainerId);
+
+                // Misfits
+                var chopped = false;
+                if (active.Program == GrinderProgram.Grind)
+                {
+                    foreach (var item in inputContainer.ContainedEntities.ToList())
+                    {
+                        if (!CanChop(reagentGrinder, item))
+                            continue;
+
+                        _log.ChopInGrinder(item, uid);
+                        chopped = true;
+                    }
+                }
+
                 var outputContainer = _itemSlotsSystem.GetItemOrNull(uid, SharedReagentGrinder.BeakerSlotId);
                 if (outputContainer is null || !_solutionContainersSystem.TryGetFitsInDispenser(outputContainer.Value, out var containerSoln, out var containerSolution))
+                {
+                    // Misfit
+                    if (chopped)
+                    {
+                        _userInterfaceSystem.ServerSendUiMessage(uid, ReagentGrinderUiKey.Key,
+                            new ReagentGrinderWorkCompleteMessage());
+                        UpdateUiState(uid);
+                    }
+
                     continue;
+                }
 
                 foreach (var item in inputContainer.ContainedEntities.ToList())
                 {
+                    // Misfits
+                    if (active.Program == GrinderProgram.Grind && CanChop(reagentGrinder, item))
+                        continue;
+
                     var solution = GetProgramSolution(item, active.Program);
 
                     if (solution is null)
@@ -238,12 +269,15 @@ namespace Content.Server.Kitchen.EntitySystems
             var canJuice = false;
             var canGrind = false;
 
-            if (outputContainer is not null
-                && _solutionContainersSystem.TryGetFitsInDispenser(outputContainer.Value, out _, out containerSolution)
-                && inputContainer.ContainedEntities.Count > 0)
+            var hasBeaker = outputContainer is not null
+                && _solutionContainersSystem.TryGetFitsInDispenser(outputContainer.Value, out _, out containerSolution);
+
+            if (inputContainer.ContainedEntities.Count > 0)
             {
-                canGrind = inputContainer.ContainedEntities.All(CanGrind);
-                canJuice = inputContainer.ContainedEntities.All(CanJuice);
+                // Misfits logs can be chopped by the grind without beaker
+                canGrind = inputContainer.ContainedEntities.All(item => CanGrind(item) || CanChop(grinderComp, item))
+                    && (hasBeaker || inputContainer.ContainedEntities.All(item => CanChop(grinderComp, item)));
+                canJuice = hasBeaker && inputContainer.ContainedEntities.All(CanJuice);
             }
 
             var state = new ReagentGrinderInterfaceState(
@@ -311,13 +345,18 @@ namespace Content.Server.Kitchen.EntitySystems
             var outputContainer = _itemSlotsSystem.GetItemOrNull(uid, SharedReagentGrinder.BeakerSlotId);
 
             // Do we have anything to grind/juice and a container to put the reagents in?
-            if (inputContainer.ContainedEntities.Count <= 0 || !HasComp<FitsInDispenserComponent>(outputContainer))
+            // Misfits chopping logs doesnt need a container
+            if (inputContainer.ContainedEntities.Count <= 0)
+                return;
+
+            if (!HasComp<FitsInDispenserComponent>(outputContainer)
+                && (program != GrinderProgram.Grind || !inputContainer.ContainedEntities.All(item => CanChop(reagentGrinder, item))))
                 return;
 
             SoundSpecifier? sound;
             switch (program)
             {
-                case GrinderProgram.Grind when inputContainer.ContainedEntities.All(CanGrind):
+                case GrinderProgram.Grind when inputContainer.ContainedEntities.All(item => CanGrind(item) || CanChop(reagentGrinder, item)):
                     sound = reagentGrinder.GrindSound;
                     break;
                 case GrinderProgram.Juice when inputContainer.ContainedEntities.All(CanJuice):
@@ -330,7 +369,7 @@ namespace Content.Server.Kitchen.EntitySystems
             var active = AddComp<ActiveReagentGrinderComponent>(uid);
             active.EndTime = _timing.CurTime + reagentGrinder.WorkTime * reagentGrinder.WorkTimeMultiplier;
             active.Program = program;
-            
+
             // slightly higher pitched
             var audio = _audioSystem.PlayPvs(sound, uid,
                 AudioParams.Default.WithPitchScale(1 / reagentGrinder.WorkTimeMultiplier));
@@ -392,6 +431,12 @@ namespace Content.Server.Kitchen.EntitySystems
             var solutionName = CompOrNull<ExtractableComponent>(uid)?.GrindableSolution;
 
             return solutionName is not null && _solutionContainersSystem.TryGetSolution(uid, solutionName, out _, out _);
+        }
+
+        /// Misfits
+        private bool CanChop(ReagentGrinderComponent grinder, EntityUid uid)
+        {
+            return grinder.ChopsLogs && _log.IsGrinderChoppable(uid);
         }
 
         private bool CanJuice(EntityUid uid)
