@@ -22,6 +22,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Utility;
 using System.Linq;
 using Content.Server.Administration.Logs;
+using Content.Server.Botany.Systems;
 using Content.Shared.Database;
 using Content.Shared.Destructible;
 using Content.Shared.Emag.Components;
@@ -44,6 +45,10 @@ public sealed class MaterialReclaimerSystem : SharedMaterialReclaimerSystem
     [Dependency] private readonly StackSystem _stack = default!;
     [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
+    [Dependency] private readonly LogSystem _log = default!; // Misfits
+
+    /// Misfits
+    private static readonly TimeSpan ChoppedOutputIgnoreTime = TimeSpan.FromSeconds(3);
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -174,6 +179,17 @@ public sealed class MaterialReclaimerSystem : SharedMaterialReclaimerSystem
         base.Reclaim(uid, item, completion, component);
 
         var xform = Transform(uid);
+
+        // Misfits
+        if (component.ChopsLogs && _log.IsGrinderChoppable(item))
+        {
+            foreach (var output in _log.ChopAt(item, xform.Coordinates))
+            {
+                MarkAsOutput(output, ChoppedOutputIgnoreTime);
+            }
+
+            return;
+        }
 
         SpawnMaterialsFromComposition(uid, item, completion * component.Efficiency, xform: xform);
 

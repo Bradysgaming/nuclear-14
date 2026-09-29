@@ -51,10 +51,6 @@ namespace Content.Server.Kitchen.Components
         [DataField]
         public GrinderAutoMode AutoMode = GrinderAutoMode.Off;
 
-        /// Misifts
-        [DataField]
-        public bool ChopsLogs;
-
         public EntityUid? AudioStream;
     }
 

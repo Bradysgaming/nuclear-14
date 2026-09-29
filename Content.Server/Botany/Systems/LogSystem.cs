@@ -4,6 +4,7 @@ using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Random;
 using Robust.Shared.Containers;
+using Robust.Shared.Map;
 
 namespace Content.Server.Botany.Systems;
 
@@ -54,19 +55,21 @@ public sealed class LogSystem : EntitySystem
     }
 
     /// Misifts
-    public void ChopInGrinder(EntityUid uid, EntityUid grinder, LogComponent? component = null)
+    public List<EntityUid> ChopAt(EntityUid uid, EntityCoordinates coordinates, LogComponent? component = null)
     {
-        if (!Resolve(uid, ref component))
-            return;
+        var spawned = new List<EntityUid>();
 
-        var pos = Transform(grinder).Coordinates;
+        if (!Resolve(uid, ref component))
+            return spawned;
 
         for (var i = 0; i < component.SpawnCount; i++)
         {
-            var plank = Spawn(component.SpawnedPrototype, pos);
-            _randomHelper.RandomOffset(plank, 0.4f);
+            var plank = Spawn(component.SpawnedPrototype, coordinates);
+            _randomHelper.RandomOffset(plank, 0.25f);
+            spawned.Add(plank);
         }
 
         QueueDel(uid);
+        return spawned;
     }
 }
