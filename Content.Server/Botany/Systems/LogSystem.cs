@@ -46,4 +46,27 @@ public sealed class LogSystem : EntitySystem
 
         QueueDel(uid);
     }
+
+    /// Misfits
+    public bool IsGrinderChoppable(EntityUid uid)
+    {
+        return TryComp<LogComponent>(uid, out var log) && log.GrinderChoppable;
+    }
+
+    /// Misifts
+    public void ChopInGrinder(EntityUid uid, EntityUid grinder, LogComponent? component = null)
+    {
+        if (!Resolve(uid, ref component))
+            return;
+
+        var pos = Transform(grinder).Coordinates;
+
+        for (var i = 0; i < component.SpawnCount; i++)
+        {
+            var plank = Spawn(component.SpawnedPrototype, pos);
+            _randomHelper.RandomOffset(plank, 0.4f);
+        }
+
+        QueueDel(uid);
+    }
 }
