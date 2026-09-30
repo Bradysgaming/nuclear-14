@@ -1,7 +1,7 @@
 # NCR Rank Pin Progressions
 # NCRRankPinSpawnSystem reads these at round start. It only places the appropriate
 # pin in the player's hand when that progression has spawnOnRoundstart enabled;
-# NCR Army and Military Police progressions are provisioned by the equipment vendor.
+# NCR Army and Military Police progressions issue the earned pin when the job spawns.
 #
 # Tracker quick-reference (use with: playtime_addrole <user> <tracker> <time>)
 #   NCRCommander              — NCR Commander
@@ -26,8 +26,7 @@
 # Commander: Captain (O-3) → Major (O-4) at 20h
 - type: ncrRankPinProgression
   id: NCRCommandOfficerPins
-  # Rank pins are issued from the NCR equipment vendor.
-  spawnOnRoundstart: false
+  spawnOnRoundstart: true
   jobs:
     - NCRCommander
   tracker: NCRCommander
@@ -41,8 +40,7 @@
 # Medical Officer: Captain (O-3) → Major (O-4) at 20h
 - type: ncrRankPinProgression
   id: NCRMedicalOfficerPins
-  # Rank pins are issued from the NCR equipment vendor.
-  spawnOnRoundstart: false
+  spawnOnRoundstart: true
   jobs:
     - NCRDoctor
   tracker: NCRMedicalDoctor
@@ -60,8 +58,7 @@
 # Executive Officer: 1LT (O-2) → Captain (O-3) at 20h
 - type: ncrRankPinProgression
   id: NCRExecutiveOfficerPins
-  # Rank pins are issued from the NCR equipment vendor.
-  spawnOnRoundstart: false
+  spawnOnRoundstart: true
   jobs:
     - NCRExecutiveOfficer
   tracker: NCRExecutiveOfficer
@@ -75,8 +72,7 @@
 # Platoon Leader: 2LT (O-1) → 1LT (O-2) at 20h
 - type: ncrRankPinProgression
   id: NCRPlatoonLeaderPins
-  # Rank pins are issued from the NCR equipment vendor.
-  spawnOnRoundstart: false
+  spawnOnRoundstart: true
   jobs:
     - NCRPlatoonLeader
   tracker: NCRPlatoonLeader
@@ -90,8 +86,7 @@
 # Requisition Officer 2LT (O-1) → 1LT (O-2) at 20h → Captain (O-3) at 40h
 - type: ncrRankPinProgression
   id: NCRRequisitionOfficerPins
-  # Rank pins are issued from the NCR equipment vendor.
-  spawnOnRoundstart: false
+  spawnOnRoundstart: true
   jobs:
     - NCRRO
   tracker: NCRRO
@@ -108,8 +103,7 @@
 # All 4 map slots share the NCRSquadLeader tracker so time accumulates across slots.
 - type: ncrRankPinProgression
   id: NCRNCOPins
-  # Rank pins are issued from the NCR equipment vendor.
-  spawnOnRoundstart: false
+  spawnOnRoundstart: true
   jobs:
     - NCRNCO
   tracker: NCRSquadLeader
@@ -131,8 +125,7 @@
 # HT Lead: SSGT (E-6) → SFC (E-7) at 20h → MSGT (E-8) at 40h → 1stSgt (E-8) at 60h → WarOff (W-1) at 80h → CWO (W-2) at 100h
 - type: ncrRankPinProgression
   id: NCRHeavyTrooperLeadPins
-  # Rank pins are issued from the NCR equipment vendor.
-  spawnOnRoundstart: false
+  spawnOnRoundstart: true
   jobs:
     - NCRHeavyTrooperLead
   tracker: NCRHeavyTrooperLead
@@ -152,8 +145,7 @@
 # Medic: PFC (E-3) → SPC (E-4) at 20h → SGT (E-5) at 40h
 - type: ncrRankPinProgression
   id: NCRMedicPins
-  # Rank pins are issued from the NCR equipment vendor.
-  spawnOnRoundstart: false
+  spawnOnRoundstart: true
   jobs:
     - NCRMedic
   tracker: NCRMedic
@@ -169,8 +161,7 @@
 # Weapon Specialist: PV2 (E-2) → PFC (E-3) at 20h → SPC (E-4) at 40h
 - type: ncrRankPinProgression
   id: NCRSpecialistPins
-  # Rank pins are issued from the NCR equipment vendor.
-  spawnOnRoundstart: false
+  spawnOnRoundstart: true
   jobs:
     - NCRWS
   tracker: NCRWeaponSpecialist
@@ -186,8 +177,7 @@
 # Engineer: PV2 (E-2) → PFC (E-3) at 20h → SPC (E-4) at 40h
 - type: ncrRankPinProgression
   id: NCREngineerPins
-  # Rank pins are issued from the NCR equipment vendor.
-  spawnOnRoundstart: false
+  spawnOnRoundstart: true
   jobs:
     - NCREngineer
   tracker: NCREngineer
@@ -203,8 +193,7 @@
 # Heavy Trooper: PV2 (E-2) → PFC (E-3) at 20h → SPC (E-4) at 40h → CPL (E-4) at 60h
 - type: ncrRankPinProgression
   id: NCRHeavyTrooperPins
-  # Rank pins are issued from the NCR equipment vendor.
-  spawnOnRoundstart: false
+  spawnOnRoundstart: true
   jobs:
     - NCRHeavyTrooper
   tracker: NCRHeavyTrooper
@@ -222,8 +211,7 @@
 # Troopers: Recruit (E-1) → PV2 (E-2) at 20h → PFC (E-3) at 40h → SPC (E-4) at 60h NCR dept
 - type: ncrRankPinProgression
   id: NCRTrooperPins
-  # Rank pins are issued from the NCR equipment vendor.
-  spawnOnRoundstart: false
+  spawnOnRoundstart: true
   jobs:
     - NCRCadet
   tracker: NCR
@@ -273,8 +261,7 @@
 # NCRMP Specialist: SPC (E-4) -> SGT (E-5) at 20h
 - type: ncrRankPinProgression
   id: NCRMilitaryPoliceRecruitPins
-  # Rank pins are issued from the NCR equipment vendor.
-  spawnOnRoundstart: false
+  spawnOnRoundstart: true
   jobs:
     - NCRMilitaryPoliceRecruit
   tracker: NCRMilitaryPoliceRecruit
@@ -288,8 +275,7 @@
 # NCRMP Staff Sergeant: SSG (E-6) -> SFC (E-7) at 20h -> MSG (E-8) at 40h -> 1stSGT (E-8) at 60h
 - type: ncrRankPinProgression
   id: NCRMilitaryPoliceSergeantPins
-  # Rank pins are issued from the NCR equipment vendor.
-  spawnOnRoundstart: false
+  spawnOnRoundstart: true
   jobs:
     - NCRMilitaryPoliceSergeant
   tracker: NCRMilitaryPoliceSergeant
@@ -308,8 +294,7 @@
 # Army aviation runs on the warrant officer track, so pilots rank apart from the command ladder.
 - type: ncrRankPinProgression
   id: NCRVertibirdPilotPins
-  # Rank pins are issued from the NCR equipment vendor.
-  spawnOnRoundstart: false
+  spawnOnRoundstart: true
   jobs:
     - NCRVertibirdPilot
   tracker: NCRVertibirdPilot
@@ -325,8 +310,7 @@
 # NCRMP First Lieutenant: 1LT (O-2) -> CPT (O-3) at 20h -> MAJ (O-4) at 40h -> LTC (O-5) at 80h
 - type: ncrRankPinProgression
   id: NCRMilitaryPoliceOfficerPins
-  # Rank pins are issued from the NCR equipment vendor.
-  spawnOnRoundstart: false
+  spawnOnRoundstart: true
   jobs:
     - NCRMilitaryPoliceCaptain
   tracker: NCRMilitaryPoliceCaptain
