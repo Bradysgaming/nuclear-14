@@ -36,6 +36,7 @@
     - NCRLT
     - NCRCaptain
     - NCRMajor
+    - NCRRanger
   special:
     - !type:AddComponentSpecial
       components:

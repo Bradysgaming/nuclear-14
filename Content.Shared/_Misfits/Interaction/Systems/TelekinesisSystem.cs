@@ -38,7 +38,8 @@ public sealed partial class TelekinesisSystem : EntitySystem
         // anything important that might accidentally get overriden (admin freeze) is already checked in CanUseTelekinesis
         SubscribeLocalEvent<TelekinesisComponent, InteractionAttemptEvent>(OnInteractionAttempt,
             after: new[] { typeof(SharedStunSystem), typeof(SharedCuffableSystem) });
-        SubscribeLocalEvent<TelekinesisComponent, InRangeOverrideEvent>(OnRangeOverride);
+        SubscribeLocalEvent<TelekinesisComponent, InRangeOverrideEvent>(OnRangeOverride,
+            after: new[] { typeof(ExtraReachSystem) });
         SubscribeLocalEvent<TelekinesisComponent, TelekinesisActionEvent>(OnAction);
         SubscribeLocalEvent<TelekinesisComponent, SleepStateChangedEvent>(OnSleepStateChanged);
         SubscribeLocalEvent<TelekinesisComponent, MobStateChangedEvent>(OnMobStateChanged);
@@ -72,7 +73,7 @@ public sealed partial class TelekinesisSystem : EntitySystem
 
         // using the action on another target while holding something hurls the held
         // object at them instead of switching the tether.
-        if (original is {} held && args.Target != held && args.Target != ent.Owner)
+        if (original is { } held && args.Target != held && args.Target != ent.Owner)
         {
             _tether.StopTether(ent, gun, land: false);
 

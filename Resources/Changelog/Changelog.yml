@@ -11979,3 +11979,39 @@ Entries:
   id: 6478
   time: '2026-09-28T02:52:02.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2005
+- author: Enkidienne
+  changes:
+    - type: Add
+      message: 2 craftable katanas
+  id: 6479
+  time: '2026-09-29T15:43:05.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1984
+- author: Clintus
+  changes:
+    - type: Add
+      message: Added WieldDelay component for future and current use
+    - type: Tweak
+      message: >-
+        applied wield delay to all MGs, including BAR. between 1-2 seconds
+        across the board
+    - type: Tweak
+      message: Increased accuracy for almost all MGs
+    - type: Tweak
+      message: Increased accuracy for miniguns by a small amount
+  id: 6480
+  time: '2026-09-30T20:24:54.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2002
+- author: Enkidienne
+  changes:
+    - type: Tweak
+      message: 'Balaclavas are now wearable on the neck slot. '
+  id: 6481
+  time: '2026-09-30T20:36:19.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1978
+- author: Shank
+  changes:
+    - type: Add
+      message: .357 ammo box sprite
+  id: 6482
+  time: '2026-09-30T20:36:44.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1976
