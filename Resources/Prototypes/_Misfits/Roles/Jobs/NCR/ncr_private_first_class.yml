@@ -39,8 +39,13 @@
   id: NCRPrivateFirstClassGear
   equipment:
     wallet: N14Wallet
+    head: N14ClothingHeadHatNCRHelmetMetalDesert # Corvax-Change
+    neck: ClothingNeckPinNCRPrivate1st
+    ears: N14ClothingHeadsetNCR # #Misfits Add - NCR radio earpiece
+    back: N14ClothingBackpackNCR # Corvax-Change
     jumpsuit: N14ClothingUniformNCRDesert # Corvax-Change
     shoes: N14ClothingBootsLeatherFilled
+    belt: ClothingBeltNCR
     id: N14IDNCRDogtagPrivateFirstClass
   innerClothingSkirt: N14ClothingUniformNCRDesert # Corvax-Change
 

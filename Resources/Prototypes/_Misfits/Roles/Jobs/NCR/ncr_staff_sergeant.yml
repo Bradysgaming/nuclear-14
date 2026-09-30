@@ -40,9 +40,13 @@
   id: NCRStaffSergeantGear
   equipment:
     wallet: N14Wallet
+    neck: ClothingNeckPinNCRSergeant1st # #Misfits Change - rank pin instead of generic mantle
+    ears: N14ClothingHeadsetNCR # #Misfits Add - NCR radio earpiece
+    back: N14ClothingBackpackNCR # Corvax-Change
     hands: N14ClothingHandsGlovesCombat
     jumpsuit: N14ClothingOfficerUniformNCRDesert # Corvax-Change
     shoes: N14ClothingBootsCombatFilled
+    belt: ClothingBeltNCR
     id: N14IDNCRDogtagStaffSergeant
   innerClothingSkirt: N14ClothingOfficerUniformNCRDesert # Corvax-Change
 

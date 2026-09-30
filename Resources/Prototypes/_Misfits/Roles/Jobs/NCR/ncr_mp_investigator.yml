@@ -41,10 +41,16 @@
   id: NCRMPinvestigatorGear
   equipment:
     wallet: N14Wallet
+    head:  N14ClothingHeadHatNCRMPCap
+    ears: N14ClothingHeadsetNCR
+    back: N14ClothingBackpackMilitary
     jumpsuit: N14ClothingUniformJumpsuitNCRMP
     shoes: N14ClothingBootsCombatFilled
+    outerClothing: MisfitsNCRMPCombatArmor
+    pocket1: NCRMPinvestigatorKits
     hands: N14ClothingHandsGlovesCombat
     id: N14IDNCRDogtagMPInvestigator
+    eyes: ClothingEyesGlassesSunglasses
 
 - type: playTimeTracker
   id: NCRMPinvestigator

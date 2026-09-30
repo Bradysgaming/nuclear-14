@@ -45,8 +45,12 @@
   id: NCRPlatoonLeaderGear
   equipment:
     wallet: N14Wallet
+    head: N14ClothingHeadHatNCRBeretOfficer
+    ears: N14ClothingHeadsetNCR
+    back: N14ClothingBackpackNCR
     jumpsuit: N14ClothingOfficerUniformNCRDesert
     shoes: N14ClothingBootsCombatFilled
+    belt: ClothingBeltNCR
     id: N14IDNCRDogtagOfficer
   innerClothingSkirt: N14ClothingOfficerUniformNCRDesert
 

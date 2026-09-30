@@ -44,9 +44,13 @@
   id: NCRFirstSergeantGear
   equipment:
     wallet: N14Wallet
+    neck: ClothingNeckPinNCRSergeant1st # #Misfits Change - sergeant first class pin for SFC rank
+    ears: N14ClothingHeadsetNCR # #Misfits Add - NCR radio earpiece
+    back: N14ClothingBackpackNCR # Corvax-Change
     hands: N14ClothingHandsGlovesCombat
     jumpsuit: N14ClothingOfficerUniformNCRDesert # Corvax-Change
     shoes: N14ClothingBootsCombatFilled
+    belt: ClothingBeltNCR
     id: N14IDNCRDogtagFirstSergeant
   innerClothingSkirt: N14ClothingOfficerUniformNCRDesert # Corvax-Change
 

@@ -13,17 +13,17 @@
   name: NCR weapon requisitions vendor
   suffix: NCR
   components:
-  - type: AccessReader
-    access: [[ "NCR" ]]
   - type: CMAutomatedVendor
     departmentName: NCR
+    # Authorization is job-based below. Do not require a physical card tag as well:
+    # Heavy Trooper and Heavy Trooper Lead are authorized vendor roles even when their
+    # rank dogtag does not expose the generic NCR access tag.
     # NCR Army baseline. Rangers and NCR civilian roles use separate provisioning paths.
     jobs:
     - NCRCadet
     - NCRSoldier
     - NCRPrivateFirstClass
     - NCRMedic
-    - NCRDoctor
     - NCREngineer
     - NCRWS
     - NCRHeavyTrooper
@@ -55,7 +55,6 @@
       NCRWS: 1
       NCRHeavyTrooper: 2
       NCRNCO: 3
-      NCRDoctor: 3
       NCRVertibirdPilot: 3
       NCRHeavyTrooperLead: 3
       NCRStaffSergeant: 3
@@ -71,13 +70,48 @@
       NCRCommander: 5
       NCRMajor: 5
       NCRLTCol: 5
-    allocationCategories: [ Ballistic, Laser, Plasma, Energy, Melee, Explosives, Other weapons ]
+    allocationCategories: [ Ballistic, Laser, Plasma, Energy, Melee, Explosives, Ammo, Magazines, Other weapons ]
     sharedEquipmentCategories: [ Ballistic, Laser, Plasma, Energy, Melee, Explosives, Other weapons ]
     defaultAllocationCategory: Other weapons
     defaultSharedEquipmentCategory: Other weapons
     # Direct, mix-and-match replacements for the old NCR undecided loadout kits.
-    # Magazines/ammunition are intentionally omitted; those remain crafted supplies.
+    # Basic ballistic ammunition and weapon magazines are open stock for every
+    # NCR role authorized to use this vendor; they are not rank allocations.
     sections:
+    - name: Ammunition
+      entries:
+      - { id: N14AmmoBox22lr, category: Ammo, tier: 1 }
+      - { id: N14AmmoBox9mm, category: Ammo, tier: 1 }
+      - { id: N14AmmoBox10mm, category: Ammo, tier: 1 }
+      - { id: N14AmmoBox45, category: Ammo, tier: 1 }
+      - { id: N14AmmoBox44Magnum, category: Ammo, tier: 1 }
+      - { id: N14AmmoBox12gauge, category: Ammo, tier: 1 }
+      - { id: MagazineBox20gauge, category: Ammo, tier: 1 }
+      - { id: N14AmmoBox556, category: Ammo, tier: 1 }
+      - { id: N14AmmoBox762, category: Ammo, tier: 1 }
+      - { id: N14AmmoBox308, category: Ammo, tier: 1 }
+    - name: Magazines
+      entries:
+      - { id: N14MagazinePistol44, category: Magazines, tier: 1 }
+      - { id: N14MagazineSMG9mm, category: Magazines, tier: 1 }
+      - { id: Magazine45SubMachineGun, category: Magazines, tier: 1 }
+      - { id: Magazine556Rifle, category: Magazines, tier: 1 }
+      - { id: LongMagazine556Rifle, category: Magazines, tier: 1 }
+      - { id: Magazine762Rifle, category: Magazines, tier: 1 }
+      - { id: Magazine762AmmoShort, category: Magazines, tier: 1 }
+      - { id: Magazine762AmmoBelt, category: Magazines, tier: 1 }
+      - { id: Magazine308Rifle, category: Magazines, tier: 1 }
+      - { id: Magazine308RifleLong, category: Magazines, tier: 1 }
+      - { id: ClipMagazine308Rifle, category: Magazines, tier: 1 }
+      - { id: Magazine308RifleSniper, category: Magazines, tier: 1 }
+      - { id: MagazineOver308RifleSniper, category: Magazines, tier: 1 }
+      - { id: Magazine308M60Box, category: Magazines, tier: 1 }
+      - { id: SpeedLoader9, category: Magazines, tier: 1 }
+      - { id: SpeedLoader10, category: Magazines, tier: 1 }
+      - { id: SpeedLoader44, category: Magazines, tier: 1 }
+      - { id: SpeedLoader308Tube, category: Magazines, tier: 1 }
+      - { id: SpeedLoader45-70, category: Magazines, tier: 1 }
+      - { id: SpeedLoader45-70Tube, category: Magazines, tier: 1 }
     - name: Tier 1 - Trooper / Specialist allocation
       entries:
       - { id: N14WeaponSniper44LeverCarbine, category: Ballistic, tier: 1 }
@@ -192,7 +226,7 @@
     authorityTierNames:
       1: Tier 1 - Trooper / Specialist allocation
       2: Tier 2 - Heavy Trooper allocation
-      3: Tier 3 - Squad Leader / Medical Officer allocation
+      3: Tier 3 - Squad Leader allocation
       4: Tier 4 - Executive Officer / Platoon Leader allocation
       5: Tier 5 - Commander / Requisition Officer allocation
     authorityTierAccess:
