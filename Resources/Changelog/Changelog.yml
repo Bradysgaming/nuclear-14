@@ -12015,3 +12015,16 @@ Entries:
   id: 6482
   time: '2026-09-30T20:36:44.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1976
+- author: Lucky
+  changes:
+    - type: Fix
+      message: Enclave door access works now as intended.
+    - type: Add
+      message: Provost Access, Doors, and Ranger Doors.
+    - type: Fix
+      message: Added several missing access to the locksmith tool.
+    - type: Fix
+      message: Added missing FTL entries for the POM, AOM, and Temple Guard.
+  id: 6483
+  time: '2026-09-30T21:48:48.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2022
