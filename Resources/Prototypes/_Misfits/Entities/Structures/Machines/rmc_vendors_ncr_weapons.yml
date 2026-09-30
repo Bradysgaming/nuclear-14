@@ -13,10 +13,11 @@
   name: NCR weapon requisitions vendor
   suffix: NCR
   components:
-  - type: AccessReader
-    access: [[ "NCR" ]]
   - type: CMAutomatedVendor
     departmentName: NCR
+    # Authorization is job-based below. Do not require a physical card tag as well:
+    # Heavy Trooper and Heavy Trooper Lead are authorized vendor roles even when their
+    # rank dogtag does not expose the generic NCR access tag.
     # NCR Army baseline. Rangers and NCR civilian roles use separate provisioning paths.
     jobs:
     - NCRCadet
