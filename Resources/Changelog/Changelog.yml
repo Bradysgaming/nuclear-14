@@ -12096,3 +12096,28 @@ Entries:
   id: 6487
   time: '2026-09-30T22:13:15.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2010
+- author: cythisiax
+  changes:
+    - type: Fix
+      message: Missing backpacks on jobslot
+    - type: Fix
+      message: missing headsets on jobslot
+    - type: Fix
+      message: add berets, hats, rank pins back to roundstart
+    - type: Fix
+      message: ammo tab to include limited initial ammo supply
+    - type: Fix
+      message: magazine tab for weapons that use magazines
+    - type: Fix
+      message: restored ltcol functionality
+    - type: Remove
+      message: rank pins
+    - type: Fix
+      message: restored c-27 loadoutkits
+    - type: Fix
+      message: HT & HTL not having access to vendor
+    - type: Remove
+      message: medical officer access to weapons vendor
+  id: 6488
+  time: '2026-09-30T23:57:31.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2025
