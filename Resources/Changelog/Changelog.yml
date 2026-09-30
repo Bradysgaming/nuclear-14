@@ -12072,3 +12072,18 @@ Entries:
   id: 6485
   time: '2026-09-30T21:55:41.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2019
+- author: Vixting
+  changes:
+    - type: Add
+      message: Added vault encryption key & radio crate
+    - type: Add
+      message: Added more sellables to vault req
+    - type: Add
+      message: You can now see everything present on the platform
+    - type: Tweak
+      message: Lowered prices of vault crates
+    - type: Fix
+      message: Fixed some misc issues with vault req
+  id: 6486
+  time: '2026-09-30T21:57:24.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2020
