@@ -27,6 +27,8 @@
     - NCRLT
     - NCRCaptain
     - NCRMajor
+    - NCRRanger
+    - NCRProvost
   special:
     - !type:AddComponentSpecial
       components:

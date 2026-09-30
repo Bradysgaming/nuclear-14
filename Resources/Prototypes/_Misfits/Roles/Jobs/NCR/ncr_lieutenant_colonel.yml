@@ -26,6 +26,7 @@
     - NCRLT
     - NCRCaptain
     - NCRMajor
+    - NCRRanger
   requirements:
     - !type:CharacterSpeciesRequirement
       species:
