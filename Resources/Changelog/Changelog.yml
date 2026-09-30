@@ -12087,3 +12087,12 @@ Entries:
   id: 6486
   time: '2026-09-30T21:57:24.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2020
+- author: cythisiax
+  changes:
+    - type: Add
+      message: NCR Equipment + Weapon Vendors
+    - type: Fix
+      message: Some bugs
+  id: 6487
+  time: '2026-09-30T22:13:15.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2010
