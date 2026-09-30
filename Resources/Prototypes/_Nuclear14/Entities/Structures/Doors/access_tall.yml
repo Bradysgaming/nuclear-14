@@ -72,7 +72,7 @@
 - type: entity
   parent: N14DoorMetalRedTall
   id: N14DoorWoodSecureLockedNCRProvostTall
-  suffix: NCR, Locked, LT
+  suffix: NCR, Locked, Provost
   components:
   - type: AccessReader
     access: [["NCRProvost"]]
