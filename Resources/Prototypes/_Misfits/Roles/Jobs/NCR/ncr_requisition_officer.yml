@@ -44,6 +44,7 @@
   id: NCRRequisitionOfficerGear
   equipment:
     wallet: N14Wallet
+    head: N14ClothingHeadHatNCRBeretOfficer
     ears: N14ClothingHeadsetNCR
     back: N14ClothingBackpackNCR
     jumpsuit: N14ClothingOfficerUniformNCRDesert

@@ -42,6 +42,7 @@
   id: NCRMedicGear
   equipment:
     wallet: N14Wallet
+    head: N14ClothingHeadHatNCRBeretMedic #Misfits Add - Medics can spawn with a beret, since helmets are given in loadouts.
     ears: N14ClothingHeadsetNCR # #Misfits Add - NCR radio earpiece
     back: N14ClothingBackpackNCR # Corvax-Change
     jumpsuit: N14ClothingUniformNCRMedicVariant # Corvax-Change

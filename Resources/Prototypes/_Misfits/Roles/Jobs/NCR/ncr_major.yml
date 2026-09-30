@@ -52,6 +52,8 @@
   id: NCRMajorGear
   equipment:
     wallet: N14Wallet
+    head: N14ClothingHeadHatNCRBeretOfficer
+    neck: ClothingNeckPinNCRMajor
     ears: N14ClothingHeadsetNCR
     back: N14ClothingBackpackNCR
     jumpsuit: N14ClothingOfficerUniformNCRDesert

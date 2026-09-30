@@ -42,6 +42,7 @@
   id: NCRProvostGear
   equipment:
     wallet: N14Wallet
+    head: N14ClothingHeadHatNCRSlouch
     ears: MisfitsClothingHeadsetNCRMaster
     back: N14ClothingBackpackNCR
     jumpsuit: N14ClothingMPUniformNCRDesert

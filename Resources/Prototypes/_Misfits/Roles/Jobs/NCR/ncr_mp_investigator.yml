@@ -41,6 +41,7 @@
   id: NCRMPinvestigatorGear
   equipment:
     wallet: N14Wallet
+    head:  N14ClothingHeadHatNCRMPCap
     ears: N14ClothingHeadsetNCR
     back: N14ClothingBackpackMilitary
     jumpsuit: N14ClothingUniformJumpsuitNCRMP
