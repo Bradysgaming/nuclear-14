@@ -42,6 +42,7 @@
   id: NCRMedicGear
   equipment:
     wallet: N14Wallet
+    ears: N14ClothingHeadsetNCR # #Misfits Add - NCR radio earpiece
     back: N14ClothingBackpackNCR # Corvax-Change
     jumpsuit: N14ClothingUniformNCRMedicVariant # Corvax-Change
     shoes: N14ClothingBootsLeatherFilled

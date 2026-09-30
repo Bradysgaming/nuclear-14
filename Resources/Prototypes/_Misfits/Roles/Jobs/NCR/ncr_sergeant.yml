@@ -40,6 +40,7 @@
   id: NCRNCOGear
   equipment:
     wallet: N14Wallet
+    ears: N14ClothingHeadsetNCR
     back: N14ClothingBackpackNCR
     hands: N14ClothingHandsGlovesCombat
     jumpsuit: N14ClothingOfficerUniformNCRDesert

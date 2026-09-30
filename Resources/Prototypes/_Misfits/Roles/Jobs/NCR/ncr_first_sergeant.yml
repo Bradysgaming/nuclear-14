@@ -44,6 +44,7 @@
   id: NCRFirstSergeantGear
   equipment:
     wallet: N14Wallet
+    ears: N14ClothingHeadsetNCR # #Misfits Add - NCR radio earpiece
     back: N14ClothingBackpackNCR # Corvax-Change
     hands: N14ClothingHandsGlovesCombat
     jumpsuit: N14ClothingOfficerUniformNCRDesert # Corvax-Change

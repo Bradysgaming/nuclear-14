@@ -44,6 +44,7 @@
   id: NCRVertibirdPilotGear
   equipment:
     wallet: N14Wallet
+    ears: N14ClothingHeadsetNCR
     back: N14ClothingBackpackNCR
     jumpsuit: N14ClothingOfficerUniformNCRDesert
     shoes: N14ClothingBootsCombatFilled
