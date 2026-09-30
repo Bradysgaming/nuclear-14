@@ -51,8 +51,18 @@
     ears: MisfitsClothingHeadsetNCRMaster
     back: N14ClothingBackpackNCR
     jumpsuit: N14ClothingOfficerUniformNCRDesert
+    outerClothing: MisfitsClothingOuterNCRTrenchCoat
     shoes: N14ClothingBootsCombatFilled
+    belt: ClothingBeltNCR
+    eyes: ClothingEyesGlassesSunglasses
     id: N14NCRLieutenantColonelPipboy
+    pocket1: NCRcaptainloadoutkits
+    pocket2: BoxFolderClipboard
   innerClothingSkirt: N14ClothingOfficerUniformNCRDesert
+  satchel: N14ClothingBackpackSatchelNCRFilled
+  storage:
+    back:
+      - N14BoxPlasticFilledMilitaryNCR
+      - RadioHandheld
 - type: playTimeTracker
   id: NCRLTCol
