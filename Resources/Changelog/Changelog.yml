@@ -12057,3 +12057,18 @@ Entries:
   id: 6484
   time: '2026-09-30T21:49:12.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2021
+- author: Vixting
+  changes:
+    - type: Add
+      message: Ported upstream conveyor changes, bug fixes & auto stacking
+    - type: Add
+      message: Ported upstream examine arrow markers for conveyors
+    - type: Add
+      message: Conveyor belts can now be alt clicked to cycle them through their modes
+    - type: Add
+      message: >-
+        Industrial grinder now chops tower / steel cap logs instead of grinding
+        them
+  id: 6485
+  time: '2026-09-30T21:55:41.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2019
