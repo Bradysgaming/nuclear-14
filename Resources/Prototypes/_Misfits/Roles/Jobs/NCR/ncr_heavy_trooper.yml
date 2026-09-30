@@ -44,6 +44,7 @@
   id: NCRHeavyTrooperGear
   equipment:
     wallet: N14Wallet
+    back: N14ClothingBackpackNCR                 # #Misfits Fix - Minigun moved to pocket1 so custom backpack selection no longer overwrites it
     jumpsuit: N14ClothingOfficerUniformNCRDesert  # standard NCR officer uniform under the suit
     shoes: N14ClothingBootsCombatFilled
     id: N14IDNCRDogtagWS                      # Specialist-tier dogtag

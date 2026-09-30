@@ -42,6 +42,7 @@
   id: NCRProvostGear
   equipment:
     wallet: N14Wallet
+    back: N14ClothingBackpackNCR
     jumpsuit: N14ClothingMPUniformNCRDesert
     shoes: N14ClothingBootsCombatFilled
     id: N14NCRProvostPipboy

@@ -46,6 +46,7 @@
   id: NCRLTColGear
   equipment:
     wallet: N14Wallet
+    back: N14ClothingBackpackNCR
     jumpsuit: N14ClothingOfficerUniformNCRDesert
     shoes: N14ClothingBootsCombatFilled
     id: N14NCRLieutenantColonelPipboy
