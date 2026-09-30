@@ -12015,3 +12015,60 @@ Entries:
   id: 6482
   time: '2026-09-30T20:36:44.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1976
+- author: Lucky
+  changes:
+    - type: Fix
+      message: Enclave door access works now as intended.
+    - type: Add
+      message: Provost Access, Doors, and Ranger Doors.
+    - type: Fix
+      message: Added several missing access to the locksmith tool.
+    - type: Fix
+      message: Added missing FTL entries for the POM, AOM, and Temple Guard.
+  id: 6483
+  time: '2026-09-30T21:48:48.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2022
+- author: Lucky
+  changes:
+    - type: Add
+      message: Added three more flanking routes to the Legion camp.
+    - type: Add
+      message: Added two more flanking routes to the Enclave.
+    - type: Add
+      message: Added intercoms to the front of every faction.
+    - type: Add
+      message: Mapped the NCR requistions vendors for playtesting.
+    - type: Add
+      message: Added some disguise equipment to the Brotherhood armory.
+    - type: Fix
+      message: Town gets their blueprint crate.
+    - type: Tweak
+      message: Minor tweaks with the town mechanics shop.
+    - type: Tweak
+      message: 'More Enclave tweaks. '
+    - type: Fix
+      message: Fixed Enclave gate.
+    - type: Add
+      message: Added more exits from the enclave cave system.
+    - type: Add
+      message: Added Brahmin pens to the Vault.
+    - type: Add
+      message: Added a genetics setup to Vault.
+  id: 6484
+  time: '2026-09-30T21:49:12.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2021
+- author: Vixting
+  changes:
+    - type: Add
+      message: Ported upstream conveyor changes, bug fixes & auto stacking
+    - type: Add
+      message: Ported upstream examine arrow markers for conveyors
+    - type: Add
+      message: Conveyor belts can now be alt clicked to cycle them through their modes
+    - type: Add
+      message: >-
+        Industrial grinder now chops tower / steel cap logs instead of grinding
+        them
+  id: 6485
+  time: '2026-09-30T21:55:41.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2019
