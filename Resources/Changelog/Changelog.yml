@@ -11986,3 +11986,18 @@ Entries:
   id: 6479
   time: '2026-09-29T15:43:05.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1984
+- author: Clintus
+  changes:
+    - type: Add
+      message: Added WieldDelay component for future and current use
+    - type: Tweak
+      message: >-
+        applied wield delay to all MGs, including BAR. between 1-2 seconds
+        across the board
+    - type: Tweak
+      message: Increased accuracy for almost all MGs
+    - type: Tweak
+      message: Increased accuracy for miniguns by a small amount
+  id: 6480
+  time: '2026-09-30T20:24:54.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2002
