@@ -12001,3 +12001,10 @@ Entries:
   id: 6480
   time: '2026-09-30T20:24:54.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2002
+- author: Enkidienne
+  changes:
+    - type: Tweak
+      message: 'Balaclavas are now wearable on the neck slot. '
+  id: 6481
+  time: '2026-09-30T20:36:19.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1978
