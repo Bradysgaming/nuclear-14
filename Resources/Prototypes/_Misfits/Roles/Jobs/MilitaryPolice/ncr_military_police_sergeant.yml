@@ -43,9 +43,20 @@
     ears: N14ClothingHeadsetNCR
     back: N14ClothingBackpackNCR
     jumpsuit: N14ClothingMPUniformNCRDesert
+    outerClothing: MisfitsNCRMPCombatArmor
     shoes: N14ClothingBootsCombatFilled
+    belt: ClothingBeltNCR
+    eyes: ClothingEyesGlassesSunglasses
+    pocket1: NCRMPKit_Set
     id: N14IDNCRDogtagMPSergeant
   innerClothingSkirt: N14ClothingOfficerUniformNCRDesert
+  satchel: N14ClothingBackpackSatchelNCRFilled
+  storage:
+    back:
+      - N14BoxPlasticFilledMilitaryNCR
+      - N14PoliceBaton
+      - N14SpeedLoader44Magnum
+      - N14SpeedLoader44Magnum
 
 - type: playTimeTracker
   id: NCRMilitaryPoliceSergeant
