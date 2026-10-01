@@ -12132,3 +12132,12 @@ Entries:
   id: 6489
   time: '2026-10-01T21:40:07.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2029
+- author: Enkidienne
+  changes:
+    - type: Tweak
+      message: >-
+        Changed legion armor sprites (decanus and legionnary) for pictures see
+        the dump thread on discord. 
+  id: 6490
+  time: '2026-10-01T21:45:29.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2027
