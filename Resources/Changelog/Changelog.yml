@@ -12141,3 +12141,10 @@ Entries:
   id: 6490
   time: '2026-10-01T21:45:29.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2027
+- author: Enkidienne
+  changes:
+    - type: Add
+      message: The M7 Spear to the NCR BP lineup alongside 6.8mm and its magazine.
+  id: 6491
+  time: '2026-10-02T22:27:37.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1997
