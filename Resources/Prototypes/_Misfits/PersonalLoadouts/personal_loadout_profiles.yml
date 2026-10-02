@@ -51,3 +51,20 @@
     helmetClothingVisuals:
       head:
       - state: off-equipped-HELMET
+
+- type: personalLoadoutProfile
+  id: MisfitsPersonalLoadoutEmissarius
+  accountNames:
+  - Barkuaad
+  characterNames:
+  - Valere Fallax
+  powerArmorSkins:
+  - jobs:
+    - CaesarLegionFrumentarii
+    outerSprite: _Misfits/Clothing/OuterClothing/Patreon/EmissariusRobes.rsi
+    helmetSprite: _Misfits/Clothing/Head/Patreon/EmissariusMask.rsi
+    glovesSprite: _Misfits/Clothing/Hands/Patreon/EmissariusGloves.rsi
+    bootsSprite: _Misfits/Clothing/Feet/Patreon/EmissariusBoots.rsi
+    hoodSprite: _Misfits/Clothing/Head/Patreon/EmissariusHood.rsi
+    jumpsuitSprite: _Misfits/Clothing/Uniforms/Patreon/EmissariusCloth.rsi
+    masksprite: _Misfits/Clothing/Mask/Patreon/EmissariusMask.rsi
