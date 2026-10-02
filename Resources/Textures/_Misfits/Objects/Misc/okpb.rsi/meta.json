@@ -12,6 +12,14 @@
     },
     {
       "name": "okpb_alpha"
+    },
+    {
+        "name": "retracted",
+        "directions": 4
+    },
+    {
+        "name": "deployed",
+        "directions": 4
     }
   ]
 }
